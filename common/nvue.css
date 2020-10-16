@@ -1,0 +1,53 @@
+.uni-pd {
+	padding-left: 30upx;
+	padding-top: 20upx;
+	padding-bottom: 20upx;
+	background-color: #EEEEEE;
+}
+.uni-padding-wrap{
+	padding:0 30upx;
+}
+.uni-list-cell {
+	position: relative;
+	display: flex;
+	margin-top: 5upx;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #FBFBFB;
+}
+.uni-label {
+	width: 210upx;
+	word-wrap: break-word;
+	word-break: break-all;
+	text-indent:20upx;
+}
+.uni-list-cell-db{
+	flex: 1;
+	padding-left: 20upx;
+}
+.uni-input {
+	height: 50upx;
+	flex: 1;
+}
+.uni-common-mt{
+	margin-top:30upx;
+}
+.uni-btn-v{
+	padding:10upx 0;
+}
+.btn {
+	height: 100upx;
+	border-width: 2upx;
+	border-style: solid;
+	border-color: rgb(162, 217, 192);
+	background-color: rgba(162, 217, 192, 0.2);
+	border-radius: 5upx;
+	display:inline-block;
+	margin-top: 20upx;
+	text-align: center;
+	line-height: 100upx;
+}
+.uni-center{
+	text-align:center;
+}

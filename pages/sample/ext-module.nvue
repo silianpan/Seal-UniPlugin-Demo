@@ -1,0 +1,68 @@
+<template>
+	<div>
+		<button type="primary" @click="testAsyncFunc">testAsyncFunc</button>
+		<button type="primary" @click="testSyncFunc">testSyncFunc</button>
+		<button type="primary" @click="gotoNativePage">跳转原生Activity</button>
+	</div>
+</template>
+
+<script>
+	// 获取 module
+	var testModule = uni.requireNativePlugin("sealOfficeOnline")
+	// const modal = uni.requireNativePlugin('modal');
+	export default {
+		onLoad() {
+			// plus.globalEvent.addEventListener('TestEvent', function(e){
+			// 	modal.toast({
+			// 		message: "TestEvent收到："+e.msg,
+			// 		duration: 1.5
+			// 	});
+			// });
+		},
+		methods: {
+			testAsyncFunc() {
+				// 调用异步方法
+				testModule.testAsyncFunc({
+						'name': 'unimp',
+						'age': 1
+					},
+					(ret) => {
+						// modal.toast({
+						// 	message: ret,
+						// 	duration: 1.5
+						// });
+						uni.showToast({
+							title: '调用异步方法 ' + ret,
+							icon: "none"
+						})
+					})
+			},
+			testSyncFunc() {
+				// 调用同步方法
+				var ret = testModule.testSyncFunc({
+					'name': 'unimp',
+					'age': 1
+				})
+				// modal.toast({
+				// 	message: ret,
+				// 	duration: 1.5
+				// });
+				uni.showToast({
+					title: '调用同步方法 ' + ret,
+					icon: "none"
+				})
+			},
+			gotoNativePage() {
+				// testModule.gotoNativePage();
+				testModule.openFile({
+					url: 'http://113.62.127.199:8090/fileUpload/liupan.xlsx',
+					topBarBgColor: '#3394EC',
+					title: 'Office文档在线预览',
+					isBackArrow: false,
+					fileType: 'xlsx',
+					fileName: '1'
+				});
+			}
+		}
+	}
+</script>

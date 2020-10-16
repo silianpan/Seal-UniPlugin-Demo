@@ -1,0 +1,24 @@
+<template>
+	<div>
+		<myText ref="telText" tel="12305" style="width:200;height:100" @onTel="onTel" @click="myTextClick"></myText>
+	</div>
+</template>
+
+<script>  
+    export default {  
+        data() {  
+            return {  
+            }  
+        },  
+        onLoad() {  
+        },  
+        methods: {  
+			onTel(e) {
+				console.log("onTel="+e.detail.tel);
+			},
+			myTextClick(e) {
+				this.$refs.telText.clearTel();
+			}
+        }  
+    }  
+</script>  
