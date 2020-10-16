@@ -1,6 +1,6 @@
 {
     "name" : "unipluginDemo",
-    "appid" : "__UNI__A72AC39",
+    "appid" : "",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -55,11 +55,11 @@
             }
         },
         "nativePlugins" : {
-            "sealOfficeOnline" : {
+            "Seal-OfficeOnline" : {
                 "__plugin_info__" : {
-                    "name" : "sealOfficeOnline",
+                    "name" : "Seal-OfficeOnline",
                     "description" : "Office在线预览",
-                    "platforms" : "Android",
+                    "platforms" : "Android,iOS",
                     "url" : "",
                     "android_package_name" : "",
                     "ios_bundle_id" : "",
