@@ -1,13 +1,16 @@
 <template>
 	<div>
-		<button type="primary" @click="testAsyncFunc">testAsyncFunc</button>
-		<button type="primary" @click="testSyncFunc">testSyncFunc</button>
-		<button type="primary" @click="gotoNativePage">跳转原生Activity</button>
+		<button type="primary" @click="gotoNativePage('1.pdf')">打开pdf文件</button>
+		<button type="primary" @click="gotoNativePage('1.txt')">打开txt文件</button>
+		<button type="primary" @click="gotoNativePage('1.docx')">打开docx文件</button>
+		<button type="primary" @click="gotoNativePage('1.xlsx')">打开xlsx文件</button>
+		<button type="primary" @click="gotoNativePage('1.pptx')">打开pptx文件</button>
 	</div>
 </template>
 
 <script>
-	// 获取 module
+	// 获取 module 
+	// var testModule = uni.requireNativePlugin("TestModule")
 	var testModule = uni.requireNativePlugin("sealOfficeOnline")
 	// const modal = uni.requireNativePlugin('modal');
 	export default {
@@ -52,15 +55,15 @@
 					icon: "none"
 				})
 			},
-			gotoNativePage() {
+			gotoNativePage(fileName) {
 				// testModule.gotoNativePage();
 				testModule.openFile({
-					url: 'http://113.62.127.199:8090/fileUpload/liupan.xlsx',
+					url: 'http://113.62.127.199:8090/fileUpload/' + fileName,
 					topBarBgColor: '#3394EC',
 					title: 'Office文档在线预览',
-					isBackArrow: false,
-					fileType: 'xlsx',
-					fileName: '1'
+					isBackArrow: false
+					// fileType: 'xlsx',
+					// fileName: '1'
 				});
 			}
 		}
