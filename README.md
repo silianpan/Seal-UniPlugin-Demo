@@ -37,7 +37,7 @@
 * 在vue或nvue组件中，导入插件
 
 ```js
-var testModule = uni.requireNativePlugin("sealOfficeOnline")
+var testModule = uni.requireNativePlugin("Seal-OfficeOnline")
 ```
 
 * 使用openFile方法预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx

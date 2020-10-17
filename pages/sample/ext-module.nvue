@@ -9,9 +9,8 @@
 </template>
 
 <script>
-	// 获取 module 
-	// var testModule = uni.requireNativePlugin("TestModule")
-	var testModule = uni.requireNativePlugin("sealOfficeOnline")
+	// 获取 module
+	var testModule = uni.requireNativePlugin("Seal-OfficeOnline")
 	// const modal = uni.requireNativePlugin('modal');
 	export default {
 		onLoad() {
