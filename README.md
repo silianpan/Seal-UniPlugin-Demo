@@ -6,9 +6,9 @@
 * [跨平台文件在线预览解决方案（二）](http://silianpan.cn/index.php/2020/08/21/online_file_preview_2/)
 * [跨平台文件在线预览解决方案（三）- LibreOffice vs OpenOffice](http://silianpan.cn/index.php/2020/09/09/file_preview_libreoffice/)
 
-本文基于[uni-app](https://uniapp.dcloud.io/)平台实现了Office文档在线预览原生插件sealOfficeOnline，同时支持Android和IOS，欢迎下载使用~
+本文基于[uni-app](https://uniapp.dcloud.io/)平台实现了[Office文档在线预览原生插件sealOfficeOnline](https://ext.dcloud.net.cn/plugin?id=3226)，同时支持Android和IOS，欢迎下载使用~
 
-[插件下载使用地址]()
+[sealOfficeOnline插件下载使用地址](https://ext.dcloud.net.cn/plugin?id=3226)
 
 <img src="http://silianpan.cn/wp-content/uploads/2020/10/h8chd-s1gok.gif" height="800" />
 
@@ -19,29 +19,31 @@
 
 开发工具[HBuilderX](https://www.dcloud.io/hbuilderx.html)
 
-### 下载demo工程，使用HBuilderX打开
+### Step1. 下载demo工程，使用HBuilderX打开
 
-### 下载本文插件
+### Step2. 下载本文插件
 
-插件名称：sealOfficeOnline
+插件名称：[sealOfficeOnline](https://ext.dcloud.net.cn/plugin?id=3226)
 
-下载插件解压放置到项目根目录nativeplugins下，如图：
+下载插件解压放置到项目根目录`nativeplugins`下，如图：
 
 <img src="http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_8d84d41a362f0738223468efd3ef555c.jpg" width="280" />
 
-### 使用插件
+### Step3. 使用插件
 
-在vue或nvue组件中，导入插件
+* 在vue或nvue组件中，导入插件
+
 ```js
 var testModule = uni.requireNativePlugin("sealOfficeOnline")
 ```
 
-使用openFile方法预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx
+* 使用openFile方法预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx
 
 ```js
 testModule.openFile({
 	url: 'http://113.62.127.199:8090/fileUpload/1.xlsx',
 	topBarBgColor: '#3394EC',
+	topBarTextColor: '#FFFFFF',
 	title: 'Office文档在线预览',
 	isBackArrow: false,
 	fileType: 'xlsx',
@@ -130,4 +132,3 @@ fileName可以指定文件名，如：file1，注意此处不带文件扩展名�
 ### 预览pptx
 
 <img src="http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_08b8bc5087438b4de626ec872b164001.jpg" height="800" />
-
