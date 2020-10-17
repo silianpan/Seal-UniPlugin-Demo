@@ -6,11 +6,17 @@
 * [跨平台文件在线预览解决方案（二）](http://silianpan.cn/index.php/2020/08/21/online_file_preview_2/)
 * [跨平台文件在线预览解决方案（三）- LibreOffice vs OpenOffice](http://silianpan.cn/index.php/2020/09/09/file_preview_libreoffice/)
 
-本文基于[uni-app](https://uniapp.dcloud.io/)平台实现了[Office文档在线预览原生插件sealOfficeOnline](https://ext.dcloud.net.cn/plugin?id=3226)，同时支持Android和IOS，欢迎下载使用~
+本文基于[uni-app](https://uniapp.dcloud.io/)平台实现了[Office文档在线预览原生插件Seal-OfficeOnline](https://ext.dcloud.net.cn/plugin?id=3226)，同时支持Android和iOS，欢迎下载使用~
 
-[sealOfficeOnline插件下载使用地址](https://ext.dcloud.net.cn/plugin?id=3226)
+[Seal-OfficeOnline插件下载使用地址](https://ext.dcloud.net.cn/plugin?id=3226)
+
+**Android**
 
 <img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/ea8e8d50-1024-11eb-81ea-f115fe74321c.gif" height="600" />
+
+**iOS**
+
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/38c046f0-102d-11eb-b244-a9f5e5565f30.gif" height="600" />
 
 ## 快速上手
 
@@ -22,15 +28,15 @@
 
 ### Step2. 下载本文插件
 
-插件名称：[sealOfficeOnline](https://ext.dcloud.net.cn/plugin?id=3226)
+插件名称：[Seal-OfficeOnline](https://ext.dcloud.net.cn/plugin?id=3226)
 
 下载插件解压放置到项目根目录`nativeplugins`下，如图：
 
-<img src="http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_8d84d41a362f0738223468efd3ef555c.jpg" height="300" />
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/8c698370-102d-11eb-9dfb-6da8e309e0d8.png" height="300" />
 
 ### Step3. 选择`manifest.json->App原生插件配置`中加载本地插件
 
-<img src="http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_ae2d12539961f515faa2c64bb6603099.jpg" width="600" />
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/da031560-102d-11eb-b680-7980c8a877b8.png" width="600" />
 
 ### Step4. 使用插件
 
@@ -115,8 +121,7 @@ fileName可以指定文件名，如：file1，注意此处不带文件扩展名�
 <img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/c0676240-1024-11eb-81ea-f115fe74321c.jpg" height="600" />
 
 
-
-## IOS预览效果
+## iOS预览效果
 
 ### 预览docx
 
