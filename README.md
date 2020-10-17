@@ -22,7 +22,7 @@
 
 [demo工程地址](https://github.com/silianpan/UniPlugin-Demo)
 
-开发工具[HBuilderX](https://www.dcloud.io/hbuilderx.html)
+开发工具：[HBuilderX](https://www.dcloud.io/hbuilderx.html)
 
 ### Step1. 下载demo工程，使用HBuilderX打开
 
