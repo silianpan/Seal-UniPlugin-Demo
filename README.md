@@ -29,7 +29,11 @@
 
 <img src="http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_8d84d41a362f0738223468efd3ef555c.jpg" width="280" />
 
-### Step3. 使用插件
+### Step3. 选择`manifest.json->App原生插件配置`中加载本地插件
+
+![](http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_ae2d12539961f515faa2c64bb6603099.jpg)
+
+### Step4. 使用插件
 
 * 在vue或nvue组件中，导入插件
 
