@@ -10,13 +10,13 @@
 
 [Seal-OfficeOnline插件下载使用地址](https://ext.dcloud.net.cn/plugin?id=3226)
 
-**Android**
+<div class="half">
 
 <img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/ea8e8d50-1024-11eb-81ea-f115fe74321c.gif" height="600" />
 
-**iOS**
-
 <img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/38c046f0-102d-11eb-b244-a9f5e5565f30.gif" height="600" />
+
+</div>
 
 ## 快速上手
 
