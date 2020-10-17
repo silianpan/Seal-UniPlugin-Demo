@@ -10,7 +10,7 @@
 
 [sealOfficeOnline插件下载使用地址](https://ext.dcloud.net.cn/plugin?id=3226)
 
-<img src="http://silianpan.cn/wp-content/uploads/2020/10/h8chd-s1gok.gif" height="800" />
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/ea8e8d50-1024-11eb-81ea-f115fe74321c.gif" height="600" />
 
 
 ## 快速上手
@@ -91,44 +91,46 @@ fileName可以指定文件名，如：file1，注意此处不带文件扩展名�
 
 ## Android预览效果
 
-### 预览pdf
-
-<img src="http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_f8f91ec416985c5ee17a1ded21284686.jpg" height="800" />
-
-### 预览txt
-
-<img src="http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_3ea464b119d1fb9bb3d9b35b1ba42fd9.jpg" height="800" />
-
 ### 预览docx
 
-<img src="http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_e7abb01d10d1e3aa495e17c415c78b5e.jpg" height="800" />
-
-### 预览xlsx
-
-<img src="http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_9c50e83094411d75905c515232c86f38.jpg" height="800" />
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/9dec53b0-1024-11eb-b244-a9f5e5565f30.jpg" height="600" />
 
 ### 预览pptx
 
-<img src="http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_1aa944cd4046400ab35598aaf0f038ab.jpg" height="800" />
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/a8316a90-1024-11eb-8bd0-2998ac5bbf7e.jpg" height="600" />
+
+### 预览xlsx
+
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/b302bbe0-1024-11eb-8ff1-d5dcf8779628.jpg" height="600" />
+
+### 预览pdf
+
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/baaae0c0-1024-11eb-9dfb-6da8e309e0d8.jpg" height="600" />
+
+### 预览txt
+
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/c0676240-1024-11eb-81ea-f115fe74321c.jpg" height="600" />
+
+
 
 ## IOS预览效果
 
-### 预览pdf
-
-<img src="http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_b3f93480acacf6c1762dd681be206e54.jpg" height="800" />
-
-### 预览txt
-
-<img src="http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_559b79917a4f21c2872b988525d6954e.jpg" height="800" />
-
 ### 预览docx
 
-<img src="http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_ef4e4c360a3e0bdc1427fc351385a7a1.jpg" height="800" />
-
-### 预览xlsx
-
-<img src="http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_681e2dc1fe1dc81899e0b5c9cffe929b.jpg" height="800" />
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/c590cb80-1024-11eb-8ff1-d5dcf8779628.jpg" height="600" />
 
 ### 预览pptx
 
-<img src="http://silianpan.cn/wp-content/uploads/2020/10/wp_editor_md_08b8bc5087438b4de626ec872b164001.jpg" height="800" />
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/cab1d050-1024-11eb-8a36-ebb87efcf8c0.jpg" height="600" />
+
+### 预览xlsx
+
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/cff6d7e0-1024-11eb-b680-7980c8a877b8.jpg" height="600" />
+
+### 预览pdf
+
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/dd023ab0-1024-11eb-b997-9918a5dda011.jpg" height="600" />
+
+### 预览txt
+
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/e28eab80-1024-11eb-8a36-ebb87efcf8c0.jpg" height="600" />
