@@ -57,15 +57,15 @@
         "nativePlugins" : {
             "Seal-OfficeOnline" : {
                 "__plugin_info__" : {
-                    "name" : "Seal-OfficeOnline",
-                    "description" : "Office在线预览",
+                    "name" : "跨平台Office文件在线预览原生插件 - [试用版，仅用于自定义调试基座]",
+                    "description" : "支持Android和IOS，支持文档类型pdf、txt、xls、doc、ppt等",
                     "platforms" : "Android,iOS",
-                    "url" : "",
+                    "url" : "https://ext.dcloud.net.cn/plugin?id=3226",
                     "android_package_name" : "",
                     "ios_bundle_id" : "",
-                    "isCloud" : false,
-                    "bought" : -1,
-                    "pid" : "",
+                    "isCloud" : true,
+                    "bought" : 0,
+                    "pid" : "3226",
                     "parameters" : {}
                 }
             }
