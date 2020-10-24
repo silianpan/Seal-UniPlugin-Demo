@@ -46,8 +46,8 @@
 var testModule = uni.requireNativePlugin("Seal-OfficeOnline")
 ```
 
-* 使用openFile方法预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx
-* 使用OpenFileBS方法打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
+* **openFile**方法：预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx
+* **OpenFileBS**方法：打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
 
 ```js
 testModule.openFile({
