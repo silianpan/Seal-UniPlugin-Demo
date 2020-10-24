@@ -1,62 +1,43 @@
 <template>
-	<div>
-		<button type="primary" @click="gotoNativePage('1.pdf')">打开pdf文件</button>
-		<button type="primary" @click="gotoNativePage('1.txt')">打开txt文件</button>
-		<button type="primary" @click="gotoNativePage('1.docx')">打开docx文件</button>
-		<button type="primary" @click="gotoNativePage('1.xlsx')">打开xlsx文件</button>
-		<button type="primary" @click="gotoNativePage('1.pptx')">打开pptx文件</button>
-	</div>
+	<view>
+		<h2 class="title">文档在线浏览（Android和IOS）</h2>
+		<view class="content">
+			<button class="uni-button" type="primary" @click="openOnlineFile('1.pdf')">打开pdf文件</button>
+			<button class="uni-button" type="primary" @click="openOnlineFile('1.txt')">打开txt文件</button>
+			<button class="uni-button" type="primary" @click="openOnlineFile('1.docx')">打开docx文件</button>
+			<button class="uni-button" type="primary" @click="openOnlineFile('1.xlsx')">打开xlsx文件</button>
+			<button class="uni-button" type="primary" @click="openOnlineFile('1.pptx')">打开pptx文件</button>
+		</view>
+		<h2 class="title">文件在线浏览-QQ浏览服务（Android）</h2>
+		<view class="content">
+			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.pdf')">打开pdf文件</button>
+			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.txt')">打开txt文件</button>
+			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.docx')">打开docx文件</button>
+			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.xlsx')">打开xlsx文件</button>
+			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.pptx')">打开pptx文件</button>
+		</view>
+	</view>
 </template>
 
 <script>
-	// 获取 module
+	// get native module
 	var testModule = uni.requireNativePlugin("Seal-OfficeOnline")
-	// const modal = uni.requireNativePlugin('modal');
 	export default {
-		onLoad() {
-			// plus.globalEvent.addEventListener('TestEvent', function(e){
-			// 	modal.toast({
-			// 		message: "TestEvent收到："+e.msg,
-			// 		duration: 1.5
-			// 	});
-			// });
-		},
 		methods: {
-			testAsyncFunc() {
-				// 调用异步方法
-				testModule.testAsyncFunc({
-						'name': 'unimp',
-						'age': 1
-					},
-					(ret) => {
-						// modal.toast({
-						// 	message: ret,
-						// 	duration: 1.5
-						// });
-						uni.showToast({
-							title: '调用异步方法 ' + ret,
-							icon: "none"
-						})
-					})
-			},
-			testSyncFunc() {
-				// 调用同步方法
-				var ret = testModule.testSyncFunc({
-					'name': 'unimp',
-					'age': 1
-				})
-				// modal.toast({
-				// 	message: ret,
-				// 	duration: 1.5
-				// });
-				uni.showToast({
-					title: '调用同步方法 ' + ret,
-					icon: "none"
-				})
-			},
-			gotoNativePage(fileName) {
-				// testModule.gotoNativePage();
+			openOnlineFile(fileName) {
+				// testModule.openOnlineFile();
 				testModule.openFile({
+					url: 'http://113.62.127.199:8090/fileUpload/' + fileName,
+					topBarBgColor: '#3394EC',
+					title: 'Office文档在线预览',
+					isBackArrow: false
+					// fileType: 'xlsx',
+					// fileName: '1'
+				});
+			},
+			openOnlineFileBS(fileName) {
+				// testModule.openOnlineFile();
+				testModule.openFileBS({
 					url: 'http://113.62.127.199:8090/fileUpload/' + fileName,
 					topBarBgColor: '#3394EC',
 					title: 'Office文档在线预览',
@@ -68,3 +49,17 @@
 		}
 	}
 </script>
+
+<style>
+	.title {
+		padding: 20rpx 30rpx 10rpx 30rpx;
+	}
+
+	.content {
+		padding: 10rpx 30rpx;
+	}
+
+	.uni-button {
+		margin: 10rpx 0;
+	}
+</style>

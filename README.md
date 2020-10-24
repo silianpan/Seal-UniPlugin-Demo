@@ -12,7 +12,7 @@
 
 <div class="half">
 
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/ea8e8d50-1024-11eb-81ea-f115fe74321c.gif" height="600" style="height:600px" />
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/2c7eada0-15dc-11eb-b680-7980c8a877b8.gif" height="600" style="height:600px" />
 
 <img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/38c046f0-102d-11eb-b244-a9f5e5565f30.gif" height="600" style="height:600px" />
 
@@ -20,7 +20,7 @@
 
 ## 快速上手
 
-[demo工程地址](https://github.com/silianpan/UniPlugin-Demo)
+[demo工程地址](https://github.com/silianpan/UniPlugin-Demo) 或在右上角直接下载示例工程
 
 开发工具：[HBuilderX](https://www.dcloud.io/hbuilderx.html)
 
@@ -34,9 +34,9 @@
 
 <img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/8c698370-102d-11eb-9dfb-6da8e309e0d8.png" height="300" style="height:300px" />
 
-### Step3. 选择`manifest.json->App原生插件配置`中加载本地插件
+### Step3. 选择`manifest.json->App原生插件配置`中加载云端插件
 
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/da031560-102d-11eb-b680-7980c8a877b8.png" width="600" style="width:600px" />
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/eb31ccf0-15dc-11eb-8ff1-d5dcf8779628.png" width="600" style="width:600px" />
 
 ### Step4. 使用插件
 
@@ -58,9 +58,16 @@ testModule.openFile({
 	fileType: 'xlsx',
 	fileName: '1'
 });
+
+// QQ浏览服务打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
+testModule.openFileBS({
+	url: 'http://113.62.127.199:8090/fileUpload/1.xlsx'
+});
 ```
 
 ## openFile方法参数说明
+
+支持打开在线文档，本地文档
 
 ### url
 
@@ -97,6 +104,34 @@ fileType表示可以指定文件类型，如：xlsx，在url参数无法判断�
 ### fileName
 
 fileName可以指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType
+
+## openFileBS方法参数说明
+
+QQ浏览服务打开在线文档
+
+* 支持QQ浏览器在线编辑、全屏播放、阅读模式等
+* 支持QQ浏览器打开46种文件格式文件
+* 查看最近打开文件
+* 发送分享文档
+* 采用其他应用打开等
+
+### url
+
+url参数支持如下三种地址方式：
+
+* 文件网络地址，如：http://113.62.127.199:8090/fileUpload/1.xlsx
+
+* 手机本地文件地址，如：/data/user/0/com.HBuilder.UniPlugin/files/1.xlsx
+
+* 文件名，如：1.xlsx，访问默认目录文件，默认目录为：/data/user/0/com.HBuilder.UniPlugin
+
+**注意**：手机本地地址目录需要有权限访问
+
+## 后续计划
+
+* 支持文件加载完成事件处理
+* 支持文件关闭事件处理
+* 其他事件处理
 
 ## Android预览效果
 
