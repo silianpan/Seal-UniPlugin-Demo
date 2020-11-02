@@ -30,9 +30,7 @@
 
 插件名称：[Seal-OfficeOnline](https://ext.dcloud.net.cn/plugin?id=3226)
 
-下载插件解压放置到项目根目录`nativeplugins`下，如图：
-
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/8c698370-102d-11eb-9dfb-6da8e309e0d8.png" height="300" style="height:300px" />
+点击右上角`试用`或者`购买`，选择你的云打包插件
 
 ### Step3. 选择`manifest.json->App原生插件配置`中加载云端插件
 
@@ -106,6 +104,14 @@ fileType表示可以指定文件类型，如：xlsx，在url参数无法判断�
 
 fileName可以指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType
 
+### initTitle
+
+initTitle初始化插件动画标题，默认：'插件初始化'
+
+### initBody
+
+initBody初始化插件动画内容，默认：'加载中...'
+
 ## openFileBS方法参数说明
 
 QQ浏览服务打开在线文档
@@ -130,9 +136,10 @@ url参数支持如下三种地址方式：
 
 ## 后续计划
 
-* 支持文件加载事件处理
-* 支持文件关闭事件处理
-* 其他事件处理或回调函数
+* 1. 文件加载事件处理
+* 2. 文件关闭事件处理
+* 3. 滚动条滚动事件监听
+* 4. 添加水印
 
 ## Android预览效果
 
