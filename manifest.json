@@ -2,8 +2,8 @@
     "name" : "unipluginDemo",
     "appid" : "",
     "description" : "",
-    "versionName" : "1.2.1",
-    "versionCode" : 121,
+    "versionName" : "1.2.2",
+    "versionCode" : 122,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {

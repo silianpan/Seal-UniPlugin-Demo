@@ -80,37 +80,41 @@ url参数支持如下三种地址方式：
 
 **注意**：手机本地地址目录需要有权限访问
 
+### isTopBar
+
+isTopBar：是否显示顶栏，默认为：True（显示）
+
 ### title
 
-title表示顶栏文本，默认为：SealOfficeOnline
+title：顶栏文本（isTopBar为True时有效），默认为：SealOfficeOnline
 
 ### topBarBgColor
 
-topBarBgColor表示顶栏背景颜色，默认为：#177cb0（靛青）
+topBarBgColor：顶栏背景颜色（isTopBar为True时有效），默认为：#177cb0（靛青）
 
 ### topBarTextColor
 
-topBarTextColor表示顶栏文本颜色，默认为：#FFFFFF（白色）
+topBarTextColor：顶栏文本颜色（isTopBar为True时有效），默认为：#FFFFFF（白色）
 
 ### isBackArrow
 
-isBackArrow表示是否显示返回按钮，默认为：true（显示）
+isBackArrow：是否显示返回按钮（isTopBar为True时有效），默认为：true（显示）
 
 ### fileType
 
-fileType表示可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型
+fileType：可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型
 
 ### fileName
 
-fileName可以指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType
+fileName：指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType
 
 ### initTitle
 
-initTitle初始化插件动画标题，默认：'插件初始化'
+initTitle：初始化插件动画标题，默认：'插件初始化'
 
 ### initBody
 
-initBody初始化插件动画内容，默认：'加载中...'
+initBody：初始化插件动画内容，默认：'加载中...'
 
 ## openFileBS方法参数说明
 
