@@ -116,11 +116,15 @@ initTitle：初始化插件动画标题，默认：'插件初始化'
 
 initBody：初始化插件动画内容，默认：'加载中...'
 
-### 事件监听：文件关闭事件SealEventCloseFile
+### isDeleteFile
+isDeleteFile：退出是否删除缓存的文件，默认为true，删除缓存文件
+
+### 事件监听：文件关闭事件SealEventCloseFile，返回文件名和文件路径
 ```js
 onLoad() {
 	plus.globalEvent.addEventListener('SealEventCloseFile', function(e) {
 		modal.toast({
+			// 返回参数{fileName:'xx', filePath:'xx'}
 			message: "SealEventCloseFile文件关闭事件：" + JSON.stringify(e),
 			duration: 3
 		})
