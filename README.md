@@ -116,6 +116,19 @@ initTitle：初始化插件动画标题，默认：'插件初始化'
 
 initBody：初始化插件动画内容，默认：'加载中...'
 
+### 事件监听：文件关闭事件SealEventCloseFile
+```js
+onLoad() {
+	plus.globalEvent.addEventListener('SealEventCloseFile', function(e) {
+		modal.toast({
+			message: "SealEventCloseFile文件关闭事件：" + JSON.stringify(e),
+			duration: 3
+		})
+	})
+},
+```
+
+
 ## openFileBS方法参数说明
 
 QQ浏览服务打开在线文档
