@@ -21,8 +21,17 @@
 
 <script>
 	// get native module
-	var testModule = uni.requireNativePlugin("Seal-OfficeOnline")
+	const testModule = uni.requireNativePlugin("Seal-OfficeOnline")
+	const modal = uni.requireNativePlugin('modal')
 	export default {
+		onLoad() {
+			plus.globalEvent.addEventListener('SealEventCloseFile', function(e) {
+				modal.toast({
+					message: "SealEventCloseFile文件关闭事件：" + JSON.stringify(e),
+					duration: 3
+				})
+			})
+		},
 		methods: {
 			openOnlineFile(fileName) {
 				// testModule.openOnlineFile();
