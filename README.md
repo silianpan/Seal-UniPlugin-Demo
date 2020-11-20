@@ -82,7 +82,7 @@ url参数支持如下三种地址方式：
 
 ### isTopBar
 
-isTopBar：是否显示顶栏，默认为：True（显示）
+isTopBar：是否显示顶栏，默认为：True（显示）；显示时，向上滑动顶栏会自动隐藏
 
 ### title
 
