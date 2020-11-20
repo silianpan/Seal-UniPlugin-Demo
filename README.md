@@ -96,6 +96,10 @@ topBarBgColor：顶栏背景颜色（isTopBar为True时有效），默认为：#
 
 topBarTextColor：顶栏文本颜色（isTopBar为True时有效），默认为：#FFFFFF（白色）
 
+### topBarHeight
+
+topBarHeight：顶栏自定义高度，类型为正整数
+
 ### isBackArrow
 
 isBackArrow：是否显示返回按钮（isTopBar为True时有效），默认为：true（显示）
@@ -120,6 +124,9 @@ initBody：初始化插件动画内容，默认：'加载中...'
 isDeleteFile：退出是否删除缓存的文件，默认为true，删除缓存文件
 
 ### 事件监听：文件关闭事件SealEventCloseFile，返回文件名和文件路径
+
+注意：isDeleteFile为false时，路径下的文件才存在
+
 ```js
 onLoad() {
 	plus.globalEvent.addEventListener('SealEventCloseFile', function(e) {
