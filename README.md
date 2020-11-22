@@ -50,7 +50,7 @@ var testModule = uni.requireNativePlugin("Seal-OfficeOnline")
 ```js
 // 平台支持：Android和IOS
 // Android支持以下全部参数
-// IOS支持：url，topBarBgColor，fileType，fileName，initTitle，initBody，isDeleteFile
+// IOS支持：url，title，topBarBgColor，topBarTextColor
 testModule.openFile({
 	url: 'http://113.62.127.199:8090/fileUpload/1.xlsx', // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
 	isTopBar: true, // 是否显示顶栏，默认为：true（显示）
