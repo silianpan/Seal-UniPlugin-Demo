@@ -44,25 +44,46 @@
 var testModule = uni.requireNativePlugin("Seal-OfficeOnline")
 ```
 
-* **openFile**方法：预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx
-* **OpenFileBS**方法：打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
+* **openFile**方法：支持Android和IOS，预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx等
+* **OpenFileBS**方法：只支持Android，打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
 
 ```js
+// 平台支持：Android和IOS
+// Android支持以下全部参数
+// IOS支持：url，topBarBgColor，fileType，fileName，initTitle，initBody，isDeleteFile
 testModule.openFile({
-	url: 'http://113.62.127.199:8090/fileUpload/1.xlsx',
-	topBarBgColor: '#3394EC',
-	topBarTextColor: '#FFFFFF',
-	title: 'Office文档在线预览',
-	isBackArrow: false,
-	fileType: 'xlsx',
-	fileName: '1'
+	url: 'http://113.62.127.199:8090/fileUpload/1.xlsx', // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
+	isTopBar: true, // 是否显示顶栏，默认为：true（显示）
+	title: 'Office文档在线预览', // 顶栏标题，默认为：APP名称
+	topBarHeight: 100, // 顶栏高度，默认为actionBarSize
+	topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
+	topBarTextColor: '#cf1322', // 顶栏标题文字颜色，默认为：#FFFFFF（白色）
+	isBackArrow: true, // 是否显示返回按钮，默认为：true（显示）
+	fileType: 'xlsx', // 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型
+	fileName: '1', // 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType
+	initTitle: '你好，世界', // 初始化插件动画标题，默认：'插件初始化'
+	initBody: '怎么了', 初始化插件动画内容，默认：'加载中...'
+	isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
 });
 
 // QQ浏览服务打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
+// 平台支持：Android，支持以下全部参数
 testModule.openFileBS({
-	url: 'http://113.62.127.199:8090/fileUpload/1.xlsx'
+	url: 'http://113.62.127.199:8090/fileUpload/1.xlsx', // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
+	topBarBgColor: '#3394EC',// 顶栏背景颜色，默认为：#177cb0（靛青）
+	fileType: 'xlsx', // 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型
+	fileName: '1', // 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType
+	initTitle: '你好，世界', // 初始化插件动画标题，默认：'插件初始化'
+	initBody: '怎么了', 初始化插件动画内容，默认：'加载中...'
+	isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
 });
 ```
+
+### Step5. 调试
+
+* 制作自定义调试基座：在开发工具中点击“运行到手机或模拟器-》制作自定义调试基座”
+* 选择自定义调试基座：然后“运行到手机或模拟器-》基座运行选择-》自定义调试基座”
+* 连接真机，运行调试
 
 ## openFile方法参数说明
 
@@ -82,27 +103,27 @@ url参数支持如下三种地址方式：
 
 ### isTopBar
 
-isTopBar：是否显示顶栏，默认为：True（显示）；显示时，向上滑动顶栏会自动隐藏
+isTopBar：是否显示顶栏，默认为：true（显示）；显示时，向上滑动顶栏会自动隐藏
 
 ### title
 
-title：顶栏文本（isTopBar为True时有效），默认为：SealOfficeOnline
-
-### topBarBgColor
-
-topBarBgColor：顶栏背景颜色（isTopBar为True时有效），默认为：#177cb0（靛青）
-
-### topBarTextColor
-
-topBarTextColor：顶栏文本颜色（isTopBar为True时有效），默认为：#FFFFFF（白色）
+title：顶栏标题（isTopBar为true时有效），默认为：APP名称
 
 ### topBarHeight
 
-topBarHeight：顶栏自定义高度，类型为正整数
+topBarHeight：顶栏自定义高度（isTopBar为true时有效），类型为正整数，默认为：actionBarSize
+
+### topBarBgColor
+
+topBarBgColor：顶栏背景颜色（isTopBar为true时有效），默认为：#177cb0（靛青）
+
+### topBarTextColor
+
+topBarTextColor：顶栏文本颜色（isTopBar为true时有效），默认为：#FFFFFF（白色）
 
 ### isBackArrow
 
-isBackArrow：是否显示返回按钮（isTopBar为True时有效），默认为：true（显示）
+isBackArrow：是否显示返回按钮（isTopBar为true时有效），默认为：true（显示）
 
 ### fileType
 
@@ -121,7 +142,7 @@ initTitle：初始化插件动画标题，默认：'插件初始化'
 initBody：初始化插件动画内容，默认：'加载中...'
 
 ### isDeleteFile
-isDeleteFile：退出是否删除缓存的文件，默认为true，删除缓存文件
+isDeleteFile：退出是否删除缓存的文件，默认为true（删除缓存文件）
 
 ### 事件监听：文件关闭事件SealEventCloseFile，返回文件名和文件路径
 
@@ -150,27 +171,14 @@ QQ浏览服务打开在线文档
 * 发送分享文档
 * 采用其他应用打开等
 
-### url
-
-url参数支持如下三种地址方式：
-
-* 文件网络地址，如：http://113.62.127.199:8090/fileUpload/1.xlsx
-
-* 手机本地文件地址，如：/data/user/0/com.HBuilder.UniPlugin/files/1.xlsx
-
-* 文件名，如：1.xlsx，访问默认目录文件，默认目录为：/data/user/0/com.HBuilder.UniPlugin
-
-**注意**：手机本地地址目录需要有权限访问
+同上，参数支持：url，topBarBgColor，fileType，fileName，initTitle，initBody，isDeleteFile
 
 ## 后续计划
 
-* 1. 文件加载事件处理
-* 2. 文件关闭事件处理
-* 3. 滚动条滚动事件监听
-* 4. 添加水印
-* 5. 支持打开图片
-* 6. 支持拆分预览页面（1/2,1/4）
-* 7. 支持右上角自定义菜单
+* 1. 添加水印
+* 2. 支持打开图片
+* 3. 支持小窗口模式
+* 4. 支持右上角自定义菜单
 
 ## Android预览效果
 
