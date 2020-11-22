@@ -45,7 +45,7 @@
 					// fileType: 'xlsx', // 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型
 					// fileName: '1', // 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType
 					initTitle: '你好，世界', // 初始化插件动画标题，默认：'插件初始化'
-					initBody: '怎么了', 初始化插件动画内容，默认：'加载中...'
+					initBody: '怎么了', // 初始化插件动画内容，默认：'加载中...'
 					isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
 				});
 			},
@@ -56,7 +56,7 @@
 					// fileType: 'xlsx', // 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型
 					// fileName: '1', // 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType
 					initTitle: '你好，世界', // 初始化插件动画标题，默认：'插件初始化'
-					initBody: '怎么了', 初始化插件动画内容，默认：'加载中...'
+					initBody: '怎么了', // 初始化插件动画内容，默认：'加载中...'
 					isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
 				});
 			}
