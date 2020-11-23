@@ -7,6 +7,14 @@
 			<button class="uni-button" type="primary" @click="openOnlineFile('1.docx')">打开docx文件</button>
 			<button class="uni-button" type="primary" @click="openOnlineFile('1.xlsx')">打开xlsx文件</button>
 			<button class="uni-button" type="primary" @click="openOnlineFile('1.pptx')">打开pptx文件</button>
+			<button class="uni-button" type="primary" @click="openOnlineFile('1.jpg')">打开图片jpg</button>
+			<button class="uni-button" type="primary" @click="openOnlineFile('1.jpeg')">打开图片jpeg</button>
+			<button class="uni-button" type="primary" @click="openOnlineFile('1.png')">打开图片png</button>
+			<button class="uni-button" type="primary" @click="openOnlineFile('1.bmp')">打开图片bmp</button>
+			<button class="uni-button" type="primary" @click="openOnlineFile('1.gif')">打开图片gif</button>
+			<button class="uni-button" type="primary" @click="openOnlineFile('1.mp4')">打开视频mp4</button>
+			<button class="uni-button" type="primary" @click="openOnlineFile('1.mkv')">打开视频mkv</button>
+			<button class="uni-button" type="primary" @click="openOnlineFile('1.avi')">打开视频avi</button>
 		</view>
 		<h2 class="title">文件在线浏览-QQ浏览服务（Android）</h2>
 		<view class="content">
@@ -15,6 +23,14 @@
 			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.docx')">打开docx文件</button>
 			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.xlsx')">打开xlsx文件</button>
 			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.pptx')">打开pptx文件</button>
+			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.jpg')">打开图片jpg</button>
+			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.jpeg')">打开图片jpeg</button>
+			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.png')">打开图片png</button>
+			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.bmp')">打开图片bmp</button>
+			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.gif')">打开图片gif</button>
+			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.mp4')">打开视频mp4</button>
+			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.mkv')">打开视频mkv</button>
+			<button class="uni-button" type="primary" @click="openOnlineFileBS('1.avi')">打开视频avi</button>
 		</view>
 	</view>
 </template>
