@@ -95,9 +95,9 @@ url参数支持如下三种地址方式：
 
 * 文件网络地址，如：http://113.62.127.199:8090/fileUpload/1.xlsx
 
-* 手机本地文件地址，如：/data/user/0/com.HBuilder.UniPlugin/files/1.xlsx
+* 手机本地文件地址，如：/data/user/0/APP包名/files/1.xlsx
 
-* 文件名，如：1.xlsx，访问默认目录文件，默认目录为：/data/user/0/com.HBuilder.UniPlugin
+* 文件名，如：1.xlsx，访问默认目录文件，默认目录为：/data/user/0/APP包名，如：com.HBuilder.UniPlugin
 
 **注意**：手机本地地址目录需要有权限访问
 
