@@ -66,6 +66,19 @@ testModule.openFile({
 	isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
 });
 
+// 支持图片预览：jpg、jpeg、png、bmp、jpg等
+const url = 'http://113.62.127.199:8090/fileUpload/'
+testModule.openFile({
+	imageUrls: [ // 图片url数组
+		url + '1.jpg',
+		url + '1.jpeg',
+		url + '1.png',
+		url + '1.bmp',
+		url + '1.gif'
+	],
+	imageCurrentIndex: 0, // 当前点击图片在imageUrls中的下标，从0开始，默认为0
+})
+
 // QQ浏览服务打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
 // 平台支持：Android，支持以下全部参数
 testModule.openFileBS({
@@ -143,6 +156,12 @@ initBody：初始化插件动画内容，默认：'加载中...'
 
 ### isDeleteFile
 isDeleteFile：退出是否删除缓存的文件，默认为true（删除缓存文件）
+
+### imageUrls
+imageUrls：图片url数组
+
+### imageCurrentIndex
+imageCurrentIndex：当前点击图片在imageUrls中的下标，从0开始，默认为0
 
 ### 事件监听：文件关闭事件SealEventCloseFile，返回文件名和文件路径
 
