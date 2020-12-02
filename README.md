@@ -66,10 +66,11 @@ testModule.openFile({
 	isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
 });
 
-// 支持图片预览：jpg、jpeg、png、bmp、jpg等
+// 图片预览，支持jpg、jpeg、png、bmp、jpg、gif等多种常用图片格式
+// 图片可以来源于列表或九宫格，传递给imageUrls数组
 const url = 'http://113.62.127.199:8090/fileUpload/'
 testModule.openFile({
-	imageUrls: [ // 图片url数组
+	imageUrls: [ // 图片url数组，此参数优先于文档预览
 		url + '1.jpg',
 		url + '1.jpeg',
 		url + '1.png',
@@ -77,6 +78,12 @@ testModule.openFile({
 		url + '1.gif'
 	],
 	imageCurrentIndex: 0, // 当前点击图片在imageUrls中的下标，从0开始，默认为0
+})
+
+// 视频播放，支持市面上几乎所有的视频格式，包括mp4, flv, avi, 3gp, webm, ts, ogv, m3u8, asf, wmv, rm, rmvb, mov, mkv等18种视频格式
+// 功能包括：全屏播放、锁屏、分享、画面比例调节、左边上下滑动调节亮度，右边上下滑动调节音量等
+testModule.openFile({
+	videoUrl: 'http://113.62.127.199:8090/fileUpload/1.mp4', // 视频在线url，此参数优先于图片预览和文档预览
 })
 
 // QQ浏览服务打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
@@ -89,7 +96,16 @@ testModule.openFileBS({
 	initTitle: '你好，世界', // 初始化插件动画标题，默认：'插件初始化'
 	initBody: '怎么了', // 初始化插件动画内容，默认：'加载中...'
 	isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
-});
+})
+
+// 获取内核信息，用于调试
+const coreInfo = testModule.getX5CoreInfo()
+// 返回
+{
+	'isCoreInited': false, // 内核是否加载
+	'coreVersion': 0, // 内核版本
+	'sdkVersion': 43967, // sdk版本
+}
 ```
 
 ### Step5. 调试
@@ -158,10 +174,13 @@ initBody：初始化插件动画内容，默认：'加载中...'
 isDeleteFile：退出是否删除缓存的文件，默认为true（删除缓存文件）
 
 ### imageUrls
-imageUrls：图片url数组
+imageUrls：图片url数组，此参数优先于文档预览
 
 ### imageCurrentIndex
 imageCurrentIndex：当前点击图片在imageUrls中的下标，从0开始，默认为0
+
+### videoUrl
+videoUrl：视频在线url，此参数优先于图片预览和文档预览
 
 ### 事件监听：文件关闭事件SealEventCloseFile，返回文件名和文件路径
 
