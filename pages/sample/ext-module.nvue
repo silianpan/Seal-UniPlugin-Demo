@@ -7,14 +7,14 @@
 			<button class="uni-button" type="primary" @click="openOnlineFile('1.docx')">打开docx文件</button>
 			<button class="uni-button" type="primary" @click="openOnlineFile('1.xlsx')">打开xlsx文件</button>
 			<button class="uni-button" type="primary" @click="openOnlineFile('1.pptx')">打开pptx文件</button>
-			<button class="uni-button" type="primary" @click="openOnlineFile('1.jpg')">打开图片jpg</button>
-			<button class="uni-button" type="primary" @click="openOnlineFile('1.jpeg')">打开图片jpeg</button>
-			<button class="uni-button" type="primary" @click="openOnlineFile('1.png')">打开图片png</button>
-			<button class="uni-button" type="primary" @click="openOnlineFile('1.bmp')">打开图片bmp</button>
-			<button class="uni-button" type="primary" @click="openOnlineFile('1.gif')">打开图片gif</button>
-			<button class="uni-button" type="primary" @click="openOnlineFile('1.mp4')">打开视频mp4</button>
-			<button class="uni-button" type="primary" @click="openOnlineFile('1.mkv')">打开视频mkv</button>
-			<button class="uni-button" type="primary" @click="openOnlineFile('1.avi')">打开视频avi</button>
+			<button class="uni-button" type="primary" @click="openImage('1.jpg', 0)">打开图片jpg</button>
+			<button class="uni-button" type="primary" @click="openImage('1.jpeg', 1)">打开图片jpeg</button>
+			<button class="uni-button" type="primary" @click="openImage('1.png', 2)">打开图片png</button>
+			<button class="uni-button" type="primary" @click="openImage('1.bmp', 3)">打开图片bmp</button>
+			<button class="uni-button" type="primary" @click="openImage('1.gif', 4)">打开图片gif</button>
+			<button class="uni-button" type="primary" @click="openVideo('1.mp4')">打开视频mp4</button>
+			<button class="uni-button" type="primary" @click="openVideo('1.mkv')">打开视频mkv</button>
+			<button class="uni-button" type="primary" @click="openVideo('1.avi')">打开视频avi</button>
 		</view>
 		<h2 class="title">文件在线浏览-QQ浏览服务（Android）</h2>
 		<view class="content">
@@ -47,8 +47,15 @@
 					duration: 3
 				})
 			})
+			// 获取内核信息
+			this.getX5CoreInfo()
 		},
 		methods: {
+			// 获取内核信息
+			getX5CoreInfo() {
+				const coreInfo = testModule.getX5CoreInfo()
+				console.log('coreInfo', coreInfo)
+			},
 			openOnlineFile(fileName) {
 				testModule.openFile({
 					url: 'http://113.62.127.199:8090/fileUpload/' + fileName, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
@@ -64,6 +71,24 @@
 					initBody: '怎么了', // 初始化插件动画内容，默认：'加载中...'
 					isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
 				});
+			},
+			openImage(fileName, imageCurrentIndex) {
+				// IOS
+				// this.openOnlineFile(fileName)
+				
+				// Android
+				const url = 'http://113.62.127.199:8090/fileUpload/'
+				testModule.openFile({
+					imageUrls: [url + '1.jpg', url + '1.jpeg', url + '1.png', url + '1.bmp', url + '1.gif', url + '1.mp4', url + '1.mkv', url + '1.avi'],
+					imageCurrentIndex
+				})
+			},
+			openVideo(fileName) {
+				// Android
+				const url = 'http://113.62.127.199:8090/fileUpload/'
+				testModule.openFile({
+					videoUrl: url + fileName, // 视频url
+				})
 			},
 			openOnlineFileBS(fileName) {
 				testModule.openFileBS({
