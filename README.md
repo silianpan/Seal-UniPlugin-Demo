@@ -82,6 +82,7 @@ testModule.openFile({
 
 // 视频播放，支持市面上几乎所有的视频格式，包括mp4, flv, avi, 3gp, webm, ts, ogv, m3u8, asf, wmv, rm, rmvb, mov, mkv等18种视频格式
 // 功能包括：全屏播放、锁屏、分享、画面比例调节、左边上下滑动调节亮度，右边上下滑动调节音量等
+// 支持Android和IOS
 testModule.openFile({
 	videoUrl: 'http://113.62.127.199:8090/fileUpload/1.mp4', // 视频在线url，此参数优先于图片预览和文档预览
 })
