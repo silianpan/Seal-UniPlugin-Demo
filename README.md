@@ -78,6 +78,7 @@ testModule.openFile({
 		url + '1.gif'
 	],
 	imageCurrentIndex: 0, // 当前点击图片在imageUrls中的下标，从0开始，默认为0
+	imageIndexType: 'number' // 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
 })
 
 // 视频播放，支持市面上几乎所有的视频格式，包括mp4, flv, avi, 3gp, webm, ts, ogv, m3u8, asf, wmv, rm, rmvb, mov, mkv等18种视频格式
@@ -180,6 +181,9 @@ imageUrls：图片url数组，此参数优先于文档预览
 ### imageCurrentIndex
 imageCurrentIndex：当前点击图片在imageUrls中的下标，从0开始，默认为0
 
+### imageIndexType
+imageIndexType: 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
+
 ### videoUrl
 videoUrl：视频在线url，此参数优先于图片预览和文档预览
 
@@ -215,9 +219,8 @@ QQ浏览服务打开在线文档
 ## 后续计划
 
 * 1. 添加水印
-* 2. 支持打开图片
-* 3. 支持小窗口模式
-* 4. 支持右上角自定义菜单
+* 2. 支持小窗口模式
+* 3. 支持右上角自定义菜单
 
 ## Android预览效果
 
