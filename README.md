@@ -176,7 +176,7 @@ initBody：初始化插件动画内容，默认：'加载中...'
 isDeleteFile：退出是否删除缓存的文件，默认为true（删除缓存文件）
 
 ### imageUrls
-imageUrls：图片url数组，此参数优先于文档预览
+imageUrls：图片url数组，此参数优先于文档预览；长按图片底部弹出保存图片菜单，保存图片至相册
 
 ### imageCurrentIndex
 imageCurrentIndex：当前点击图片在imageUrls中的下标，从0开始，默认为0
