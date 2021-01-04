@@ -2,8 +2,8 @@
     "name" : "unipluginDemo",
     "appid" : "",
     "description" : "",
-    "versionName" : "1.3.3",
-    "versionCode" : 133,
+    "versionName" : "1.3.4",
+    "versionCode" : 134,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
