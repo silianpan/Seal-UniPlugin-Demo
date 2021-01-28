@@ -20,9 +20,9 @@
 
 ## 注意事项
 
-### <span style="color:red">manifest.json->App模块配置不要勾选Android X5 Webview</span>
-### 不要同时使用其他任何预览插件，否则，会引起打包冲突
-### 如遇预览失败，（1）把APP卸载，重新打基座运行，第一次运行会自动安装X5插件；（2）或者换手机（华为或小米）进行测试
+* ### <span style="color:red">manifest.json->App模块配置不要勾选Android X5 Webview</span>
+* ### 不要同时使用其他任何预览插件，否则，会引起打包冲突
+* ### 如遇预览失败，（1）把APP卸载，重新打基座运行，第一次运行会自动安装X5插件；（2）或者换手机（华为或小米）进行测试
 
 ## 快速上手
 
