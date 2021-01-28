@@ -57,6 +57,7 @@ var testModule = uni.requireNativePlugin("Seal-OfficeOnline")
 // 平台支持：Android和IOS
 // Android支持以下全部参数
 // IOS支持：url，title，topBarBgColor，topBarTextColor
+// 方式一：直接在openFile接口中传递在线url
 testModule.openFile({
 	url: 'http://113.62.127.199:8090/fileUpload/1.xlsx', // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
 	isTopBar: true, // 是否显示顶栏，默认为：true（显示）
@@ -72,6 +73,33 @@ testModule.openFile({
 	initBody: '怎么了', // 初始化插件动画内容，默认：'加载中...'
 	isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
 });
+// 方式二：先调用uni-app接口uni.downloadFile下载文件，然后获取本地文件绝对路径，传递到openFile接口url参数中
+openOnlineFile2(fileName) {
+	// 调用uni.downloadFile接口下载文件
+	uni.downloadFile({
+		url: 'http://113.62.127.199:8090/fileUpload/' + fileName,
+		success: (res) => {
+			if (res.statusCode === 200) {
+				// 传递本地文件绝对路径，res.tempFilePath的前缀是_doc，而实际目录为doc，没有下划线_，所以要substr取子串
+				// const url = '/sdcard/Android/data/APP包名/apps/APPID/' + res.tempFilePath.substr(1)
+				// 可以通过一下方式获取文件绝对路径
+				uni.saveFile({
+					// 需要保存文件的临时路径
+					tempFilePath: res.tempFilePath,
+					success: (resSave) => {
+						const savedFilePath = resSave.savedFilePath
+						// 转换为绝对路径
+						const url = plus.io.convertLocalFileSystemURL(savedFilePath)
+						// 预览本地文件
+						testModule.openFile({
+							url: url,
+						});
+					}
+				});
+			}
+		}
+	});
+},
 
 // 图片预览，支持jpg、jpeg、png、bmp、jpg、gif等多种常用图片格式
 // 图片可以来源于列表或九宫格，传递给imageUrls数组
