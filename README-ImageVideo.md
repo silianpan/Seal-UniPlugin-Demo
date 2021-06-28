@@ -89,3 +89,17 @@ imageCurrentIndex：当前点击图片在imageUrls中的下标，从0开始，�
 
 ### imageIndexType
 imageIndexType: 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
+
+## 问题解决
+
+### 问题一：
+
+> 问题描述：真机测试有4部手机测试， 小米MAX3、坚果pro2 、华为P20 这个三个手机测试预览都能成功，小米redmi K30 预览 就不成功，
+> "canLoadVideo": false, "canLoadX5": false, "coreVersion": 0, "sdkVersion": 43967, "canLoadX5FirstTimeThirdApp": false, "isCoreInited": true
+> X5内核没有加载成功，反复卸载APP和重新打包基座好几次了，X5内核都是没有加载成功，这个问题该如何解决
+
+后面想了一下可能是CPU支持类型的问题，
+
+**解决方案：manifest.json -APP常用其他设置 -支持CPU类型 armeabi-v7a arm64-v8a 两个都勾选的**，
+
+重新打一下自定义基座 问题就解决了
