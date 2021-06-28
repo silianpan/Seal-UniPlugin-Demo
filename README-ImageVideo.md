@@ -2,11 +2,11 @@
 
 Seal-ImageVideo原生插件，实现了**图片预览**和**视频播放**。
 
-[Seal-ImageVideo插件下载使用地址](https://ext.dcloud.net.cn/plugin?id=3226)
+[Seal-ImageVideo插件下载使用地址](https://ext.dcloud.net.cn/plugin?id=5478)
 
 <div class="half">
 
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-3ace2e69-dfbc-47f2-906f-58c695d12020/5757c1c9-20b6-46dc-9540-78621476601e.jpg" />
+<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-3ace2e69-dfbc-47f2-906f-58c695d12020/5757c1c9-20b6-46dc-9540-78621476601e.jpg" height="600" style="height:600px" />
 
 <img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-3ace2e69-dfbc-47f2-906f-58c695d12020/fa8e89f6-6cf0-4a5a-aac2-87785ffd5899.jpg" height="600" style="height:600px" />
 
@@ -28,7 +28,7 @@ Seal-ImageVideo原生插件，实现了**图片预览**和**视频播放**。
 
 ### Step2. 下载本文插件
 
-插件名称：[Seal-ImageVideo](https://ext.dcloud.net.cn/plugin?id=3226)
+插件名称：[Seal-ImageVideo](https://ext.dcloud.net.cn/plugin?id=5478)
 
 点击右上角`试用`或者`购买`，选择你的云打包插件
 
