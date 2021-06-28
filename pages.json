@@ -1,27 +1,24 @@
 {
+	"easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "Seal原生插件"
 			}
 		},
 		{
-			"path": "pages/sample/ext-module",
+			"path": "pages/demo/seal-officeonline",
 			"style": {
-				"navigationBarTitleText": "扩展 module"
+				"navigationBarTitleText": "Seal-OfficeOnline"
 			}
 		},
 		{
-			"path": "pages/sample/ext-component",
+			"path": "pages/demo/seal-imagevideo",
 			"style": {
-				"navigationBarTitleText": "扩展 component"
-			}
-		},
-		{
-			"path": "pages/sample/richAlert",
-			"style": {
-				"navigationBarTitleText": "RichAlert"
+				"navigationBarTitleText": "Seal-ImageVideo"
 			}
 		}
 	],

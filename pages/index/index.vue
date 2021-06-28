@@ -1,17 +1,12 @@
 <template>
 	<view class="uni-container">
-		<view class="uni-hello-text">
-			<text class="hello-text">uni原生插件示例</text>
-		</view>
 		<view class="uni-panel" v-for="(item, index) in list" :key="item.id">
 			<view class="uni-panel-h" :class="item.open ? 'uni-panel-h-on' : ''" @click="triggerCollapse(index)">
 				<text class="uni-panel-text">{{item.name}}</text>
-				<text class="uni-panel-icon uni-icon" :class="item.open ? 'uni-panel-icon-on' : ''">{{item.pages ? '&#xe581;' : '&#xe470;'}}</text>
 			</view>
 			<view class="uni-panel-c" v-if="item.open">
 				<view class="uni-navigate-item" v-for="(item2,key) in item.pages" :key="key" @click="goDetailPage(item2.url)">
 					<text class="uni-navigate-text">{{item2.name ? item2.name : item2}}</text>
-					<text class="uni-navigate-icon uni-icon">&#xe470;</text>
 				</view>
 			</view>
 		</view>
@@ -22,22 +17,16 @@
 		data() {
 			return {
 				list: [{
-					id: 'ext-module',
-					name: '扩展 module',
+					id: 'seal-officeonline',
+					name: 'Seal-OfficeOnline',
 					open: false,
-					url: '/pages/sample/ext-module'
+					url: '/pages/demo/seal-officeonline'
 				},
 				{
-					id: 'ext-component',
-					name: '扩展 component',
+					id: 'seal-imagevideo',
+					name: 'Seal-ImageVideo',
 					open: false,
-					url: '/pages/sample/ext-component'
-				},
-				{
-					id:'richAlert',
-					name:'插件示例RichAlert',
-					open:false,
-					url:'/pages/sample/richAlert'
+					url: '/pages/demo/seal-imagevideo'
 				}],
 				navigateFlag: false
 			}
@@ -73,6 +62,3 @@
 		}
 	}
 </script>
-
-<style>
-</style>

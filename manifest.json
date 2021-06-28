@@ -1,6 +1,6 @@
 {
-    "name" : "unipluginDemo",
-    "appid" : "",
+    "name" : "Seal-UniPlugin-Demo",
+    "appid" : "__UNI__0B3F0D8",
     "description" : "",
     "versionName" : "1.4.4",
     "versionCode" : 144,
@@ -57,8 +57,8 @@
         "nativePlugins" : {
             "Seal-OfficeOnline" : {
                 "__plugin_info__" : {
-                    "name" : "跨平台Office文件在线预览原生插件 - [试用版，仅用于自定义调试基座]",
-                    "description" : "支持Android和IOS，支持文档类型pdf、txt、xls、doc、ppt等",
+                    "name" : "跨平台Office文档、图片在线预览，视频播放原生插件 - [试用版，仅用于自定义调试基座]",
+                    "description" : "支持Android和IOS，支持Office文档，常用图片和视频格式",
                     "platforms" : "Android,iOS",
                     "url" : "https://ext.dcloud.net.cn/plugin?id=3226",
                     "android_package_name" : "",

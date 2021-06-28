@@ -1,0 +1,14 @@
+{
+	"name": "Seal-UniPlugin",
+	"version": "1.4.5",
+	"main": "main.js",
+	"author": "silianpan",
+	"license": "MIT",
+	"dependencies": {
+		"uview-ui": "^1.8.4"
+	},
+	"devDependencies": {
+		"node-sass": "^6.0.1",
+		"sass-loader": "^12.1.0"
+	}
+}
