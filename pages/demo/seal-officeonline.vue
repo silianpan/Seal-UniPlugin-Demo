@@ -119,15 +119,15 @@
 					url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
 					isTopBar: true, // 是否显示顶栏，默认为：true（显示）
 					title: 'Office文档在线预览', // 顶栏标题，默认为：APP名称
-					topBarHeight: 260, // 顶栏高度，默认为actionBarSize
+					// topBarHeight: 260, // 顶栏高度，默认为actionBarSize
 					topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
-					topBarTextColor: '#cf1322', // 顶栏标题文字颜色，默认为：#FFFFFF（白色）
-					topBarTextLength: 5, // 顶栏标题文字长度，默认为：12
+					// topBarTextColor: '#cf1322', // 顶栏标题文字颜色，默认为：#FFFFFF（白色）
+					// topBarTextLength: 5, // 顶栏标题文字长度，默认为：12
 					isBackArrow: true, // 是否显示返回按钮，默认为：true（显示）
 					// fileType: 'xlsx', // 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型
 					// fileName: '1', // 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType
-					initTitle: '你好，世界', // 初始化插件动画标题，默认：'插件初始化'
-					initBody: '怎么了', // 初始化插件动画内容，默认：'加载中...'
+					// initTitle: '你好，世界', // 初始化插件动画标题，默认：'插件初始化'
+					// initBody: '怎么了', // 初始化插件动画内容，默认：'加载中...'
 					isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
 				})
 			},
@@ -137,8 +137,8 @@
 					topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
 					// fileType: 'xlsx', // 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型
 					// fileName: '1', // 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType
-					initTitle: '你好，世界', // 初始化插件动画标题，默认：'插件初始化'
-					initBody: '怎么了', // 初始化插件动画内容，默认：'加载中...'
+					// initTitle: '你好，世界', // 初始化插件动画标题，默认：'插件初始化'
+					// initBody: '怎么了', // 初始化插件动画内容，默认：'加载中...'
 					isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
 				})
 			}
