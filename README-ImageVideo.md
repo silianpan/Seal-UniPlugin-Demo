@@ -51,22 +51,22 @@ var testModule = uni.requireNativePlugin("Seal-ImageVideo")
 // 图片可以来源于列表或九宫格，传递给imageUrls数组
 const url = 'http://113.62.127.199:8090/fileUpload/'
 testModule.openFile({
-	imageUrls: [ // 图片url数组，此参数优先于文档预览
-		url + '1.jpg',
-		url + '1.jpeg',
-		url + '1.png',
-		url + '1.bmp',
-		url + '1.gif'
-	],
-	imageCurrentIndex: 0, // 当前点击图片在imageUrls中的下标，从0开始，默认为0
-	imageIndexType: 'number' // 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
+    imageUrls: [ // 图片url数组，此参数优先于文档预览
+        url + '1.jpg',
+        url + '1.jpeg',
+        url + '1.png',
+        url + '1.bmp',
+        url + '1.gif'
+    ],
+    imageCurrentIndex: 0, // 当前点击图片在imageUrls中的下标，从0开始，默认为0
+    imageIndexType: 'number' // 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
 })
 
 // 视频播放，支持市面上几乎所有的视频格式，包括mp4, flv, avi, 3gp, webm, ts, ogv, m3u8, asf, wmv, rm, rmvb, mov, mkv等18种视频格式
 // 功能包括：全屏播放、锁屏、分享、画面比例调节、左边上下滑动调节亮度，右边上下滑动调节音量等
 // 支持Android和IOS
 testModule.openFile({
-	videoUrl: 'http://113.62.127.199:8090/fileUpload/1.mp4', // 视频在线url，此参数优先于图片预览和文档预览
+    videoUrl: 'http://113.62.127.199:8090/fileUpload/1.mp4', // 视频在线url，此参数优先于图片预览和文档预览
 })
 ```
 
@@ -79,15 +79,19 @@ testModule.openFile({
 ## openFile方法参数说明
 
 ### videoUrl
+
 videoUrl：视频在线url，此参数优先于图片预览和文档预览
 
 ### imageUrls
+
 imageUrls：图片url数组，此参数优先于文档预览；长按图片底部弹出保存图片菜单，保存图片至相册
 
 ### imageCurrentIndex
+
 imageCurrentIndex：当前点击图片在imageUrls中的下标，从0开始，默认为0
 
 ### imageIndexType
+
 imageIndexType: 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
 
 ## 问题解决

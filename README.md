@@ -68,7 +68,7 @@
 var testModule = uni.requireNativePlugin("Seal-OfficeOnline")
 ```
 
-* **openFile**方法：支持Android和IOS，预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx等
+* **openFile**方法：支持Android和IOS，预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx、epub等
 * **OpenFileBS**方法：只支持Android，打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
 
 ```js
@@ -77,89 +77,89 @@ var testModule = uni.requireNativePlugin("Seal-OfficeOnline")
 // IOS支持：url，title，topBarBgColor，topBarTextColor
 // 方式一：直接在openFile接口中传递在线url
 testModule.openFile({
-	url: 'http://113.62.127.199:8090/fileUpload/1.xlsx', // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
-	isTopBar: true, // 是否显示顶栏，默认为：true（显示）
-	title: 'Office文档在线预览', // 顶栏标题，默认为：APP名称
-	topBarHeight: 100, // 顶栏高度，默认为actionBarSize
-	topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
-	topBarTextColor: '#cf1322', // 顶栏标题文字颜色，默认为：#FFFFFF（白色）
-	topBarTextLength: 12, // 顶栏标题文字长度，默认为：12
-	isBackArrow: true, // 是否显示返回按钮，默认为：true（显示）
-	fileType: 'xlsx', // 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型
-	fileName: '1', // 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType
-	initTitle: '你好，世界', // 初始化插件动画标题，默认：'插件初始化'
-	initBody: '怎么了', // 初始化插件动画内容，默认：'加载中...'
-	isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
+    url: 'http://113.62.127.199:8090/fileUpload/1.xlsx', // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
+    isTopBar: true, // 是否显示顶栏，默认为：true（显示）
+    title: 'Office文档在线预览', // 顶栏标题，默认为：APP名称
+    topBarHeight: 100, // 顶栏高度，默认为actionBarSize
+    topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
+    topBarTextColor: '#cf1322', // 顶栏标题文字颜色，默认为：#FFFFFF（白色）
+    topBarTextLength: 12, // 顶栏标题文字长度，默认为：12
+    isBackArrow: true, // 是否显示返回按钮，默认为：true（显示）
+    fileType: 'xlsx', // 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型
+    fileName: '1', // 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType
+    initTitle: '你好，世界', // 初始化插件动画标题，默认：'插件初始化'
+    initBody: '怎么了', // 初始化插件动画内容，默认：'加载中...'
+    isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
 });
 // 方式二：先调用uni-app接口uni.downloadFile下载文件，然后获取本地文件绝对路径，传递到openFile接口url参数中
 openOnlineFile2(fileName) {
-	// 调用uni.downloadFile接口下载文件
-	uni.downloadFile({
-		url: 'http://113.62.127.199:8090/fileUpload/' + fileName,
-		success: (res) => {
-			if (res.statusCode === 200) {
-				// 传递本地文件绝对路径，res.tempFilePath的前缀是_doc，而实际目录为doc，没有下划线_，所以要substr取子串
-				// const url = '/sdcard/Android/data/APP包名/apps/APPID/' + res.tempFilePath.substr(1)
-				// 可以通过一下方式获取文件绝对路径
-				uni.saveFile({
-					// 需要保存文件的临时路径
-					tempFilePath: res.tempFilePath,
-					success: (resSave) => {
-						const savedFilePath = resSave.savedFilePath
-						// 转换为绝对路径
-						const url = plus.io.convertLocalFileSystemURL(savedFilePath)
-						// 预览本地文件
-						testModule.openFile({
-							url: url,
-						});
-					}
-				});
-			}
-		}
-	});
+    // 调用uni.downloadFile接口下载文件
+    uni.downloadFile({
+        url: 'http://113.62.127.199:8090/fileUpload/' + fileName,
+        success: (res) => {
+            if (res.statusCode === 200) {
+                // 传递本地文件绝对路径，res.tempFilePath的前缀是_doc，而实际目录为doc，没有下划线_，所以要substr取子串
+                // const url = '/sdcard/Android/data/APP包名/apps/APPID/' + res.tempFilePath.substr(1)
+                // 可以通过一下方式获取文件绝对路径
+                uni.saveFile({
+                    // 需要保存文件的临时路径
+                    tempFilePath: res.tempFilePath,
+                    success: (resSave) => {
+                        const savedFilePath = resSave.savedFilePath
+                        // 转换为绝对路径
+                        const url = plus.io.convertLocalFileSystemURL(savedFilePath)
+                        // 预览本地文件
+                        testModule.openFile({
+                            url: url,
+                        });
+                    }
+                });
+            }
+        }
+    });
 },
 
 // 图片预览，支持jpg、jpeg、png、bmp、jpg、gif等多种常用图片格式
 // 图片可以来源于列表或九宫格，传递给imageUrls数组
 const url = 'http://113.62.127.199:8090/fileUpload/'
 testModule.openFile({
-	imageUrls: [ // 图片url数组，此参数优先于文档预览
-		url + '1.jpg',
-		url + '1.jpeg',
-		url + '1.png',
-		url + '1.bmp',
-		url + '1.gif'
-	],
-	imageCurrentIndex: 0, // 当前点击图片在imageUrls中的下标，从0开始，默认为0
-	imageIndexType: 'number' // 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
+    imageUrls: [ // 图片url数组，此参数优先于文档预览
+        url + '1.jpg',
+        url + '1.jpeg',
+        url + '1.png',
+        url + '1.bmp',
+        url + '1.gif'
+    ],
+    imageCurrentIndex: 0, // 当前点击图片在imageUrls中的下标，从0开始，默认为0
+    imageIndexType: 'number' // 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
 })
 
 // 视频播放，支持市面上几乎所有的视频格式，包括mp4, flv, avi, 3gp, webm, ts, ogv, m3u8, asf, wmv, rm, rmvb, mov, mkv等18种视频格式
 // 功能包括：全屏播放、锁屏、分享、画面比例调节、左边上下滑动调节亮度，右边上下滑动调节音量等
 // 支持Android和IOS
 testModule.openFile({
-	videoUrl: 'http://113.62.127.199:8090/fileUpload/1.mp4', // 视频在线url，此参数优先于图片预览和文档预览
+    videoUrl: 'http://113.62.127.199:8090/fileUpload/1.mp4', // 视频在线url，此参数优先于图片预览和文档预览
 })
 
 // QQ浏览服务打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
 // 平台支持：Android，支持以下全部参数
 testModule.openFileBS({
-	url: 'http://113.62.127.199:8090/fileUpload/1.xlsx', // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
-	topBarBgColor: '#3394EC',// 顶栏背景颜色，默认为：#177cb0（靛青）
-	fileType: 'xlsx', // 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型
-	fileName: '1', // 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType
-	initTitle: '你好，世界', // 初始化插件动画标题，默认：'插件初始化'
-	initBody: '怎么了', // 初始化插件动画内容，默认：'加载中...'
-	isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
+    url: 'http://113.62.127.199:8090/fileUpload/1.xlsx', // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
+    topBarBgColor: '#3394EC',// 顶栏背景颜色，默认为：#177cb0（靛青）
+    fileType: 'xlsx', // 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型
+    fileName: '1', // 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType
+    initTitle: '你好，世界', // 初始化插件动画标题，默认：'插件初始化'
+    initBody: '怎么了', // 初始化插件动画内容，默认：'加载中...'
+    isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
 })
 
 // 获取内核信息，用于调试
 const coreInfo = testModule.getX5CoreInfo()
 // 返回
 {
-	'isCoreInited': false, // 内核是否加载
-	'coreVersion': 0, // 内核版本
-	'sdkVersion': 43967, // sdk版本
+    'isCoreInited': false, // 内核是否加载
+    'coreVersion': 0, // 内核版本
+    'sdkVersion': 43967, // sdk版本
 }
 ```
 
@@ -206,6 +206,7 @@ topBarBgColor：顶栏背景颜色（isTopBar为true时有效），默认为：#
 topBarTextColor：顶栏文本颜色（isTopBar为true时有效），默认为：#FFFFFF（白色）
 
 ### topBarTextLength
+
 topBarTextLength：顶栏标题文字长度（isTopBar为true时有效），默认为：12
 
 ### isBackArrow
@@ -229,18 +230,23 @@ initTitle：初始化插件动画标题，默认：'插件初始化'
 initBody：初始化插件动画内容，默认：'加载中...'
 
 ### isDeleteFile
+
 isDeleteFile：退出是否删除缓存的文件，默认为true（删除缓存文件）
 
 ### imageUrls
+
 imageUrls：图片url数组，此参数优先于文档预览；长按图片底部弹出保存图片菜单，保存图片至相册
 
 ### imageCurrentIndex
+
 imageCurrentIndex：当前点击图片在imageUrls中的下标，从0开始，默认为0
 
 ### imageIndexType
+
 imageIndexType: 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
 
 ### videoUrl
+
 videoUrl：视频在线url，此参数优先于图片预览和文档预览
 
 ### 事件监听：文件关闭事件SealEventCloseFile，返回文件名和文件路径
@@ -249,16 +255,15 @@ videoUrl：视频在线url，此参数优先于图片预览和文档预览
 
 ```js
 onLoad() {
-	plus.globalEvent.addEventListener('SealEventCloseFile', function(e) {
-		modal.toast({
-			// 返回参数{fileName:'xx', filePath:'xx'}
-			message: "SealEventCloseFile文件关闭事件：" + JSON.stringify(e),
-			duration: 3
-		})
-	})
+    plus.globalEvent.addEventListener('SealEventCloseFile', function(e) {
+        modal.toast({
+            // 返回参数{fileName:'xx', filePath:'xx'}
+            message: "SealEventCloseFile文件关闭事件：" + JSON.stringify(e),
+            duration: 3
+        })
+    })
 },
 ```
-
 
 ## openFileBS方法参数说明
 
@@ -299,7 +304,6 @@ QQ浏览服务打开在线文档
 ### 预览txt
 
 <img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/c0676240-1024-11eb-81ea-f115fe74321c.jpg" height="600" style="height:600px" />
-
 
 ## iOS预览效果
 
