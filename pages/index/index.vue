@@ -27,6 +27,12 @@
 					name: 'Seal-ImageVideo',
 					open: false,
 					url: '/pages/demo/seal-imagevideo'
+				},
+				{
+					id: 'seal-ocr',
+					name: 'Seal-OCR',
+					open: false,
+					url: '/pages/demo/seal-ocr'
 				}],
 				navigateFlag: false
 			}

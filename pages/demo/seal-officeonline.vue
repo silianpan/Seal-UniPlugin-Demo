@@ -40,7 +40,7 @@
 
 <script>
 // get native module
-const testModule = uni.requireNativePlugin('Seal-OfficeOnline')
+const sealOfficeOnlineModule = uni.requireNativePlugin('Seal-OfficeOnline')
 const modal = uni.requireNativePlugin('modal')
 export default {
 	data() {
@@ -85,13 +85,13 @@ export default {
 	methods: {
 		// 获取内核信息
 		getX5CoreInfo() {
-			const coreInfo = testModule.getX5CoreInfo()
+			const coreInfo = sealOfficeOnlineModule.getX5CoreInfo()
 			console.log('coreInfo', coreInfo)
 		},
 		openImage(fileUrl, imageCurrentIndex) {
 			if (this.platform === 'android') {
 				// Android
-				testModule.openFile({
+				sealOfficeOnlineModule.openFile({
 					imageUrls: this.imageList,
 					imageCurrentIndex, // 当前点击图片在imageUrls中的下标，从0开始，默认为0
 					imageIndexType: 'number' // 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
@@ -102,12 +102,12 @@ export default {
 			}
 		},
 		openVideo(fileUrl) {
-			testModule.openFile({
+			sealOfficeOnlineModule.openFile({
 				videoUrl: fileUrl
 			})
 		},
 		openOnlineFile(fileUrl) {
-			testModule.openFile({
+			sealOfficeOnlineModule.openFile({
 				url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
 				isTopBar: true, // 是否显示顶栏，默认为：true（显示）
 				title: 'Office文档在线预览', // 顶栏标题，默认为：APP名称
@@ -124,7 +124,7 @@ export default {
 			})
 		},
 		openOnlineFileBS(fileUrl) {
-			testModule.openFileBS({
+			sealOfficeOnlineModule.openFileBS({
 				url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
 				topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
 				// fileType: 'xlsx', // 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型

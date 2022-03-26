@@ -20,6 +20,12 @@
 			"style": {
 				"navigationBarTitleText": "Seal-ImageVideo"
 			}
+		},
+		{
+			"path": "pages/demo/seal-ocr",
+			"style": {
+				"navigationBarTitleText": "Seal-OCR"
+			}
 		}
 	],
 	"globalStyle": {

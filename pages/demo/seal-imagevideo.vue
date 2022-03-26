@@ -20,7 +20,7 @@
 
 <script>
 // get native module
-const testModule = uni.requireNativePlugin('Seal-ImageVideo')
+const sealImageVideoModule = uni.requireNativePlugin('Seal-ImageVideo')
 export default {
 	data() {
 		return {
@@ -48,7 +48,7 @@ export default {
 		openImage(fileUrl, imageCurrentIndex) {
 			if (this.platform === 'android') {
 				// Android
-				testModule.openFile({
+				sealImageVideoModule.openFile({
 					imageUrls: this.imageList,
 					imageCurrentIndex, // 当前点击图片在imageUrls中的下标，从0开始，默认为0
 					imageIndexType: 'number' // 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
@@ -59,12 +59,12 @@ export default {
 			}
 		},
 		openVideo(fileUrl) {
-			testModule.openFile({
+			sealImageVideoModule.openFile({
 				videoUrl: fileUrl
 			})
 		},
 		openOnlineFile(fileUrl) {
-			testModule.openFile({
+			sealImageVideoModule.openFile({
 				url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
 				isTopBar: true, // 是否显示顶栏，默认为：true（显示）
 				title: '视频在线播放', // 顶栏标题，默认为：APP名称
