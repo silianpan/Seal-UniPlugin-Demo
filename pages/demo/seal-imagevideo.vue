@@ -26,16 +26,16 @@ export default {
 		return {
 			platform: '',
 			imageList: [
-				'http://silianpan.cn/wp-content/uploads/2022/01/01/1.jpg',
-				'http://silianpan.cn/wp-content/uploads/2022/01/01/1.jpeg',
-				'http://silianpan.cn/wp-content/uploads/2022/01/01/1.png',
-				'http://silianpan.cn/wp-content/uploads/2022/01/01/1.bmp',
-				'http://silianpan.cn/wp-content/uploads/2022/01/01/1.gif'
+				'http://silianpan.cn/upload/2022/01/01/1.jpg',
+				'http://silianpan.cn/upload/2022/01/01/1.jpeg',
+				'http://silianpan.cn/upload/2022/01/01/1.png',
+				'http://silianpan.cn/upload/2022/01/01/1.bmp',
+				'http://silianpan.cn/upload/2022/01/01/1.gif'
 			],
 			videoList: [
-				'http://silianpan.cn/wp-content/uploads/2022/01/01/1.mp4',
-				'http://silianpan.cn/wp-content/uploads/2022/01/01/1.mkv',
-				'http://silianpan.cn/wp-content/uploads/2022/01/01/1.avi'
+				'http://silianpan.cn/upload/2022/01/01/1.mp4',
+				'http://silianpan.cn/upload/2022/01/01/1.mkv',
+				'http://silianpan.cn/upload/2022/01/01/1.avi'
 			]
 		}
 	},
