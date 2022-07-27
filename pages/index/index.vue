@@ -33,6 +33,12 @@
 					name: 'Seal-OCR',
 					open: false,
 					url: '/pages/demo/seal-ocr'
+				},
+				{
+					id: 'seal-voiceASR',
+					name: 'Seal-VoiceASR',
+					open: false,
+					url: '/pages/demo/seal-voiceASR'
 				}],
 				navigateFlag: false
 			}

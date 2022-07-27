@@ -26,6 +26,12 @@
 			"style": {
 				"navigationBarTitleText": "Seal-OCR"
 			}
+		},
+		{
+			"path": "pages/demo/seal-voiceASR",
+			"style": {
+				"navigationBarTitleText": "Seal-VoiceASR"
+			}
 		}
 	],
 	"globalStyle": {
