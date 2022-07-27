@@ -173,81 +173,27 @@ const coreInfo = testModule.getX5CoreInfo()
 
 支持打开在线文档，本地文档
 
-### url
+| 参数名            | 说明                                                         | 默认值               | 可选值                  |
+| ----------------- | ------------------------------------------------------------ | -------------------- | ----------------------- |
+| url               | 支持如下三种地址方式：<br />（1）文件网络地址，如：http://113.62.127.199:8090/fileUpload/1.xlsx <br />（2）手机本地文件地址，如：/data/user/0/APP包名/files/1.xlsx 文件名，如：1.xlsx，<br />（3）访问默认目录文件，默认目录为：/data/user/0/APP包名，如：com.HBuilder.UniPlugin<br />**注意**：手机本地地址目录需要有权限访问 |                      |                         |
+| isTopBar          | 是否显示顶栏，显示时，向上滑动顶栏会自动隐藏                 | true（显示）         | false（隐藏）           |
+| title             | 顶栏标题，isTopBar为true时有效                               | APP名称              |                         |
+| topBarHeight      | 顶栏自定义高度，isTopBar为true时有效，类型为正整数           | actionBarSize        |                         |
+| topBarBgColor     | 顶栏背景颜色，isTopBar为true时有效                           | #177cb0（靛青）      |                         |
+| topBarTextColor   | 顶栏文本颜色（isTopBar为true时有效）                         | #FFFFFF（白色）      |                         |
+| topBarTextLength  | 顶栏标题文字长度（isTopBar为true时有效）                     | 12                   |                         |
+| isBackArrow       | 是否显示返回按钮（isTopBar为true时有效）                     | true（显示）         | false（隐藏）           |
+| fileType          | 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型 |                      |                         |
+| fileName          | 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType |                      |                         |
+| initTitle         | 初始化插件动画标题                                           | '插件初始化'         |                         |
+| initBody          | 初始化插件动画内容                                           | '加载中...'          |                         |
+| isDeleteFile      | 退出是否删除缓存的文件                                       | true（删除缓存文件） | false（不删除缓存文件） |
+| imageUrls         | 图片url数组，此参数优先于文档预览；长按图片底部弹出保存图片菜单，保存图片至相册 |                      |                         |
+| imageCurrentIndex | 当前点击图片在imageUrls中的下标，从0开始                     | 0                    |                         |
+| imageIndexType    | 图片底部指示器类型                                           | 'dot'                | 'number':数字；'dot':点 |
+| videoUrl          | 视频在线url，此参数优先于图片预览和文档预览                  |                      |                         |
 
-url参数支持如下三种地址方式：
 
-* 文件网络地址，如：http://113.62.127.199:8090/fileUpload/1.xlsx
-
-* 手机本地文件地址，如：/data/user/0/APP包名/files/1.xlsx
-
-* 文件名，如：1.xlsx，访问默认目录文件，默认目录为：/data/user/0/APP包名，如：com.HBuilder.UniPlugin
-
-**注意**：手机本地地址目录需要有权限访问
-
-### isTopBar
-
-isTopBar：是否显示顶栏，默认为：true（显示）；显示时，向上滑动顶栏会自动隐藏
-
-### title
-
-title：顶栏标题（isTopBar为true时有效），默认为：APP名称
-
-### topBarHeight
-
-topBarHeight：顶栏自定义高度（isTopBar为true时有效），类型为正整数，默认为：actionBarSize
-
-### topBarBgColor
-
-topBarBgColor：顶栏背景颜色（isTopBar为true时有效），默认为：#177cb0（靛青）
-
-### topBarTextColor
-
-topBarTextColor：顶栏文本颜色（isTopBar为true时有效），默认为：#FFFFFF（白色）
-
-### topBarTextLength
-
-topBarTextLength：顶栏标题文字长度（isTopBar为true时有效），默认为：12
-
-### isBackArrow
-
-isBackArrow：是否显示返回按钮（isTopBar为true时有效），默认为：true（显示）
-
-### fileType
-
-fileType：可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型
-
-### fileName
-
-fileName：指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType
-
-### initTitle
-
-initTitle：初始化插件动画标题，默认：'插件初始化'
-
-### initBody
-
-initBody：初始化插件动画内容，默认：'加载中...'
-
-### isDeleteFile
-
-isDeleteFile：退出是否删除缓存的文件，默认为true（删除缓存文件）
-
-### imageUrls
-
-imageUrls：图片url数组，此参数优先于文档预览；长按图片底部弹出保存图片菜单，保存图片至相册
-
-### imageCurrentIndex
-
-imageCurrentIndex：当前点击图片在imageUrls中的下标，从0开始，默认为0
-
-### imageIndexType
-
-imageIndexType: 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
-
-### videoUrl
-
-videoUrl：视频在线url，此参数优先于图片预览和文档预览
 
 ### 事件监听：文件关闭事件SealEventCloseFile，返回文件名和文件路径
 

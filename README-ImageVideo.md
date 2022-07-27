@@ -78,21 +78,14 @@ testModule.openFile({
 
 ## openFile方法参数说明
 
-### videoUrl
+| 参数名            | 说明                                                         | 默认值 | 可选值                  |
+| ----------------- | ------------------------------------------------------------ | ------ | ----------------------- |
+| videoUrl          | 视频在线url，此参数优先于图片预览和文档预览                  |        |                         |
+| imageUrls         | 图片url数组，此参数优先于文档预览；长按图片底部弹出保存图片菜单，保存图片至相册 |        |                         |
+| imageCurrentIndex | 当前点击图片在imageUrls中的下标，从0开始                     | 0      |                         |
+| imageIndexType    | 图片底部指示器类型                                           | 'dot'  | 'number':数字；'dot':点 |
 
-videoUrl：视频在线url，此参数优先于图片预览和文档预览
 
-### imageUrls
-
-imageUrls：图片url数组，此参数优先于文档预览；长按图片底部弹出保存图片菜单，保存图片至相册
-
-### imageCurrentIndex
-
-imageCurrentIndex：当前点击图片在imageUrls中的下标，从0开始，默认为0
-
-### imageIndexType
-
-imageIndexType: 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
 
 ## 问题解决
 
