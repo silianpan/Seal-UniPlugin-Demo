@@ -4,6 +4,8 @@ Seal-ImageVideo原生插件，实现了**图片预览**和**视频播放**。
 
 [Seal-ImageVideo插件下载使用地址](https://ext.dcloud.net.cn/plugin?id=5478)
 
+<span style="color:red">各位同学，对于插件使用还有疑问的，可以加QQ群（170683293）咨询。</span>
+
 <div class="half">
 
 <img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-3ace2e69-dfbc-47f2-906f-58c695d12020/5757c1c9-20b6-46dc-9540-78621476601e.jpg" height="560" style="height:560px" />
@@ -15,8 +17,16 @@ Seal-ImageVideo原生插件，实现了**图片预览**和**视频播放**。
 ## 注意事项
 
 * ### `manifest.json->App模块配置不要勾选Android X5 Webview`
+
 * ### 不要同时使用其他任何预览插件，否则，会引起打包冲突
+
 * ### 如遇预览失败，（1）把APP卸载，重新打基座运行，第一次运行会自动安装X5插件；（2）或者换手机（华为或小米）进行测试
+
+
+
+<span style="color:red">各位同学，对于插件使用还有疑问的，可以加QQ群（170683293）咨询。</span>
+
+
 
 ## 快速上手
 
