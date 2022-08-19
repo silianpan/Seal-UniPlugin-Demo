@@ -2,14 +2,14 @@
     "name" : "Seal-UniPlugin-Demo",
     "appid" : "__UNI__0B3F0D8",
     "description" : "",
-    "versionName" : "1.4.8",
-    "versionCode" : 148,
+    "versionName" : "1.4.9",
+    "versionCode" : 149,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
-		"compatible" : {
-			"ignoreVersion" : true
-		},
+        "compatible" : {
+            "ignoreVersion" : true
+        },
         "usingComponents" : true,
         "nvueCompiler" : "uni-app",
         "compilerVersion" : 3,
