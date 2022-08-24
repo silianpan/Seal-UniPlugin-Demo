@@ -59,7 +59,7 @@ var testModule = uni.requireNativePlugin("Seal-ImageVideo")
 ```js
 // 图片预览，支持jpg、jpeg、png、bmp、jpg、gif等多种常用图片格式
 // 图片可以来源于列表或九宫格，传递给imageUrls数组
-const url = 'http://113.62.127.199:8090/fileUpload/'
+const url = 'http://silianpan.cn/upload/2022/01/01/'
 testModule.openFile({
     imageUrls: [ // 图片url数组，此参数优先于文档预览
         url + '1.jpg',
@@ -76,7 +76,7 @@ testModule.openFile({
 // 功能包括：全屏播放、锁屏、分享、画面比例调节、左边上下滑动调节亮度，右边上下滑动调节音量等
 // 支持Android和IOS
 testModule.openFile({
-    videoUrl: 'http://113.62.127.199:8090/fileUpload/1.mp4', // 视频在线url，此参数优先于图片预览和文档预览
+    videoUrl: 'http://silianpan.cn/upload/2022/01/01/1.mp4', // 视频在线url，此参数优先于图片预览和文档预览
 })
 ```
 
