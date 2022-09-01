@@ -166,7 +166,8 @@ const coreInfo = testModule.getX5CoreInfo()
 | 参数名             | 说明                                                         | 类型          | 是否必填 | 默认值               | 可选值                  |
 | ------------------ | ------------------------------------------------------------ | ------------- | -------- | -------------------- | ----------------------- |
 | url                | 支持如下三种地址方式：<br />（1）文件网络地址，如：http://113.62.127.199:8090/fileUpload/1.xlsx <br />（2）手机本地文件地址，如：/data/user/0/APP包名/files/1.xlsx 文件名，如：1.xlsx，<br />（3）访问默认目录文件，默认目录为：/data/user/0/APP包名，如：com.HBuilder.UniPlugin<br />**注意**：手机本地地址目录需要有权限访问<br/><span style="color:red">**IOS端只支持在线地址**</span> | string        | 是       |                      |                         |
-| isTopBar           | 是否显示顶栏，显示时，向上滑动顶栏会自动隐藏，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true（显示）         | false（隐藏）           |
+| isTopBar           | 是否显示顶栏，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true（显示）         | false（隐藏）           |
+| topBarAutoHide     | 顶栏是否自动隐藏，isTopBar=true时生效，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | false（不自动隐藏）  | true（自动隐藏）        |
 | title              | 顶栏标题，isTopBar为true时有效，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | APP名称              |                         |
 | topBarHeight       | 顶栏自定义高度，isTopBar为true时有效，类型为正整数，<span style="color:red">**IOS端无此配置**</span> | int           | 否       | actionBarSize        |                         |
 | topBarBgColor      | 顶栏背景颜色，isTopBar为true时有效，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | #177cb0（靛青）      |                         |
