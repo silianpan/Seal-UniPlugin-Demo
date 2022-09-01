@@ -110,6 +110,7 @@ export default {
 			sealOfficeOnlineModule.openFile({
 				url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
 				isTopBar: true, // 是否显示顶栏，默认为：true（显示）
+				topBarAutoHide: false, // Topbar是否自动隐藏
 				title: 'Office文档在线预览', // 顶栏标题，默认为：APP名称
 				// topBarHeight: 260, // 顶栏高度，默认为actionBarSize
 				topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
