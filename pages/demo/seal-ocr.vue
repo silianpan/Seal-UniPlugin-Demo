@@ -8,8 +8,8 @@
 		<u-button plain type="primary" @click="handleOcr('general_webimage')">网络图片文字识别</u-button>
 
 		<!-- 身份证识别 -->
-		<u-button plain type="primary" @click="handleOcr('idcard_front')">身份证正面拍照识别</u-button>
-		<u-button plain type="primary" @click="handleOcr('idcard_back')">身份证反面拍照识别</u-button>
+		<u-button plain type="primary" @click="handleOcr('idcard_front', 1)">身份证正面拍照识别</u-button>
+		<u-button plain type="primary" @click="handleOcr('idcard_back', 2)">身份证反面拍照识别</u-button>
 		<u-button plain type="primary" @click="handleOcr('idcard_front_scan')">身份证正面（嵌入式质量控制+云端识别）</u-button>
 		<u-button plain type="primary" @click="handleOcr('idcard_back_scan')">身份证反面（嵌入式质量控制+云端识别）</u-button>
 
@@ -48,14 +48,26 @@
 		<u-button plain type="primary" @click="handleOcr('online_taxi_itinerary')">网约车行程单识别</u-button>
 
 		<u-button plain type="primary" @click="handleOcr('custom')">自定义模板识别</u-button>
+		
+		<!-- 身份证识别图片 -->
+		<view>身份证正面</view>
+		<image v-if="idCardFrontImg" :src="idCardFrontImg"></image>
+		<view>身份证反面</view>
+		<image v-if="idCardBackImg" :src="idCardBackImg"></image>
 	</view>
 </template>
 
 <script>
 const sealOcrModule = uni.requireNativePlugin('Seal-OCR')
 export default {
+	data() {
+		return {
+			idCardFrontImg: null,
+			idCardBackImg: null
+		}
+	},
 	methods: {
-		handleOcr(ocrType) {
+		handleOcr(ocrType, idCardFlag) {
 			sealOcrModule.ocr(
 				{
 					// ak: '',
@@ -66,6 +78,12 @@ export default {
 					albumEnable: false
 				},
 				res => {
+					console.log('res', res)
+					if (idCardFlag === 1) {
+						this.idCardFrontImg = 'file://' + res.ocrImagePath
+					} else if (idCardFlag === 2) {
+						this.idCardBackImg = 'file://' + res.ocrImagePath
+					}
 					uni.showModal({
 						content: '获取识别结果：' + JSON.stringify(res)
 					})
