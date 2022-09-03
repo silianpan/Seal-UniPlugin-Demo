@@ -69,54 +69,92 @@
 * 在vue或nvue组件中，导入插件
 
 ```js
-var testModule = uni.requireNativePlugin("Seal-OfficeOnline")
+const sealOfficeOnlineModule = uni.requireNativePlugin("Seal-OfficeOnline")
 ```
 
-* **openFile**方法：支持Android和IOS，预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx、epub等
+* **openFile**方法（推荐）：支持Android和IOS，预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx、epub等
 * **OpenFileBS**方法：只支持Android，打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
+* **getX5CoreInfo**方法（调试）：获取内核安装信息，用于调试
+
+#### （1）离线使用插件
+
+> 注意：添加参数`isDeleteFile: false`，否则退出预览，文件删除
+
+```javascript
+// 方式一：直接传递本机文件绝对路径
+// 注意：添加参数`isDeleteFile: false`，否则退出预览，文件删除
+// 比如：/storage/sdcard0/Android/data/com.seal.uniplugin/files/file/test.docx
+// sealOfficeOnlineModule.openFile({
+// 	url: '/storage/sdcard0/Android/data/com.seal.uniplugin/files/file/test.docx',
+// 	isDeleteFile: false
+// });
+
+// 方式二：先下载文件保存到手机目录，再获取文件绝对路径
+uni.showLoading({
+    title: '正在下载文件，请稍后~'
+});
+uni.downloadFile({
+    url: fileUrl,
+    success: res => {
+        if (res.statusCode === 200) {
+            // 直接传递本地文件地址
+            // 传递本地文件绝对路径，res.tempFilePath的前缀是_doc，而实际目录为doc，没有下划线_，所以要substr取子串
+            // const url = '/storage/sdcard0/Android/data/APP包名/apps/APPID/' + res.tempFilePath.substr(1)
+            // 可以通过以下方式获取文件绝对路径
+            uni.saveFile({
+                // 需要保存文件的临时路径
+                tempFilePath: res.tempFilePath,
+                success: resSave => {
+                    uni.hideLoading();
+                    const savedFilePath = resSave.savedFilePath;
+                    // 转换为绝对路径
+                    const url = plus.io.convertLocalFileSystemURL(savedFilePath);
+                    console.log('tempFilePath', res.tempFilePath);
+                    console.log('savedFilePath', savedFilePath);
+                    console.log('url', url);
+                    // 预览本地文件
+                    sealOfficeOnlineModule.openFile({
+                        url: url,
+                        isDeleteFile: false
+                    });
+                }
+            });
+        }
+    }
+});
+```
+
+#### （2）在线使用插件
 
 ```js
 // 方式一：直接在openFile接口中传递在线url
-testModule.openFile({
+sealOfficeOnlineModule.openFile({
     url: 'http://silianpan.cn/upload/2022/01/01/1.docx', // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
-    isTopBar: true, // 是否显示顶栏，默认为：true（显示）
     title: 'Office文档在线预览', // 顶栏标题，默认为：APP名称
     topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
-    isBackArrow: true, // 是否显示返回按钮，默认为：true（显示）
-    isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
     waterMarkText: '你好，世界\n准备好了吗？时刻准备着', // 水印文本
 });
+```
 
-// 方式二：先调用uni-app接口uni.downloadFile下载文件，然后获取本地文件绝对路径，传递到openFile接口url参数中
-// 调用uni.downloadFile接口下载文件
-uni.downloadFile({
-  url: 'http://silianpan.cn/upload/2022/01/01/1.docx',
-  success: (res) => {
-    if (res.statusCode === 200) {
-      // 传递本地文件绝对路径，res.tempFilePath的前缀是_doc，而实际目录为doc，没有下划线_，所以要substr取子串
-      // const url = '/sdcard/Android/data/APP包名/apps/APPID/' + res.tempFilePath.substr(1)
-      // 可以通过一下方式获取文件绝对路径
-      uni.saveFile({
-        // 需要保存文件的临时路径
-        tempFilePath: res.tempFilePath,
-        success: (resSave) => {
-          const savedFilePath = resSave.savedFilePath
-          // 转换为绝对路径
-          const url = plus.io.convertLocalFileSystemURL(savedFilePath)
-          // 预览本地文件
-          testModule.openFile({
-            url: url,
-          });
-        }
-      });
-    }
-  }
-});
+#### （3）QQ浏览服务预览文档
 
+```javascript
+// QQ浏览服务打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
+// 平台支持：Android，支持以下全部参数
+sealOfficeOnlineModule.openFileBS({
+    url: 'http://silianpan.cn/upload/2022/01/01/1.xlsx', // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
+    topBarBgColor: '#3394EC',// 顶栏背景颜色，默认为：#177cb0（靛青）
+    isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
+})
+```
+
+#### （4）图片预览
+
+```javascript
 // 图片预览，支持jpg、jpeg、png、bmp、jpg、gif等多种常用图片格式
 // 图片可以来源于列表或九宫格，传递给imageUrls数组
 const url = 'http://113.62.127.199:8090/fileUpload/'
-testModule.openFile({
+sealOfficeOnlineModule.openFile({
     imageUrls: [ // 图片url数组，此参数优先于文档预览
         url + '1.jpg',
         url + '1.jpeg',
@@ -127,24 +165,24 @@ testModule.openFile({
     imageCurrentIndex: 0, // 当前点击图片在imageUrls中的下标，从0开始，默认为0
     imageIndexType: 'number' // 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
 })
+```
 
+#### （5）视频播放
+
+```javascript
 // 视频播放，支持市面上几乎所有的视频格式，包括mp4, flv, avi, 3gp, webm, ts, ogv, m3u8, asf, wmv, rm, rmvb, mov, mkv等18种视频格式
 // 功能包括：全屏播放、锁屏、分享、画面比例调节、左边上下滑动调节亮度，右边上下滑动调节音量等
 // 支持Android和IOS
-testModule.openFile({
+sealOfficeOnlineModule.openFile({
     videoUrl: 'http://silianpan.cn/upload/2022/01/01/1.mp4', // 视频在线url，此参数优先于图片预览和文档预览
 })
+```
 
-// QQ浏览服务打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
-// 平台支持：Android，支持以下全部参数
-testModule.openFileBS({
-    url: 'http://silianpan.cn/upload/2022/01/01/1.xlsx', // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
-    topBarBgColor: '#3394EC',// 顶栏背景颜色，默认为：#177cb0（靛青）
-    isDeleteFile: true, // 退出是否删除缓存的文件，默认为true（删除缓存文件）
-})
+#### （6）获取内核信息，用于调试
 
+```javascript
 // 获取内核信息，用于调试
-const coreInfo = testModule.getX5CoreInfo()
+const coreInfo = sealOfficeOnlineModule.getX5CoreInfo()
 // 返回
 {
     'isCoreInited': false, // 内核是否加载
@@ -166,6 +204,7 @@ const coreInfo = testModule.getX5CoreInfo()
 | 参数名             | 说明                                                         | 类型          | 是否必填 | 默认值               | 可选值                  |
 | ------------------ | ------------------------------------------------------------ | ------------- | -------- | -------------------- | ----------------------- |
 | url                | 支持如下三种地址方式：<br />（1）文件网络地址，如：http://113.62.127.199:8090/fileUpload/1.xlsx <br />（2）手机本地文件地址，如：/data/user/0/APP包名/files/1.xlsx 文件名，如：1.xlsx，<br />（3）访问默认目录文件，默认目录为：/data/user/0/APP包名，如：com.HBuilder.UniPlugin<br />**注意**：手机本地地址目录需要有权限访问<br/><span style="color:red">**IOS端只支持在线地址**</span> | string        | 是       |                      |                         |
+| installOfflineCore | 是否离线安装插件内核，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true                 | false                   |
 | isTopBar           | 是否显示顶栏，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true（显示）         | false（隐藏）           |
 | topBarAutoHide     | 顶栏是否自动隐藏，isTopBar=true时生效，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | false（不自动隐藏）  | true（自动隐藏）        |
 | title              | 顶栏标题，isTopBar为true时有效，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | APP名称              |                         |

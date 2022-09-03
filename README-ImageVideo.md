@@ -51,16 +51,19 @@ Seal-ImageVideo原生插件，实现了**图片预览**和**视频播放**。
 * 在vue或nvue组件中，导入插件
 
 ```js
-var testModule = uni.requireNativePlugin("Seal-ImageVideo")
+const sealImageVideoModule = uni.requireNativePlugin("Seal-ImageVideo")
 ```
 
-* **openFile**方法：支持Android和IOS，在线预览图片，播放视频，支持jpg、jpeg、png、bmp、gif、mp4、mkv、avi等多种格式。
+* **openFile**方法（推荐）：支持Android和IOS，在线预览图片，播放视频，支持jpg、jpeg、png、bmp、gif、mp4、mkv、avi等多种格式。
+* **getX5CoreInfo**方法（调试）：获取内核安装信息，用于调试
 
-```js
+#### （1）图片预览
+
+```javascript
 // 图片预览，支持jpg、jpeg、png、bmp、jpg、gif等多种常用图片格式
 // 图片可以来源于列表或九宫格，传递给imageUrls数组
 const url = 'http://silianpan.cn/upload/2022/01/01/'
-testModule.openFile({
+sealImageVideoModule.openFile({
     imageUrls: [ // 图片url数组，此参数优先于文档预览
         url + '1.jpg',
         url + '1.jpeg',
@@ -71,13 +74,30 @@ testModule.openFile({
     imageCurrentIndex: 0, // 当前点击图片在imageUrls中的下标，从0开始，默认为0
     imageIndexType: 'number' // 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
 })
+```
 
+#### （2）视频播放
+
+```js
 // 视频播放，支持市面上几乎所有的视频格式，包括mp4, flv, avi, 3gp, webm, ts, ogv, m3u8, asf, wmv, rm, rmvb, mov, mkv等18种视频格式
 // 功能包括：全屏播放、锁屏、分享、画面比例调节、左边上下滑动调节亮度，右边上下滑动调节音量等
 // 支持Android和IOS
-testModule.openFile({
+sealImageVideoModule.openFile({
     videoUrl: 'http://silianpan.cn/upload/2022/01/01/1.mp4', // 视频在线url，此参数优先于图片预览和文档预览
 })
+```
+
+#### （3）获取内核信息，用于调试
+
+```javascript
+// 获取内核信息，用于调试
+const coreInfo = sealOfficeOnlineModule.getX5CoreInfo()
+// 返回
+{
+    'isCoreInited': false, // 内核是否加载
+    'coreVersion': 0, // 内核版本
+    'sdkVersion': 43967, // sdk版本
+}
 ```
 
 ### Step5. 调试
@@ -88,12 +108,13 @@ testModule.openFile({
 
 ## openFile方法参数说明
 
-| 参数名            | 说明                                                         | 类型          | 是否必填 | 默认值 | 可选值                  |
-| ----------------- | ------------------------------------------------------------ | ------------- | -------- | ------ | ----------------------- |
-| videoUrl          | 视频在线url，此参数优先于图片预览和文档预览                  | string        | 是       |        |                         |
-| imageUrls         | 图片url数组，此参数优先于文档预览；长按图片底部弹出保存图片菜单，保存图片至相册，<span style="color:red">**IOS端无此配置**</span> | array<string> | 是       |        |                         |
-| imageCurrentIndex | 当前点击图片在imageUrls中的下标，从0开始，<span style="color:red">**IOS端无此配置**</span> | int           | 否       | 0      |                         |
-| imageIndexType    | 图片底部指示器类型，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 'dot'  | 'number':数字；'dot':点 |
+| 参数名             | 说明                                                         | 类型          | 是否必填 | 默认值 | 可选值                  |
+| ------------------ | ------------------------------------------------------------ | ------------- | -------- | ------ | ----------------------- |
+| videoUrl           | 视频在线url，此参数优先于图片预览和文档预览                  | string        | 是       |        |                         |
+| imageUrls          | 图片url数组，此参数优先于文档预览；长按图片底部弹出保存图片菜单，保存图片至相册，<span style="color:red">**IOS端无此配置**</span> | array<string> | 是       |        |                         |
+| installOfflineCore | 是否离线安装插件内核，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true   | false                   |
+| imageCurrentIndex  | 当前点击图片在imageUrls中的下标，从0开始，<span style="color:red">**IOS端无此配置**</span> | int           | 否       | 0      |                         |
+| imageIndexType     | 图片底部指示器类型，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 'dot'  | 'number':数字；'dot':点 |
 
 
 
