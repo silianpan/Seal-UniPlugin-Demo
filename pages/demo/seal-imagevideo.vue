@@ -64,7 +64,7 @@ export default {
 		    // const coreUrl = 'https://tbs.imtt.qq.com/release/x5/tbs_core_045738_20210925205342_nolog_fs_obfs_armeabi_release.tbs'
 		    const coreUrl = 'http://silianpan.cn/upload/2022/09/tbs_core_045738_20210925205342_nolog_fs_obfs_armeabi_release-c5d6cd8bba8843b780e5943f9806c028.tbs'
 		    uni.downloadFile({
-		        url: fileUrl,
+		        url: coreUrl,
 		        success: res => {
 		            if (res.statusCode === 200) {
 		                // 保存到应用目录
