@@ -112,7 +112,8 @@ const coreInfo = sealOfficeOnlineModule.getX5CoreInfo()
 | ------------------ | ------------------------------------------------------------ | ------------- | -------- | ------ | ----------------------- |
 | videoUrl           | 视频在线url，此参数优先于图片预览和文档预览                  | string        | 是       |        |                         |
 | imageUrls          | 图片url数组，此参数优先于文档预览；长按图片底部弹出保存图片菜单，保存图片至相册，<span style="color:red">**IOS端无此配置**</span> | array<string> | 是       |        |                         |
-| installOfflineCore | 是否离线安装插件内核，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true   | false                   |
+| installOfflineCore | 是否离线安装插件内核，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | false  | true                    |
+| coreLocalPath      | 插件内核本地绝对路径，参考上面下载插件到本地用法，installOfflineCore=true时，必须配置，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | null   |                         |
 | imageCurrentIndex  | 当前点击图片在imageUrls中的下标，从0开始，<span style="color:red">**IOS端无此配置**</span> | int           | 否       | 0      |                         |
 | imageIndexType     | 图片底部指示器类型，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 'dot'  | 'number':数字；'dot':点 |
 

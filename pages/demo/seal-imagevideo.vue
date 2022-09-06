@@ -24,6 +24,8 @@ const sealImageVideoModule = uni.requireNativePlugin('Seal-ImageVideo')
 export default {
 	data() {
 		return {
+			// 本地内核地址
+			coreLocalPath: '',
 			platform: '',
 			imageList: [
 				'http://silianpan.cn/upload/2022/01/01/1.jpg',
@@ -40,6 +42,8 @@ export default {
 		}
 	},
 	onLoad() {
+		// 下载内核
+		this.downloadCoreToLocal()
 		// 获取平台
 		const { platform } = uni.getSystemInfoSync()
 		this.platform = platform
@@ -51,6 +55,30 @@ export default {
 		getX5CoreInfo() {
 			const coreInfo = sealImageVideoModule.getX5CoreInfo();
 			console.log('coreInfo', coreInfo);
+		},
+		// 应用刚进入或页面刚进入，初始化下载内核到本机，获取本地路径
+		downloadCoreToLocal() {
+		    uni.showLoading({
+		        title: '正在下载安装内核，请稍后~'
+		    });
+		    // const coreUrl = 'https://tbs.imtt.qq.com/release/x5/tbs_core_045738_20210925205342_nolog_fs_obfs_armeabi_release.tbs'
+		    const coreUrl = 'http://silianpan.cn/upload/2022/09/tbs_core_045738_20210925205342_nolog_fs_obfs_armeabi_release-c5d6cd8bba8843b780e5943f9806c028.tbs'
+		    uni.downloadFile({
+		        url: fileUrl,
+		        success: res => {
+		            if (res.statusCode === 200) {
+		                // 保存到应用目录
+		                uni.saveFile({
+		                    tempFilePath: res.tempFilePath,
+		                    success: resSave => {
+		                        uni.hideLoading()
+		                        // 获取本地路径
+		                        this.coreLocalPath = resSave.savedFilePath
+		                    }
+		                })
+		            }
+		        }
+		    })
 		},
 		openImage(fileUrl, imageCurrentIndex) {
 			if (this.platform === 'android') {
@@ -67,7 +95,9 @@ export default {
 		},
 		openVideo(fileUrl) {
 			sealImageVideoModule.openFile({
-				videoUrl: fileUrl
+				videoUrl: fileUrl,
+				installOfflineCore: true, // 是否离线安装内核
+				coreLocalPath: this.coreLocalPath, // 离线安装内核本地路径
 			})
 		},
 		openOnlineFile(fileUrl) {

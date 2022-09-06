@@ -54,6 +54,8 @@ const modal = uni.requireNativePlugin('modal');
 export default {
 	data() {
 		return {
+			// 本地内核地址
+			coreLocalPath: '',
 			platform: '',
 			docList: [
 				'http://silianpan.cn/upload/2022/01/01/1.pdf',
@@ -74,6 +76,8 @@ export default {
 		};
 	},
 	onLoad() {
+		// 下载内核
+		this.downloadCoreToLocal()
 		// 获取平台
 		const { platform } = uni.getSystemInfoSync();
 		this.platform = platform;
@@ -93,13 +97,39 @@ export default {
 			const coreInfo = sealOfficeOnlineModule.getX5CoreInfo();
 			console.log('coreInfo', coreInfo);
 		},
+		// 应用刚进入或页面刚进入，初始化下载内核到本机，获取本地路径
+		downloadCoreToLocal() {
+		    uni.showLoading({
+		        title: '正在下载安装内核，请稍后~'
+		    });
+		    // const coreUrl = 'https://tbs.imtt.qq.com/release/x5/tbs_core_045738_20210925205342_nolog_fs_obfs_armeabi_release.tbs'
+		    const coreUrl = 'http://silianpan.cn/upload/2022/09/tbs_core_045738_20210925205342_nolog_fs_obfs_armeabi_release-c5d6cd8bba8843b780e5943f9806c028.tbs'
+		    uni.downloadFile({
+		        url: fileUrl,
+		        success: res => {
+		            if (res.statusCode === 200) {
+		                // 保存到应用目录
+		                uni.saveFile({
+		                    tempFilePath: res.tempFilePath,
+		                    success: resSave => {
+		                        uni.hideLoading()
+		                        // 获取本地路径
+		                        this.coreLocalPath = resSave.savedFilePath
+		                    }
+		                })
+		            }
+		        }
+		    })
+		},
 		// 打开在线文件
 		openOnlineFile(fileUrl) {
 			sealOfficeOnlineModule.openFile({
 				url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
 				title: 'Office文档在线预览', // 顶栏标题，默认为：APP名称
 				topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
-				waterMarkText: '你好，世界\n准备好了吗？时刻准备着' // 水印文本
+				waterMarkText: '你好，世界\n准备好了吗？时刻准备着', // 水印文本
+				installOfflineCore: true, // 是否离线安装内核
+				coreLocalPath: this.coreLocalPath, // 离线安装内核本地路径
 			});
 		},
 		// 打开本地文件
@@ -109,7 +139,9 @@ export default {
 			// 比如：/storage/sdcard0/Android/data/com.seal.uniplugin/files/file/test.docx
 			// sealOfficeOnlineModule.openFile({
 			// 	url: '/storage/sdcard0/Android/data/com.seal.uniplugin/files/file/test.docx',
-			// 	isDeleteFile: false
+			// 	isDeleteFile: false,
+			//  installOfflineCore: true, // 是否离线安装内核
+			//	coreLocalPath: this.coreLocalPath, // 离线安装内核本地路径
 			// });
 			
 			// 方式二：先下载文件保存到手机目录，再获取文件绝对路径
@@ -138,7 +170,9 @@ export default {
 								// 预览本地文件
 								sealOfficeOnlineModule.openFile({
 									url: url,
-									isDeleteFile: false
+									isDeleteFile: false,
+									installOfflineCore: true, // 是否离线安装内核
+									coreLocalPath: this.coreLocalPath, // 离线安装内核本地路径
 								});
 							}
 						});
@@ -168,7 +202,9 @@ export default {
 		},
 		openVideo(fileUrl) {
 			sealOfficeOnlineModule.openFile({
-				videoUrl: fileUrl
+				videoUrl: fileUrl,
+				installOfflineCore: true, // 是否离线安装内核
+				coreLocalPath: this.coreLocalPath, // 离线安装内核本地路径
 			});
 		}
 	}

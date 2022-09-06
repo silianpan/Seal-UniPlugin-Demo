@@ -78,15 +78,44 @@ const sealOfficeOnlineModule = uni.requireNativePlugin("Seal-OfficeOnline")
 
 #### （1）离线使用插件
 
+内核插件地址：[地址一](http://silianpan.cn/upload/2022/09/tbs_core_045738_20210925205342_nolog_fs_obfs_armeabi_release-c5d6cd8bba8843b780e5943f9806c028.tbs)、[地址二](https://tbs.imtt.qq.com/release/x5/tbs_core_045738_20210925205342_nolog_fs_obfs_armeabi_release.tbs)
+
 > 注意：添加参数`isDeleteFile: false`，否则退出预览，文件删除
 
 ```javascript
+// 应用刚进入或页面刚进入（onLoad、mounted），初始化下载内核到本机，获取本地路径
+downloadCoreToLocal() {
+    uni.showLoading({
+        title: '正在下载安装内核，请稍后~'
+    });
+    // const coreUrl = 'https://tbs.imtt.qq.com/release/x5/tbs_core_045738_20210925205342_nolog_fs_obfs_armeabi_release.tbs'
+    const coreUrl = 'http://silianpan.cn/upload/2022/09/tbs_core_045738_20210925205342_nolog_fs_obfs_armeabi_release-c5d6cd8bba8843b780e5943f9806c028.tbs'
+    uni.downloadFile({
+        url: fileUrl,
+        success: res => {
+            if (res.statusCode === 200) {
+                // 保存到应用目录
+                uni.saveFile({
+                    tempFilePath: res.tempFilePath,
+                    success: resSave => {
+                        uni.hideLoading()
+                        // 获取本地路径
+                        this.coreLocalPath = resSave.savedFilePath
+                    }
+                })
+            }
+        }
+    })
+},
+
 // 方式一：直接传递本机文件绝对路径
 // 注意：添加参数`isDeleteFile: false`，否则退出预览，文件删除
 // 比如：/storage/sdcard0/Android/data/com.seal.uniplugin/files/file/test.docx
 // sealOfficeOnlineModule.openFile({
 // 	url: '/storage/sdcard0/Android/data/com.seal.uniplugin/files/file/test.docx',
 // 	isDeleteFile: false
+//  installOfflineCore: true, // 是否离线安装内核
+//	coreLocalPath: this.coreLocalPath, // 离线安装内核本地路径
 // });
 
 // 方式二：先下载文件保存到手机目录，再获取文件绝对路径
@@ -115,7 +144,9 @@ uni.downloadFile({
                     // 预览本地文件
                     sealOfficeOnlineModule.openFile({
                         url: url,
-                        isDeleteFile: false
+                        isDeleteFile: false,
+                        installOfflineCore: true, // 是否离线安装内核
+					  coreLocalPath: this.coreLocalPath, // 离线安装内核本地路径
                     });
                 }
             });
@@ -204,7 +235,8 @@ const coreInfo = sealOfficeOnlineModule.getX5CoreInfo()
 | 参数名             | 说明                                                         | 类型          | 是否必填 | 默认值               | 可选值                  |
 | ------------------ | ------------------------------------------------------------ | ------------- | -------- | -------------------- | ----------------------- |
 | url                | 支持如下三种地址方式：<br />（1）文件网络地址，如：http://113.62.127.199:8090/fileUpload/1.xlsx <br />（2）手机本地文件地址，如：/data/user/0/APP包名/files/1.xlsx 文件名，如：1.xlsx，<br />（3）访问默认目录文件，默认目录为：/data/user/0/APP包名，如：com.HBuilder.UniPlugin<br />**注意**：手机本地地址目录需要有权限访问<br/><span style="color:red">**IOS端只支持在线地址**</span> | string        | 是       |                      |                         |
-| installOfflineCore | 是否离线安装插件内核，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true                 | false                   |
+| installOfflineCore | 是否离线安装插件内核，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | false                | true                    |
+| coreLocalPath      | 插件内核本地绝对路径，参考上面下载插件到本地用法，installOfflineCore=true时，必须配置，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | null                 |                         |
 | isTopBar           | 是否显示顶栏，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true（显示）         | false（隐藏）           |
 | topBarAutoHide     | 顶栏是否自动隐藏，isTopBar=true时生效，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | false（不自动隐藏）  | true（自动隐藏）        |
 | title              | 顶栏标题，isTopBar为true时有效，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | APP名称              |                         |
