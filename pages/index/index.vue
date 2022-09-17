@@ -20,25 +20,25 @@
 					id: 'seal-officeonline',
 					name: 'Seal-OfficeOnline',
 					open: false,
-					url: '/pages/demo/seal-officeonline'
+					url: '/pages/demo/Seal-OfficeOnline/seal-officeonline'
 				},
 				{
 					id: 'seal-imagevideo',
 					name: 'Seal-ImageVideo',
 					open: false,
-					url: '/pages/demo/seal-imagevideo'
+					url: '/pages/demo/Seal-ImageVideo/seal-imagevideo'
 				},
 				{
 					id: 'seal-ocr',
 					name: 'Seal-OCR',
 					open: false,
-					url: '/pages/demo/seal-ocr'
+					url: '/pages/demo/Seal-OCR/seal-ocr'
 				},
 				{
 					id: 'seal-voiceASR',
 					name: 'Seal-VoiceASR',
 					open: false,
-					url: '/pages/demo/seal-voiceASR'
+					url: '/pages/demo/Seal-VoiceASR/seal-voiceASR'
 				}],
 				navigateFlag: false
 			}

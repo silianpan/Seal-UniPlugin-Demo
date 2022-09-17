@@ -4,7 +4,8 @@
 		<u-button plain type="primary" @click="handleOcr('accurate_basic')">通用文字识别（高精度版）</u-button>
 		<u-button plain type="primary" @click="handleOcr('general')">通用文字识别（含位置信息版）</u-button>
 		<u-button plain type="primary" @click="handleOcr('accurate')">通用文字识别（高精度含位置信息版）</u-button>
-		<u-button plain type="primary" @click="handleOcr('general_enhanced')"><span style="font-size: 20rpx">通用文字识别（含生僻字版，该服务已经停止，改用高精度版/高精度含位置版）</span></u-button>
+		<u-button plain type="primary" @click="handleOcr('general_enhanced')"><span
+				style="font-size: 20rpx">通用文字识别（含生僻字版，该服务已经停止，改用高精度版/高精度含位置版）</span></u-button>
 		<u-button plain type="primary" @click="handleOcr('general_webimage')">网络图片文字识别</u-button>
 
 		<!-- 身份证识别 -->
@@ -58,47 +59,52 @@
 </template>
 
 <script>
-const sealOcrModule = uni.requireNativePlugin('Seal-OCR')
-export default {
-	data() {
-		return {
-			idCardFrontImg: null,
-			idCardBackImg: null
-		}
-	},
-	methods: {
-		handleOcr(ocrType, idCardFlag) {
-			sealOcrModule.ocr(
-				{
-					// ak: '',
-					// sk: '',
-					ocrType,
-					scaleWidth: 0.1,
-					scaleHeight: 0.1,
-					albumEnable: false
-				},
-				res => {
-					console.log('res', res)
-					if (idCardFlag === 1) {
-						this.idCardFrontImg = 'file://' + res.ocrImagePath
-					} else if (idCardFlag === 2) {
-						this.idCardBackImg = 'file://' + res.ocrImagePath
-					}
-					uni.showModal({
-						content: '获取识别结果：' + JSON.stringify(res)
+	const sealOcrModule = uni.requireNativePlugin('Seal-OCR')
+	export default {
+		data() {
+			return {
+				idCardFrontImg: null,
+				idCardBackImg: null
+			}
+		},
+		methods: {
+			handleOcr(ocrType, idCardFlag) {
+				sealOcrModule.ocr({
+						ak: '',
+						sk: '',
+						ocrType,
+						resultType: 2,
+						scaleWidth: 0.1,
+						scaleHeight: 0.1,
+						albumEnable: false
+					},
+					res => {
+						// uni.showModal({
+						// 	content: '获取识别结果：' + JSON.stringify(res)
+						// })
+						console.log('res', res)
+						if (idCardFlag === 1) {
+							this.idCardFrontImg = 'file://' + res.ocrImagePath
+						} else if (idCardFlag === 2) {
+							this.idCardBackImg = 'file://' + res.ocrImagePath
+						}
+						uni.showToast({
+							title: '获取识别结果：' + JSON.stringify(res),
+							icon: "none",
+							duration: 10000
+						})
 					})
-				}
-			)
+			}
 		}
 	}
-}
 </script>
 
 <style>
-.ocr-container {
-	padding: 10rpx;
-}
-.ocr-container > uni-button {
-	margin: 10rpx 0 10rpx 0;
-}
+	.ocr-container {
+		padding: 10rpx;
+	}
+
+	.ocr-container>uni-button {
+		margin: 10rpx 0 10rpx 0;
+	}
 </style>

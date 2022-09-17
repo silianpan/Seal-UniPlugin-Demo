@@ -10,25 +10,25 @@
 			}
 		},
 		{
-			"path": "pages/demo/seal-officeonline",
+			"path": "pages/demo/Seal-OfficeOnline/seal-officeonline",
 			"style": {
 				"navigationBarTitleText": "Seal-OfficeOnline"
 			}
 		},
 		{
-			"path": "pages/demo/seal-imagevideo",
+			"path": "pages/demo/Seal-ImageVideo/seal-imagevideo",
 			"style": {
 				"navigationBarTitleText": "Seal-ImageVideo"
 			}
 		},
 		{
-			"path": "pages/demo/seal-ocr",
+			"path": "pages/demo/Seal-OCR/seal-ocr",
 			"style": {
 				"navigationBarTitleText": "Seal-OCR"
 			}
 		},
 		{
-			"path": "pages/demo/seal-voiceASR",
+			"path": "pages/demo/Seal-VoiceASR/seal-voiceASR",
 			"style": {
 				"navigationBarTitleText": "Seal-VoiceASR"
 			}
