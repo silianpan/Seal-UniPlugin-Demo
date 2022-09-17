@@ -16,6 +16,12 @@
 			}
 		},
 		{
+			"path": "pages/demo/Seal-OfficeOnline/seal-officeonline-component",
+			"style": {
+				"navigationBarTitleText": "Seal-OfficeOnline组件嵌入"
+			}
+		},
+		{
 			"path": "pages/demo/Seal-ImageVideo/seal-imagevideo",
 			"style": {
 				"navigationBarTitleText": "Seal-ImageVideo"
