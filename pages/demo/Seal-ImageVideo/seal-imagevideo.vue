@@ -15,6 +15,17 @@
 				</u-grid>
 			</u-grid>
 		</u-cell-group>
+		
+		<h2 class="title">openFileBS接口（Android）</h2>
+		<u-cell-group title="文档/图片/视频预览" :title-style="{ 'font-size': '32rpx', 'font-weight': 'bold', color: '#1890ff' }">
+			<u-grid :col="3">
+				<u-grid :col="3">
+					<u-grid-item v-for="(item, index) in [...docList, ...imageList, ...videoList]" :key="index">
+						<u-image @tap="openOnlineFileBS(item)" width="80%" height="180rpx" :src="'/static/' + item.substring(item.lastIndexOf('.') + 1) + '.svg'" />
+					</u-grid-item>
+				</u-grid>
+			</u-grid>
+		</u-cell-group>
 	</view>
 </template>
 
@@ -127,6 +138,24 @@ export default {
 				res => {
 					uni.showModal({
 						content: '播放视频事件结果：' + JSON.stringify(res)
+					});
+				}
+			);
+		},
+		/**
+		 * QQ浏览器预览接口
+		 * @param {Object} fileUrl 文档url
+		 */
+		openOnlineFileBS(fileUrl) {
+			sealImageVideoModule.openFileBS(
+				{
+					url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
+					topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
+					isDeleteFile: true // 退出是否删除缓存的文件，默认为true（删除缓存文件）
+				},
+				res => {
+					uni.showModal({
+						content: 'QQ浏览器打开文档事件结果：' + JSON.stringify(res)
 					});
 				}
 			);

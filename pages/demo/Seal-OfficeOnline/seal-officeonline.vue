@@ -139,7 +139,8 @@ export default {
 					'WPS打开文档（只读模式，需安装WPS客户端）',
 					'WPS打开文档（编辑模式，需安装WPS客户端）',
 					'WPS打开文档（阅读器模式，需安装WPS客户端）',
-					'WPS打开文档（另存模式，需安装WPS客户端）'
+					'WPS打开文档（另存模式，需安装WPS客户端）',
+					'QQ浏览服务预览文档（需安装QQ浏览器客户端）'
 				],
 				success: ({ tapIndex }) => {
 					switch (tapIndex) {
@@ -168,6 +169,9 @@ export default {
 						case 7:
 							this.openOnlineFileWPS(fileUrl, 'SaveOnly');
 							break;
+						case 8:
+							this.openOnlineFileBS(fileUrl);
+							break;
 					}
 				}
 			});
@@ -182,7 +186,11 @@ export default {
 					url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
 					title: 'Office文档在线预览', // 顶栏标题，默认为：APP名称
 					topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
-					waterMarkText: '你好，世界\n准备好了吗？时刻准备着' // 水印文本
+					waterMarkText: '你好，世界\n准备好了吗？时刻准备着', // 水印文本
+					docRequestHeaders: {
+						'Authorization': 'Token xxxxxxxx',
+						'Other': 'other'
+					}, // 文档下载请求头
 					// installOfflineCore: true, // 是否离线安装内核
 					// coreLocalPath: this.coreLocalPath, // 离线安装内核本地路径
 				},

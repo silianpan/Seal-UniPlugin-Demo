@@ -117,7 +117,39 @@ openVideo(fileUrl) {
 }
 ```
 
-#### （3）获取内核信息，用于调试
+### （3）QQ浏览服务预览文档
+
+使用接口：openFileBS，参数参考《四、openFileBS接口参数说明》
+
+> QQ浏览服务预览文档，是调用QQ浏览服务预览文档的方式，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等。
+>
+> 前提，需要本机安装QQ浏览器客户端。
+
+```javascript
+/**
+* QQ浏览服务预览接口，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
+* 平台支持：仅Android，支持以下参数
+* @param {Object} fileUrl 文档url
+*/
+openOnlineFileBS(fileUrl) {
+    sealOfficeOnlineModule.openFileBS(
+        {
+            url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
+            topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
+            isDeleteFile: true // 退出是否删除缓存的文件，默认为true（删除缓存文件）
+        },
+        res => {
+            uni.showModal({
+                content: 'QQ浏览器打开文档事件结果：' + JSON.stringify(res)
+            });
+        }
+    );
+},
+```
+
+
+
+#### （4）获取内核信息，用于调试
 
 ```javascript
 /** 获取内核信息，用于调试 
@@ -155,9 +187,19 @@ getX5CoreInfo() {
 | imageCurrentIndex  | 当前点击图片在imageUrls中的下标，从0开始<span style="color:red">**IOS端无此配置**</span> | int           | 否       | 0      |                         |
 | imageIndexType     | 图片底部指示器类型，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 'dot'  | 'number':数字；'dot':点 |
 
+## 四、openFileBS接口参数说明
 
+QQ浏览服务打开在线文档
 
-## 四、问题解决
+> 同openFile接口参数，支持：url，fileType，fileName，isDeleteFile，initTitle，initBody，docDownloadTitle，docDownloadBody，installOfflineCore，coreLocalPath，coreUrl，topBarBgColor
+
+* 支持QQ浏览器在线编辑、全屏播放、阅读模式等
+* 支持QQ浏览器打开46种文件格式文件
+* 查看最近打开文件
+* 发送分享文档
+* 采用其他应用打开等
+
+## 五、问题解决
 
 ### 问题一：
 
