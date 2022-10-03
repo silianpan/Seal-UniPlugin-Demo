@@ -71,20 +71,6 @@
                     "pid" : "3226",
                     "parameters" : {}
                 }
-            },
-            "Seal-ImageVideo" : {
-                "__plugin_info__" : {
-                    "name" : "Android&IOS图片在线预览，视频播放原生插件 - [试用版，仅用于自定义调试基座]",
-                    "description" : "Android和IOS，在线预览图片，播放视频，支持jpg、jpeg、png、bmp、gif、mp4、mkv、avi等多种格式",
-                    "platforms" : "Android,iOS",
-                    "url" : "https://ext.dcloud.net.cn/plugin?id=5478",
-                    "android_package_name" : "",
-                    "ios_bundle_id" : "",
-                    "isCloud" : true,
-                    "bought" : 0,
-                    "pid" : "5478",
-                    "parameters" : {}
-                }
             }
         }
     },
