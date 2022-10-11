@@ -60,14 +60,22 @@ export default {
 	},
 	methods: {
 		/**
+		 * 打印结果信息
+		 * @param {Object} title 标题
+		 * @param {Object} result 结果
+		 */
+		printInfo(title, result) {
+			console.log(title, result);
+			// uni.showModal({
+			// 	content: title + JSON.stringify(result)
+			// });
+		},
+		/**
 		 * 获取内核信息
 		 */
 		getX5CoreInfo() {
 			const coreInfo = sealImageVideoModule.getX5CoreInfo();
-			console.log('coreInfo', coreInfo);
-			uni.showModal({
-				content: '插件内核信息：' + JSON.stringify(coreInfo)
-			});
+			this.printInfo('插件内核信息：', coreInfo);
 		},
 		/**
 		 * 应用刚进入或页面刚进入，初始化下载内核到本机，获取本地路径
@@ -117,9 +125,7 @@ export default {
 						topBarBgColor: '#3394EC' // 顶栏背景颜色，默认为：#177cb0（靛青）
 					},
 					res => {
-						uni.showModal({
-							content: 'IOS图片预览事件结果：' + JSON.stringify(res)
-						});
+						this.printInfo('IOS图片预览事件结果：', res);
 					}
 				);
 			}
@@ -136,9 +142,23 @@ export default {
 					coreLocalPath: this.coreLocalPath // 离线安装内核本地路径
 				},
 				res => {
-					uni.showModal({
-						content: '播放视频事件结果：' + JSON.stringify(res)
-					});
+					this.printInfo('播放视频事件结果：', res);
+				}
+			);
+		},
+		/**
+		 * QQ浏览器预览接口
+		 * @param {Object} fileUrl 文档url
+		 */
+		openOnlineFileBS(fileUrl) {
+			sealImageVideoModule.openFileBS(
+				{
+					url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
+					topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
+					isDeleteFile: true // 退出是否删除缓存的文件，默认为true（删除缓存文件）
+				},
+				res => {
+					this.printInfo('QQ浏览器打开文档事件结果：', res);
 				}
 			);
 		},

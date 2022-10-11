@@ -80,24 +80,29 @@ export default {
 	},
 	methods: {
 		/**
+		 * 打印结果信息
+		 * @param {Object} title 标题
+		 * @param {Object} result 结果
+		 */
+		printInfo(title, result) {
+			console.log(title, result);
+			// uni.showModal({
+			// 	content: title + JSON.stringify(result)
+			// });
+		},
+		/**
 		 * 获取内核信息
 		 */
 		getX5CoreInfo() {
 			const coreInfo = sealOfficeOnlineModule.getX5CoreInfo();
-			console.log('coreInfo', coreInfo);
-			uni.showModal({
-				content: '插件内核信息：' + JSON.stringify(coreInfo)
-			});
+			this.printInfo('插件内核信息：', coreInfo);
 		},
 		/**
 		 * 检查WPS客户端是否已经安装
 		 */
 		checkWps() {
 			const checkWps = sealOfficeOnlineModule.checkWps();
-			console.log('checkWps', checkWps);
-			uni.showModal({
-				content: 'WPS是否安装：' + JSON.stringify(checkWps)
-			});
+			this.printInfo('WPS是否安装：', checkWps);
 		},
 		/**
 		 * 应用刚进入或页面刚进入，初始化下载内核到本机，获取本地路径
@@ -195,9 +200,7 @@ export default {
 					// coreLocalPath: this.coreLocalPath, // 离线安装内核本地路径
 				},
 				res => {
-					uni.showModal({
-						content: '打开在线文档事件结果：' + JSON.stringify(res)
-					});
+					this.printInfo('打开在线文档事件结果：', res);
 				}
 			);
 		},
@@ -215,9 +218,7 @@ export default {
 		//             coreUrl: 'https://tbs.imtt.qq.com/release/x5/tbs_core_045738_20210925205342_nolog_fs_obfs_armeabi_release.tbs', // 离线内核包在线地址
 		//         },
 		//         res => {
-		//             uni.showModal({
-		//                 content: '打开本地文档事件结果：' + JSON.stringify(res)
-		//             });
+		//				this.printInfo('打开本地文档事件结果：', res);
 		//         }
 		//     );
 		// },
@@ -237,9 +238,7 @@ export default {
 			// 		coreLocalPath: this.coreLocalPath, // 离线安装内核本地路径
 			// 	},
 			// 	res => {
-			// 		uni.showModal({
-			// 			content: '打开本地文档事件结果：' + JSON.stringify(res)
-			// 		});
+			//		this.printInfo('打开本地文档事件结果：', res);
 			// 	});
 
 			// 方式二：先下载文件保存到手机目录，再获取文件绝对路径
@@ -274,9 +273,7 @@ export default {
 										coreLocalPath: this.coreLocalPath // 离线安装内核本地路径
 									},
 									res => {
-										uni.showModal({
-											content: '打开本地文档事件结果：' + JSON.stringify(res)
-										});
+										this.printInfo('打开本地文档事件结果：', res);
 									}
 								);
 							}
@@ -303,9 +300,7 @@ export default {
 					openMode
 				},
 				res => {
-					uni.showModal({
-						content: 'WPS打开文档事件结果：' + JSON.stringify(res)
-					});
+					this.printInfo('WPS打开文档事件结果：', res);
 				}
 			);
 		},
@@ -321,9 +316,7 @@ export default {
 					isDeleteFile: true // 退出是否删除缓存的文件，默认为true（删除缓存文件）
 				},
 				res => {
-					uni.showModal({
-						content: 'QQ浏览器打开文档事件结果：' + JSON.stringify(res)
-					});
+					this.printInfo('QQ浏览器打开文档事件结果：', res);
 				}
 			);
 		},
@@ -349,9 +342,7 @@ export default {
 						topBarBgColor: '#3394EC' // 顶栏背景颜色，默认为：#177cb0（靛青）
 					},
 					res => {
-						uni.showModal({
-							content: 'IOS图片预览事件结果：' + JSON.stringify(res)
-						});
+						this.printInfo('IOS图片预览事件结果：', res);
 					}
 				);
 			}
@@ -368,9 +359,7 @@ export default {
 					coreLocalPath: this.coreLocalPath // 离线安装内核本地路径
 				},
 				res => {
-					uni.showModal({
-						content: '播放视频事件结果：' + JSON.stringify(res)
-					});
+					this.printInfo('播放视频事件结果：', res);
 				}
 			);
 		}
