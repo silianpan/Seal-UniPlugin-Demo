@@ -49,7 +49,7 @@ export default {
 			coreLocalPath: '',
 			platform: '',
 			docList: [
-				'http://silianpan.cn/upload/2022/01/01/1.pdf',
+				'http://silianpan.cn/upload/2022/01/01/2.pdf',
 				'http://silianpan.cn/upload/2022/01/01/1.txt',
 				'http://silianpan.cn/upload/2022/01/01/1.docx',
 				'http://silianpan.cn/upload/2022/01/01/1.xlsx',
