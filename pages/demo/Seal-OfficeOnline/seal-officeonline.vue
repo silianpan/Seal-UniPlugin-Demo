@@ -92,9 +92,9 @@ export default {
 		 */
 		printInfo(title, result) {
 			console.log(title, result);
-			uni.showModal({
-				content: title + JSON.stringify(result)
-			});
+			// uni.showModal({
+			// 	content: title + JSON.stringify(result)
+			// });
 		},
 		/**
 		 * 获取内核信息
