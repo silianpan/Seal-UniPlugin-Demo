@@ -77,7 +77,7 @@ const sealOfficeOnlineModule = uni.requireNativePlugin("Seal-OfficeOnline")
 * **openFile**方法（推荐）：支持Android和IOS，预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx、epub等
 * **openFileWPS**方法（推荐）：采用本机WPS客户端预览或编辑文档，支持pdf、txt、doc、xls、ppt等多种文件格式。
 * **checkWps**方法：检查本机WPS客户端是否已经安装。
-* **OpenFileBS**方法：仅支持Android，打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
+* **openFileBS**方法：仅支持Android，打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
 * **getX5CoreInfo**方法（调试）：获取内核安装信息，用于调试
 
 **<span style="color:red">接口使用方法，参考如下章节《四、使用方法》</span>**

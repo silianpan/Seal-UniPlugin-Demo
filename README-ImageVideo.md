@@ -55,7 +55,7 @@ const sealImageVideoModule = uni.requireNativePlugin("Seal-ImageVideo")
 ```
 
 * **openFile**方法（推荐）：支持Android和IOS，在线预览图片，播放视频，支持jpg、jpeg、png、bmp、gif、mp4、mkv、avi等多种格式。
-* **OpenFileBS**方法：仅支持Android，打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
+* **openFileBS**方法：仅支持Android，打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
 * **getX5CoreInfo**方法（调试）：获取内核安装信息，用于调试
 
 #### （1）图片预览
