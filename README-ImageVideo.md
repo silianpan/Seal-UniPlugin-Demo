@@ -55,9 +55,12 @@ const sealImageVideoModule = uni.requireNativePlugin("Seal-ImageVideo")
 ```
 
 * **openFile**方法（推荐）：支持Android和IOS，在线预览图片，播放视频，支持jpg、jpeg、png、bmp、gif、mp4、mkv、avi等多种格式。
+* **OpenFileBS**方法：仅支持Android，打开在线文档，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等
 * **getX5CoreInfo**方法（调试）：获取内核安装信息，用于调试
 
 #### （1）图片预览
+
+> 支持平台：Android、IOS
 
 ```javascript
 /**
@@ -80,7 +83,7 @@ openImage(fileUrl, imageCurrentIndex) {
             {
                 url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
                 title: 'IOS图片预览', // 顶栏标题，默认为：APP名称
-                topBarBgColor: '#3394EC' // 顶栏背景颜色，默认为：#177cb0（靛青）
+                topBarBgColor: '#3394EC' // 顶栏背景颜色，默认为：#3394EC（科技蓝）
             },
             res => {
                 uni.showModal({
@@ -93,6 +96,8 @@ openImage(fileUrl, imageCurrentIndex) {
 ```
 
 #### （2）视频播放
+
+> 支持平台：Android、IOS
 
 ```js
 /**
@@ -124,6 +129,8 @@ openVideo(fileUrl) {
 > QQ浏览服务预览文档，是调用QQ浏览服务预览文档的方式，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等。
 >
 > 前提，需要本机安装QQ浏览器客户端。
+>
+> 支持平台：Android
 
 ```javascript
 /**
@@ -135,7 +142,7 @@ openOnlineFileBS(fileUrl) {
     sealOfficeOnlineModule.openFileBS(
         {
             url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
-            topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
+            topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#3394EC（科技蓝）
             isDeleteFile: true // 退出是否删除缓存的文件，默认为true（删除缓存文件）
         },
         res => {
@@ -150,6 +157,8 @@ openOnlineFileBS(fileUrl) {
 
 
 #### （4）获取内核信息，用于调试
+
+> 支持平台：Android
 
 ```javascript
 /** 获取内核信息，用于调试 
@@ -177,6 +186,8 @@ getX5CoreInfo() {
 
 ## 三、openFile接口参数说明
 
+> 支持平台：Android、IOS
+
 | 参数名             | 说明                                                         | 类型          | 是否必填 | 默认值 | 可选值                  |
 | ------------------ | ------------------------------------------------------------ | ------------- | -------- | ------ | ----------------------- |
 | videoUrl           | 视频在线url，此参数优先于图片预览和文档预览                  | string        | 是       |        |                         |
@@ -192,6 +203,8 @@ getX5CoreInfo() {
 QQ浏览服务打开在线文档
 
 > 同openFile接口参数，支持：url，fileType，fileName，isDeleteFile，initTitle，initBody，docDownloadTitle，docDownloadBody，installOfflineCore，coreLocalPath，coreUrl，topBarBgColor
+>
+> 支持平台：Android
 
 * 支持QQ浏览器在线编辑、全屏播放、阅读模式等
 * 支持QQ浏览器打开46种文件格式文件

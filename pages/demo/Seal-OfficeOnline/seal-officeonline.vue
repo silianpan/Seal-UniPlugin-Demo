@@ -63,7 +63,11 @@ export default {
 				'http://silianpan.cn/upload/2022/01/01/1.bmp',
 				'http://silianpan.cn/upload/2022/01/01/1.gif'
 			],
-			videoList: ['http://silianpan.cn/upload/2022/01/01/1.mp4', 'http://silianpan.cn/upload/2022/01/01/1.mkv', 'http://silianpan.cn/upload/2022/01/01/1.avi']
+			videoList: [
+				'http://silianpan.cn/upload/2022/01/01/1.mp4',
+				'http://silianpan.cn/upload/2022/01/01/1.mkv',
+				'http://silianpan.cn/upload/2022/01/01/1.avi'
+			]
 		};
 	},
 	onLoad() {
@@ -71,10 +75,12 @@ export default {
 		const { platform } = uni.getSystemInfoSync();
 		this.platform = platform;
 
-		// 下载内核
-		// this.downloadCoreToLocal()
-		// 获取内核信息
-		this.getX5CoreInfo();
+		if (this.platform === 'android') {
+			// 下载内核
+			// this.downloadCoreToLocal()
+			// 获取内核信息
+			this.getX5CoreInfo();
+		}
 		// 检查WPS客户端是否已经安装
 		this.checkWps();
 	},
@@ -86,9 +92,9 @@ export default {
 		 */
 		printInfo(title, result) {
 			console.log(title, result);
-			// uni.showModal({
-			// 	content: title + JSON.stringify(result)
-			// });
+			uni.showModal({
+				content: title + JSON.stringify(result)
+			});
 		},
 		/**
 		 * 获取内核信息
@@ -162,6 +168,7 @@ export default {
 							break;
 						case 3:
 							this.openOnlineFileWPS(fileUrl, 'Normal');
+							break;
 						case 4:
 							this.openOnlineFileWPS(fileUrl, 'ReadOnly');
 							break;
@@ -190,7 +197,7 @@ export default {
 				{
 					url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
 					title: 'Office文档在线预览', // 顶栏标题，默认为：APP名称
-					topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
+					topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#3394EC（科技蓝）
 					waterMarkText: '你好，世界\n准备好了吗？时刻准备着', // 水印文本
 					docRequestHeaders: {
 						'Authorization': 'Token xxxxxxxx',
@@ -312,7 +319,7 @@ export default {
 			sealOfficeOnlineModule.openFileBS(
 				{
 					url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
-					topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
+					topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#3394EC（科技蓝）
 					isDeleteFile: true // 退出是否删除缓存的文件，默认为true（删除缓存文件）
 				},
 				res => {
@@ -339,7 +346,7 @@ export default {
 					{
 						url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
 						title: 'IOS图片预览', // 顶栏标题，默认为：APP名称
-						topBarBgColor: '#3394EC' // 顶栏背景颜色，默认为：#177cb0（靛青）
+						topBarBgColor: '#3394EC' // 顶栏背景颜色，默认为：#3394EC（科技蓝）
 					},
 					res => {
 						this.printInfo('IOS图片预览事件结果：', res);

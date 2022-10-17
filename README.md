@@ -99,6 +99,8 @@ const sealOfficeOnlineModule = uni.requireNativePlugin("Seal-OfficeOnline")
 > 在线内核、离线内核均可使用，也支持自定义水印。
 >
 > 注意：要采用nvue原生组件方式，不可以采用vue组件方式。
+>
+> 支持平台：Android、IOS
 
 新建组件：seal-officeonline-component.nvue
 
@@ -139,6 +141,8 @@ export default {
 > 同样，文档也可以下载到手机本地，获取文档本地路径，传递到接口url参数中。
 >
 > 注意：添加参数`isDeleteFile: false`，否则退出预览，文件删除
+>
+> 支持平台：Android
 
 ```javascript
 // 方法一、传递coreUrl参数
@@ -258,6 +262,8 @@ openOfflineFile(fileUrl) {
 > 在线文档预览，是内核初次采用在线安装，预览在线文档url地址的方式。
 >
 > 此方式最为简单，直接传入在线url参数即可。
+>
+> 支持平台：Android、IOS
 
 ```javascript
 /**
@@ -269,7 +275,7 @@ openOnlineFile(fileUrl) {
         {
             url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
             title: 'Office文档在线预览', // 顶栏标题，默认为：APP名称
-            topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
+            topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#3394EC（科技蓝）
             waterMarkText: '你好，世界\n准备好了吗？时刻准备着' // 水印文本
             // installOfflineCore: true, // 是否离线安装内核
             // coreLocalPath: this.coreLocalPath, // 离线安装内核本地路径
@@ -290,6 +296,8 @@ openOnlineFile(fileUrl) {
 > WPS预览或编辑文档，是采用本机WPS客户端预览或编辑文档，支持pdf、txt、doc、xls、ppt等多种文件格式。
 >
 > 支持5种模式，包括文档编辑。前提，本地需要安装WPS客户端。
+>
+> 支持平台：Android、IOS（分享功能，第三方APP打开）
 
 ```javascript
 /**
@@ -323,6 +331,8 @@ openOnlineFileWPS(fileUrl, openMode) {
 使用接口：checkWps，无参数。
 
 > 注意：返回结果格式：{ "hasWps": true }
+>
+> 支持平台：Android、IOS
 
 ```javascript
 /**
@@ -345,6 +355,8 @@ checkWps() {
 > QQ浏览服务预览文档，是调用QQ浏览服务预览文档的方式，支持Excel在线编辑，PPT全屏浏览，查看最近打开文件，发送分享文档，采用其他应用打开等。
 >
 > 前提，需要本机安装QQ浏览器客户端。
+>
+> 支持平台：Android
 
 ```javascript
 /**
@@ -356,7 +368,7 @@ openOnlineFileBS(fileUrl) {
     sealOfficeOnlineModule.openFileBS(
         {
             url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
-            topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
+            topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#3394EC（科技蓝）
             isDeleteFile: true // 退出是否删除缓存的文件，默认为true（删除缓存文件）
         },
         res => {
@@ -371,6 +383,8 @@ openOnlineFileBS(fileUrl) {
 ### 7、图片预览
 
 使用接口：openFile
+
+> 支持平台：Android、IOS
 
 ```javascript
 /**
@@ -393,7 +407,7 @@ openImage(fileUrl, imageCurrentIndex) {
             {
                 url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
                 title: 'IOS图片预览', // 顶栏标题，默认为：APP名称
-                topBarBgColor: '#3394EC' // 顶栏背景颜色，默认为：#177cb0（靛青）
+                topBarBgColor: '#3394EC' // 顶栏背景颜色，默认为：#3394EC（科技蓝）
             },
             res => {
                 uni.showModal({
@@ -408,6 +422,8 @@ openImage(fileUrl, imageCurrentIndex) {
 ### 8、视频播放
 
 使用接口：openFile
+
+> 支持平台：Android、IOS
 
 ```javascript
 /**
@@ -434,6 +450,8 @@ openVideo(fileUrl) {
 
 ### 9、获取内核信息，用于调试
 
+> 支持平台：Android
+
 ```javascript
 /** 获取内核信息，用于调试 
 * 返回结果格式
@@ -458,6 +476,8 @@ getX5CoreInfo() {
 
 支持打开在线文档，本地文档
 
+> 支持平台：Android、IOS
+
 | 参数名             | 说明                                                         | 类型          | 是否必填 | 默认值            | 可选值                  |
 | ------------------ | ------------------------------------------------------------ | ------------- | -------- | ----------------- | ----------------------- |
 | url                | 支持如下三种地址方式：<br />（1）文件网络地址，如：http://113.62.127.199:8090/fileUpload/1.xlsx <br />（2）手机本地文件地址，如：/data/user/0/APP包名/files/1.xlsx 文件名，如：1.xlsx，<br />（3）访问默认目录文件，默认目录为：/data/user/0/APP包名，如：com.HBuilder.UniPlugin<br />**注意**：手机本地地址目录需要有权限访问<br/><span style="color:red">**IOS端只支持在线地址**</span> | string        | 是       |                   |                         |
@@ -472,16 +492,16 @@ getX5CoreInfo() {
 | coreLocalPath      | 插件内核本地绝对路径，参考上面下载插件到本地用法，installOfflineCore=true时，必须配置，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | null              |                         |
 | coreUrl            | 内核离线包url，coreLocalPath优先级更高，即，如果coreLocalPath不为空，coreUrl参数无效，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | null              |                         |
 | waterMarkText      | 水印文本，默认以**\n**作为分隔符换行                         | string        | 否       | null              |                         |
-| waterMarkTextSep   | 水印文本分隔符，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | \n                |                         |
+| waterMarkTextSep   | 水印文本分隔符，<span style="color:red">**注意：IOS端只支持\n换行**</span> | string        | 否       | \n                |                         |
 | waterMarkFontSize  | 水印字体大小，单位为sp<br>使用sp作为字体大小单位,会随着系统的字体大小改变 | int           | 否       | 13                |                         |
 | waterMarkFontColor | 水印字体颜色                                                 | string        | 否       | #40F3F5F9         |                         |
 | waterMarkDegree    | 水印旋转角度，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | -30（逆时针30度） |                         |
 | isTopBar           | 是否显示顶栏，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true              | false                   |
-| title              | 顶栏标题，isTopBar为true时有效，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | APP名称           |                         |
+| title              | 顶栏标题，isTopBar为true时有效                               | string        | 否       | APP名称           |                         |
 | topBarAutoHide     | 顶栏是否自动隐藏，isTopBar=true时生效，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | false             | true                    |
 | topBarHeight       | 顶栏自定义高度，isTopBar为true时有效，类型为正整数，<span style="color:red">**IOS端无此配置**</span> | int           | 否       | actionBarSize     |                         |
-| topBarBgColor      | 顶栏背景颜色，isTopBar为true时有效，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | #177cb0（靛青）   |                         |
-| topBarTextColor    | 顶栏文本颜色（isTopBar为true时有效），<span style="color:red">**IOS端无此配置**</span> | string        | 否       | #FFFFFF（白色）   |                         |
+| topBarBgColor      | 顶栏背景颜色，isTopBar为true时有效                           | string        | 否       | #3394EC（科技蓝） |                         |
+| topBarTextColor    | 顶栏文本颜色（isTopBar为true时有效）                         | string        | 否       | #FFFFFF（白色）   |                         |
 | topBarTextLength   | 顶栏标题文字长度（isTopBar为true时有效），<span style="color:red">**IOS端无此配置**</span> | int           | 否       | 12                |                         |
 | isBackArrow        | 是否显示返回按钮（isTopBar为true时有效），<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true              | false                   |
 | videoUrl           | 视频在线url，此参数优先于图片预览和文档预览                  | string        | 是       |                   |                         |
@@ -494,6 +514,8 @@ getX5CoreInfo() {
 ## 六、openFileWPS接口参数说明
 
 本机WPS客户端预览或编辑文档
+
+> 支持平台：Android、IOS（分享功能，第三方APP打开）
 
 | 参数名           | 说明                                                         | 类型   | 是否必填 | 默认值    | 可选值 |
 | ---------------- | ------------------------------------------------------------ | ------ | -------- | --------- | ------ |
@@ -521,6 +543,8 @@ getX5CoreInfo() {
 QQ浏览服务打开在线文档
 
 > 同openFile接口参数，支持：url，fileType，fileName，isDeleteFile，initTitle，initBody，docDownloadTitle，docDownloadBody，installOfflineCore，coreLocalPath，coreUrl，topBarBgColor
+>
+> 支持平台：Android
 
 * 支持QQ浏览器在线编辑、全屏播放、阅读模式等
 * 支持QQ浏览器打开46种文件格式文件
@@ -587,6 +611,8 @@ QQ浏览服务打开在线文档
 | 1021   | WPS动作事件                    |
 
 ### 3、WPS动作事件类型actionType说明
+
+> 支持平台：Android
 
 | 动作类型 | 说明     |
 | -------- | -------- |

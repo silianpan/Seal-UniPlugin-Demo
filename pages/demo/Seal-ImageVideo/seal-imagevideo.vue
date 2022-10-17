@@ -53,10 +53,12 @@ export default {
 		const { platform } = uni.getSystemInfoSync();
 		this.platform = platform;
 
-		// 下载内核
-		this.downloadCoreToLocal();
-		// 获取内核信息
-		this.getX5CoreInfo();
+		if (this.platform === 'android') {
+			// 下载内核
+			// this.downloadCoreToLocal();
+			// 获取内核信息
+			this.getX5CoreInfo();
+		}
 	},
 	methods: {
 		/**
@@ -122,7 +124,7 @@ export default {
 					{
 						url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
 						title: 'IOS图片预览', // 顶栏标题，默认为：APP名称
-						topBarBgColor: '#3394EC' // 顶栏背景颜色，默认为：#177cb0（靛青）
+						topBarBgColor: '#3394EC' // 顶栏背景颜色，默认为：#3394EC（科技蓝）
 					},
 					res => {
 						this.printInfo('IOS图片预览事件结果：', res);
@@ -154,29 +156,11 @@ export default {
 			sealImageVideoModule.openFileBS(
 				{
 					url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
-					topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
+					topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#3394EC（科技蓝）
 					isDeleteFile: true // 退出是否删除缓存的文件，默认为true（删除缓存文件）
 				},
 				res => {
 					this.printInfo('QQ浏览器打开文档事件结果：', res);
-				}
-			);
-		},
-		/**
-		 * QQ浏览器预览接口
-		 * @param {Object} fileUrl 文档url
-		 */
-		openOnlineFileBS(fileUrl) {
-			sealImageVideoModule.openFileBS(
-				{
-					url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
-					topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#177cb0（靛青）
-					isDeleteFile: true // 退出是否删除缓存的文件，默认为true（删除缓存文件）
-				},
-				res => {
-					uni.showModal({
-						content: 'QQ浏览器打开文档事件结果：' + JSON.stringify(res)
-					});
 				}
 			);
 		}
