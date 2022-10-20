@@ -26,11 +26,13 @@
 
 ## 一、注意事项
 
-* ### `manifest.json->App模块配置不要勾选Android X5 Webview`
+* ##### manifest.json->App模块配置不要勾选Android X5 Webview`
 
-* ### 不要同时使用其他任何预览插件，否则，会引起打包冲突
+* ##### 不要同时使用其他任何预览插件，否则，会引起打包冲突
 
-* ### 如遇预览失败，（1）把APP卸载，重新打基座运行，第一次运行会自动安装X5插件；（2）或者换手机（华为或小米）进行测试
+* ##### 如遇预览失败，（1）把APP卸载，重新打基座运行，第一次运行会自动安装X5插件；（2）或者换手机（华为或小米）进行测试
+
+* ##### url或参数中是否含有中文字符串，请使用encodeURIComponent**或**encodeURI进行转码，详细说明见下面问题二
 
 ## 二、问题解决
 
@@ -44,7 +46,29 @@
 
 **解决方案：manifest.json -APP常用其他设置 -支持CPU类型 armeabi-v7a arm64-v8a 两个都勾选的**，
 
-重新打一下自定义基座 问题就解决了。<span style="color:red">各位同学，对于插件使用还有疑问的，可以加QQ群（170683293）咨询。</span>
+重新打一下自定义基座 问题就解决了。
+
+### 问题二：
+
+> 插件安装成功，但是文档预览失败。
+
+解决方案：检查文档url或参数中是否含有**中文字符串**，如果有，请使用**encodeURIComponent**或**encodeURI**进行转码。
+
+如果参数有http://链接，使用**encodeURIComponent**；如果要对整个url进行转码，使用**encodeURI**
+
+> encodeURIComponent和encodeURI区别
+>
+> 它们都是编码URL，唯一区别就是编码的字符范围，其中
+>
+> encodeURI方法***不会***对下列字符编码 **ASCII字母 数字 ~!@#$&\*()=:/,;?+'**
+>
+> encodeURIComponent方法***不会***对下列字符编码 **ASCII字母 数字 ~!\*()'**
+>
+> 所以encodeURIComponent比encodeURI编码的范围更大。
+
+
+
+<span style="color:red">各位同学，对于插件使用还有疑问的，可以加QQ群（170683293）咨询。</span>
 
 
 
