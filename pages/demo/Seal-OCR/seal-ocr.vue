@@ -47,6 +47,7 @@
 		<u-button plain type="primary" @click="handleOcr('weight_note')">磅单识别</u-button>
 		<u-button plain type="primary" @click="handleOcr('medical_detail')">医疗费用明细识别</u-button>
 		<u-button plain type="primary" @click="handleOcr('online_taxi_itinerary')">网约车行程单识别</u-button>
+		<u-button plain type="primary" @click="handleOcr('waybill')">快递面单识别</u-button>
 
 		<u-button plain type="primary" @click="handleOcr('custom')">自定义模板识别</u-button>
 		
