@@ -20,7 +20,7 @@
 		<u-cell-group title="文档/图片/视频预览" :title-style="{ 'font-size': '32rpx', 'font-weight': 'bold', color: '#1890ff' }">
 			<u-grid :col="3">
 				<u-grid :col="3">
-					<u-grid-item v-for="(item, index) in [...docList, ...imageList, ...videoList]" :key="index">
+					<u-grid-item v-for="(item, index) in [...imageList, ...videoList]" :key="index">
 						<u-image @tap="openOnlineFileBS(item)" width="80%" height="180rpx" :src="'/static/' + item.substring(item.lastIndexOf('.') + 1) + '.svg'" />
 					</u-grid-item>
 				</u-grid>
