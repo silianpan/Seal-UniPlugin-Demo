@@ -1,6 +1,7 @@
 <template>
 	<view>
 		<h2 class="title">openFile接口（Android和IOS）</h2>
+		<u-button type="primary" @click="getX5CoreInfo">获取x5内核加载帮助信息</u-button>
 		<u-cell-group title="Office文档预览" :title-style="{ 'font-size': '32rpx', 'font-weight': 'bold', color: '#1890ff' }">
 			<u-grid :col="3">
 				<u-grid :col="3">

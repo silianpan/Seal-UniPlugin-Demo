@@ -167,6 +167,7 @@ openOnlineFileBS(fileUrl) {
 *     'isCoreInited': false, // 内核是否加载
 *     'coreVersion': 0, // 内核版本
 *     'sdkVersion': 43967, // sdk版本
+*	  'X5CoreLoadHelp': '', // 内核加载帮助信息
 * }
 */
 getX5CoreInfo() {
