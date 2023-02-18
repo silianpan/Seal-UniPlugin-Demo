@@ -1,7 +1,8 @@
 <template>
 	<view>
 		<h2 class="title">openFile接口（Android和IOS）</h2>
-		<u-button type="primary" @click="getX5CoreInfo">获取x5内核加载帮助信息</u-button>
+		<u-button style="margin: 0 10px 0 10px" type="primary" @click="getX5CoreInfo">获取x5内核加载帮助信息</u-button>
+		<u-button style="margin: 6px 10px 0 10px" type="primary" @click="handlePlusCheckWPS">plus检查WPS是否安装</u-button>
 		<u-cell-group title="Office文档预览" :title-style="{ 'font-size': '32rpx', 'font-weight': 'bold', color: '#1890ff' }">
 			<u-grid :col="3">
 				<u-grid :col="3">
@@ -86,6 +87,21 @@ export default {
 		this.checkWps();
 	},
 	methods: {
+		// 判断第三方程序(WPS) 是否安装
+		handlePlusCheckWPS() {
+			const isExistApp = plus.runtime.isApplicationExist({pname:'cn.wps.moffice_eng', action:'KingsoftOfficeApp://'});
+			if (isExistApp) {
+				console.log("WPS应用已安装");
+				uni.showModal({
+					content: 'WPS应用已安装'
+				});
+			} else {
+				console.log("WPS应用未安装");
+				uni.showModal({
+					content: 'WPS应用未安装'
+				});
+			}
+		},
 		/**
 		 * 打印结果信息
 		 * @param {Object} title 标题
