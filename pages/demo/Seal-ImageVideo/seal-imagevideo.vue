@@ -116,7 +116,8 @@ export default {
 				sealImageVideoModule.openFile({
 					imageUrls: this.imageList,
 					imageCurrentIndex, // 当前点击图片在imageUrls中的下标，从0开始，默认为0
-					imageIndexType: 'number' // 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
+					imageIndexType: 'number', // 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
+					isSaveImg: true, // 是否长按保存图片
 				});
 			} else if (this.platform === 'ios') {
 				// IOS
