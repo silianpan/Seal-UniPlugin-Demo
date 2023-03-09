@@ -353,11 +353,17 @@ openOnlineFileWPS(fileUrl, openMode) {
 
 ### 5、检查本机是否安装WPS客户端
 
-使用接口：checkWps，无参数。
+##### 5.1、方法一（推荐）、使用原生接口：checkWps，无参数。
 
 > 注意：返回结果格式：{ "hasWps": true }
 >
 > 支持平台：Android、IOS
+
+<span style="color:red">注意：IOS配置应用访问白名单：</span>**manifest.json**—》App常用其他设置—》IOS设置—》应用访问白名单，
+
+添加：**KingsoftOfficeApp,KingsoftOfficeAppEnterprise,WPSOfficeApi**
+
+<img src="http://silianpan.cn/upload/2023/02/image-0c13acc0ef9e4a96a4bbd02f32361e30.png" alt="应用访问白名单" style="zoom: 50%;" />
 
 ```javascript
 /**
@@ -372,6 +378,23 @@ checkWps() {
     });
 },
 ```
+
+##### 5.2、方法二、直接调用*plus.runtime.isApplicationExist*
+
+参考链接：https://www.cnblogs.com/goloving/p/14384105.html
+
+```js
+// 判断第三方程序(WPS) 是否安装
+function checkApp() {
+    if (plus.runtime.isApplicationExist({pname:'cn.wps.moffice_eng', action:'KingsoftOfficeApp://'})) {
+      console.log("WPS应用已安装");
+    } else {
+      console.log("WPS应用未安装");
+    }
+}
+```
+
+
 
 ### 6、QQ浏览服务预览文档
 
