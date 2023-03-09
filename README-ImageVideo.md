@@ -75,7 +75,8 @@ openImage(fileUrl, imageCurrentIndex) {
         sealOfficeOnlineModule.openFile({
             imageUrls: this.imageList,
             imageCurrentIndex, // 当前点击图片在imageUrls中的下标，从0开始，默认为0
-            imageIndexType: 'number' // 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
+            imageIndexType: 'number', // 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
+            isSaveImg: true, // 是否长按保存图片
         });
     } else if (this.platform === 'ios') {
         // IOS
@@ -198,6 +199,7 @@ getX5CoreInfo() {
 | coreUrl            | 内核离线包url，coreLocalPath优先级更高，即，如果coreLocalPath不为空，coreUrl参数无效，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | null   |                         |
 | imageCurrentIndex  | 当前点击图片在imageUrls中的下标，从0开始<span style="color:red">**IOS端无此配置**</span> | int           | 否       | 0      |                         |
 | imageIndexType     | 图片底部指示器类型，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 'dot'  | 'number':数字；'dot':点 |
+| isSaveImg          | 是否长按保存图片，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | null   | true/false              |
 
 ## 四、openFileBS接口参数说明
 
