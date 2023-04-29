@@ -1,7 +1,6 @@
 <template>
 	<view>
-		<h2 class="title">openFile接口（Android和IOS）</h2>
-		<u-button style="margin: 0 10px 0 10px" type="primary" @click="getX5CoreInfo">获取x5内核加载帮助信息</u-button>
+		<h2 class="title">openFile接口（Android非腾讯TBS，无内核加载，真正离线和IOS）</h2>
 		<u-button style="margin: 6px 10px 0 10px" type="primary" @click="handlePlusCheckWPS">plus检查WPS是否安装</u-button>
 		<u-cell-group title="Office文档预览" :title-style="{ 'font-size': '32rpx', 'font-weight': 'bold', color: '#1890ff' }">
 			<u-grid :col="3">
@@ -26,17 +25,6 @@
 				</u-grid>
 			</u-grid>
 		</u-cell-group>
-
-		<h2 class="title">openFileBS接口（Android）</h2>
-		<u-cell-group title="文档/图片/视频预览" :title-style="{ 'font-size': '32rpx', 'font-weight': 'bold', color: '#1890ff' }">
-			<u-grid :col="3">
-				<u-grid :col="3">
-					<u-grid-item v-for="(item, index) in [...docList, ...imageList, ...videoList]" :key="index">
-						<u-image @tap="openOnlineFileBS(item)" width="80%" height="180rpx" :src="'/static/' + item.substring(item.lastIndexOf('.') + 1) + '.svg'" />
-					</u-grid-item>
-				</u-grid>
-			</u-grid>
-		</u-cell-group>
 	</view>
 </template>
 
@@ -47,16 +35,21 @@ const modal = uni.requireNativePlugin('modal');
 export default {
 	data() {
 		return {
-			// 本地内核地址
-			coreLocalPath: '',
 			platform: '',
+			localDocList: [
+				'/data/data/com.seal.uniplugin/files/1.pdf',
+				'/data/data/com.seal.uniplugin/files/1.txt',
+				'/data/data/com.seal.uniplugin/files/1.docx',
+				'/data/data/com.seal.uniplugin/files/1.xlsx',
+				'/data/data/com.seal.uniplugin/files/1.pptx',
+				'/data/data/com.seal.uniplugin/files/1.doc'
+			],
 			docList: [
 				'http://silianpan.cn/upload/2022/01/01/2.pdf',
 				'http://silianpan.cn/upload/2022/01/01/1.txt',
 				'http://silianpan.cn/upload/2022/01/01/1.docx',
 				'http://silianpan.cn/upload/2022/01/01/1.xlsx',
-				'http://silianpan.cn/upload/2022/01/01/1.pptx',
-				'http://silianpan.cn/upload/2022/01/01/1.epub'
+				'http://silianpan.cn/upload/2022/01/01/1.pptx'
 			],
 			imageList: [
 				'http://silianpan.cn/upload/2022/01/01/1.jpg',
@@ -77,12 +70,7 @@ export default {
 		const { platform } = uni.getSystemInfoSync();
 		this.platform = platform;
 
-		if (this.platform === 'android') {
-			// 下载内核
-			// this.downloadCoreToLocal()
-			// 获取内核信息
-			this.getX5CoreInfo();
-		}
+		if (this.platform === 'android') {}
 		// 检查WPS客户端是否已经安装
 		this.checkWps();
 	},
@@ -114,44 +102,11 @@ export default {
 			// });
 		},
 		/**
-		 * 获取内核信息
-		 */
-		getX5CoreInfo() {
-			const coreInfo = sealOfficeOnlineModule.getX5CoreInfo();
-			this.printInfo('插件内核信息：', coreInfo);
-		},
-		/**
 		 * 检查WPS客户端是否已经安装
 		 */
 		checkWps() {
 			const checkWps = sealOfficeOnlineModule.checkWps();
 			this.printInfo('WPS是否安装：', checkWps);
-		},
-		/**
-		 * 应用刚进入或页面刚进入，初始化下载内核到本机，获取本地路径
-		 */
-		downloadCoreToLocal() {
-			uni.showLoading({
-				title: '正在下载安装内核，请稍后~'
-			});
-			const coreUrl = 'https://tbs.imtt.qq.com/release/x5/tbs_core_045738_20210925205342_nolog_fs_obfs_armeabi_release.tbs';
-			// const coreUrl = 'http://silianpan.cn/upload/2022/09/tbs_core_045738_20210925205342_nolog_fs_obfs_armeabi_release-c5d6cd8bba8843b780e5943f9806c028.tbs'
-			uni.downloadFile({
-				url: coreUrl,
-				success: res => {
-					if (res.statusCode === 200) {
-						// 保存到应用目录
-						uni.saveFile({
-							tempFilePath: res.tempFilePath,
-							success: resSave => {
-								uni.hideLoading();
-								// 获取本地路径
-								this.coreLocalPath = resSave.savedFilePath;
-							}
-						});
-					}
-				}
-			});
 		},
 		/**
 		 * 打开文档预览选项框
@@ -160,59 +115,54 @@ export default {
 		showMenuDoc(fileUrl) {
 			uni.showActionSheet({
 				itemList: [
-					'在线文档预览（在线内核，自定义水印、顶栏）',
-					'本地文档预览（离线内核，自定义水印、顶栏）',
-					'组件嵌入预览（在线或离线内核，自定义水印）',
+					'离线文档预览（非腾讯TBS，无内核加载，真正离线，自定义水印、顶栏）',
+					'组件嵌入预览（非腾讯TBS，无内核加载，真正离线，自定义水印）',
 					'WPS打开文档（正常模式，需安装WPS客户端）',
 					'WPS打开文档（只读模式，需安装WPS客户端）',
 					'WPS打开文档（编辑模式，需安装WPS客户端）',
 					'WPS打开文档（阅读器模式，需安装WPS客户端）',
-					'WPS打开文档（另存模式，需安装WPS客户端）',
-					'QQ浏览服务预览文档（需安装QQ浏览器客户端）'
+					'WPS打开文档（另存模式，需安装WPS客户端）'
 				],
 				success: ({ tapIndex }) => {
 					switch (tapIndex) {
 						case 0:
-							this.openOnlineFile(fileUrl);
+							this.openFile(fileUrl);
 							break;
 						case 1:
-							this.openOfflineFile(fileUrl);
-							break;
-						case 2:
 							uni.navigateTo({
 								url: '/pages/demo/Seal-OfficeOnline/seal-officeonline-component?url=' + fileUrl
 							});
 							break;
-						case 3:
+						case 2:
 							this.openOnlineFileWPS(fileUrl, 'Normal');
 							break;
-						case 4:
+						case 3:
 							this.openOnlineFileWPS(fileUrl, 'ReadOnly');
 							break;
-						case 5:
+						case 4:
 							this.openOnlineFileWPS(fileUrl, 'EditMode');
 							break;
-						case 6:
+						case 5:
 							this.openOnlineFileWPS(fileUrl, 'ReadMode');
 							break;
-						case 7:
+						case 6:
 							this.openOnlineFileWPS(fileUrl, 'SaveOnly');
-							break;
-						case 8:
-							this.openOnlineFileBS(fileUrl);
 							break;
 					}
 				}
 			});
 		},
 		/**
-		 * 打开在线文档
+		 * 打开文档，非腾讯TBS，无内核加载，真正离线
 		 * @param {Object} fileUrl 文档url
 		 */
-		openOnlineFile(fileUrl) {
+		openFile(fileUrl) {
+			// 方式一：直接传递文件在线url
 			sealOfficeOnlineModule.openFile(
 				{
 					url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
+					// fileType: 'pdf',
+					// fileName: 'example',
 					title: 'Office文档在线预览', // 顶栏标题，默认为：APP名称
 					topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#3394EC（科技蓝）
 					waterMarkText: '你好，世界\n准备好了吗？时刻准备着', // 水印文本
@@ -220,91 +170,53 @@ export default {
 						'Authorization': 'Token xxxxxxxx',
 						'Other': 'other'
 					}, // 文档下载请求头
-					// installOfflineCore: true, // 是否离线安装内核
-					// coreLocalPath: this.coreLocalPath, // 离线安装内核本地路径
+					isDeleteFile: false,
+					topBarAutoHide: true,
+					isTopBar: true,
 				},
 				res => {
 					this.printInfo('打开在线文档事件结果：', res);
 				}
 			);
-		},
-		/**
-		 * 打开本地文档
-		 * 方法一、传递coreUrl参数
-		 * @param {Object} fileUrl 文档url
-		 */
-		// openOfflineFile(fileUrl) {
-		//     sealOfficeOnlineModule.openFile(
-		//         {
-		//             url: url,
-		//             isDeleteFile: false,
-		//             installOfflineCore: true, // 是否离线安装内核
-		//             coreUrl: 'https://tbs.imtt.qq.com/release/x5/tbs_core_045738_20210925205342_nolog_fs_obfs_armeabi_release.tbs', // 离线内核包在线地址
-		//         },
-		//         res => {
-		//				this.printInfo('打开本地文档事件结果：', res);
-		//         }
-		//     );
-		// },
-		/**
-		 * 打开本地文档
-		 * 方法二、传递coreLocalPath参数
-		 * @param {Object} fileUrl 文档url
-		 */
-		openOfflineFile(fileUrl) {
-			// 方式一：直接传递本机文件绝对路径
-			// 注意：添加参数`isDeleteFile: false`，否则退出预览，文件删除
-			// 比如：/storage/sdcard0/Android/data/com.seal.uniplugin/files/file/test.docx
-			// sealOfficeOnlineModule.openFile({
-			// 		url: '/storage/sdcard0/Android/data/com.seal.uniplugin/files/file/test.docx',
-			// 		isDeleteFile: false,
-			// 		installOfflineCore: true, // 是否离线安装内核
-			// 		coreLocalPath: this.coreLocalPath, // 离线安装内核本地路径
-			// 	},
-			// 	res => {
-			//		this.printInfo('打开本地文档事件结果：', res);
-			// 	});
-
+			
 			// 方式二：先下载文件保存到手机目录，再获取文件绝对路径
-			uni.showLoading({
-				title: '正在下载文件，请稍后~'
-			});
-			uni.downloadFile({
-				url: fileUrl,
-				success: res => {
-					if (res.statusCode === 200) {
-						// 直接传递本地文件地址
-						// 传递本地文件绝对路径，res.tempFilePath的前缀是_doc，而实际目录为doc，没有下划线_，所以要substr取子串
-						// const url = '/storage/sdcard0/Android/data/APP包名/apps/APPID/' + res.tempFilePath.substr(1)
-						// 可以通过以下方式获取文件绝对路径
-						uni.saveFile({
-							// 需要保存文件的临时路径
-							tempFilePath: res.tempFilePath,
-							success: resSave => {
-								uni.hideLoading();
-								const savedFilePath = resSave.savedFilePath;
-								// 转换为绝对路径
-								const url = plus.io.convertLocalFileSystemURL(savedFilePath);
-								console.log('tempFilePath', res.tempFilePath);
-								console.log('savedFilePath', savedFilePath);
-								console.log('url', url);
-								// 预览本地文件
-								sealOfficeOnlineModule.openFile(
-									{
-										url: url,
-										isDeleteFile: false,
-										installOfflineCore: true, // 是否离线安装内核
-										coreLocalPath: this.coreLocalPath // 离线安装内核本地路径
-									},
-									res => {
-										this.printInfo('打开本地文档事件结果：', res);
-									}
-								);
-							}
-						});
-					}
-				}
-			});
+			// uni.showLoading({
+			// 	title: '正在下载文件，请稍后~'
+			// });
+			// uni.downloadFile({
+			// 	url: fileUrl,
+			// 	success: res => {
+			// 		if (res.statusCode === 200) {
+			// 			// 直接传递本地文件地址
+			// 			// 传递本地文件绝对路径，res.tempFilePath的前缀是_doc，而实际目录为doc，没有下划线_，所以要substr取子串
+			// 			// const url = '/storage/sdcard0/Android/data/APP包名/apps/APPID/' + res.tempFilePath.substr(1)
+			// 			// 可以通过以下方式获取文件绝对路径
+			// 			uni.saveFile({
+			// 				// 需要保存文件的临时路径
+			// 				tempFilePath: res.tempFilePath,
+			// 				success: resSave => {
+			// 					uni.hideLoading();
+			// 					const savedFilePath = resSave.savedFilePath;
+			// 					// 转换为绝对路径
+			// 					const url = plus.io.convertLocalFileSystemURL(savedFilePath);
+			// 					console.log('tempFilePath', res.tempFilePath);
+			// 					console.log('savedFilePath', savedFilePath);
+			// 					console.log('url', url);
+			// 					// 预览本地文件
+			// 					sealOfficeOnlineModule.openFile(
+			// 						{
+			// 							url: url,
+			// 							isDeleteFile: false
+			// 						},
+			// 						res => {
+			// 							this.printInfo('打开本地文档事件结果：', res);
+			// 						}
+			// 					);
+			// 				}
+			// 			});
+			// 		}
+			// 	}
+			// });
 		},
 		/**
 		 * WPS预览或编辑文档
@@ -329,22 +241,6 @@ export default {
 			);
 		},
 		/**
-		 * QQ浏览器预览接口
-		 * @param {Object} fileUrl 文档url
-		 */
-		openOnlineFileBS(fileUrl) {
-			sealOfficeOnlineModule.openFileBS(
-				{
-					url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
-					topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#3394EC（科技蓝）
-					isDeleteFile: true // 退出是否删除缓存的文件，默认为true（删除缓存文件）
-				},
-				res => {
-					this.printInfo('QQ浏览器打开文档事件结果：', res);
-				}
-			);
-		},
-		/**
 		 * 图片预览
 		 * @param {Object} fileUrl 图片url
 		 * @param {Object} imageCurrentIndex 当前图片位置下标，从0开始
@@ -356,7 +252,7 @@ export default {
 					imageUrls: this.imageList,
 					imageCurrentIndex, // 当前点击图片在imageUrls中的下标，从0开始，默认为0
 					imageIndexType: 'number', // 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
-					isSaveImg: true, // 是否长按保存图片
+					isSaveImg: true,
 				});
 			} else if (this.platform === 'ios') {
 				// IOS
@@ -379,9 +275,7 @@ export default {
 		openVideo(fileUrl) {
 			sealOfficeOnlineModule.openFile(
 				{
-					videoUrl: fileUrl,
-					installOfflineCore: true, // 是否离线安装内核
-					coreLocalPath: this.coreLocalPath // 离线安装内核本地路径
+					videoUrl: fileUrl
 				},
 				res => {
 					this.printInfo('播放视频事件结果：', res);
