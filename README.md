@@ -412,6 +412,7 @@ openVideo(fileUrl) {
 | imageCurrentIndex  | 当前点击图片在imageUrls中的下标，从0开始，<span style="color:red">**IOS端无此配置**</span> | int           | 否       | 0                 |                         |
 | imageIndexType     | 图片底部指示器类型，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 'dot'             | 'number':数字；'dot':点 |
 | isSaveImg          | 是否长按保存图片，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | null              | true/false              |
+| canScreenshot      | 是否可以截屏，<span style="color:blue">**3.0.1版本以上支持**</span>，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true（可以截屏）  | false（禁止截屏）       |
 
 
 

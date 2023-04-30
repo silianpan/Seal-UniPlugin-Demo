@@ -15,6 +15,8 @@ export default {
 			// 文档预览，传递url
 			url: params.url,
 			waterMarkText: '你好，世界\n准备好了吗？时刻准备着',
+			// 禁止截屏
+			canScreenshot: false,
 		}
 	}
 };

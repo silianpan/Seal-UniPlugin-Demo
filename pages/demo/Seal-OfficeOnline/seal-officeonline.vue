@@ -36,14 +36,6 @@ export default {
 	data() {
 		return {
 			platform: '',
-			localDocList: [
-				'/data/data/com.seal.uniplugin/files/1.pdf',
-				'/data/data/com.seal.uniplugin/files/1.txt',
-				'/data/data/com.seal.uniplugin/files/1.docx',
-				'/data/data/com.seal.uniplugin/files/1.xlsx',
-				'/data/data/com.seal.uniplugin/files/1.pptx',
-				'/data/data/com.seal.uniplugin/files/1.doc'
-			],
 			docList: [
 				'http://silianpan.cn/upload/2022/01/01/2.pdf',
 				'http://silianpan.cn/upload/2022/01/01/1.txt',
@@ -117,6 +109,7 @@ export default {
 				itemList: [
 					'离线文档预览（非腾讯TBS，无内核加载，真正离线，自定义水印、顶栏）',
 					'组件嵌入预览（非腾讯TBS，无内核加载，真正离线，自定义水印）',
+					'禁止截屏预览（离线文档、组件嵌入均支持）',
 					'WPS打开文档（正常模式，需安装WPS客户端）',
 					'WPS打开文档（只读模式，需安装WPS客户端）',
 					'WPS打开文档（编辑模式，需安装WPS客户端）',
@@ -134,18 +127,24 @@ export default {
 							});
 							break;
 						case 2:
-							this.openOnlineFileWPS(fileUrl, 'Normal');
+							this.openFile(fileUrl, {
+								// 禁止截屏
+								canScreenshot: false,
+							});
 							break;
 						case 3:
-							this.openOnlineFileWPS(fileUrl, 'ReadOnly');
+							this.openOnlineFileWPS(fileUrl, 'Normal');
 							break;
 						case 4:
-							this.openOnlineFileWPS(fileUrl, 'EditMode');
+							this.openOnlineFileWPS(fileUrl, 'ReadOnly');
 							break;
 						case 5:
-							this.openOnlineFileWPS(fileUrl, 'ReadMode');
+							this.openOnlineFileWPS(fileUrl, 'EditMode');
 							break;
 						case 6:
+							this.openOnlineFileWPS(fileUrl, 'ReadMode');
+							break;
+						case 7:
 							this.openOnlineFileWPS(fileUrl, 'SaveOnly');
 							break;
 					}
@@ -156,7 +155,7 @@ export default {
 		 * 打开文档，非腾讯TBS，无内核加载，真正离线
 		 * @param {Object} fileUrl 文档url
 		 */
-		openFile(fileUrl) {
+		openFile(fileUrl, otherOptions) {
 			// 方式一：直接传递文件在线url
 			sealOfficeOnlineModule.openFile(
 				{
@@ -173,6 +172,7 @@ export default {
 					isDeleteFile: false,
 					topBarAutoHide: true,
 					isTopBar: true,
+					...otherOptions,
 				},
 				res => {
 					this.printInfo('打开在线文档事件结果：', res);
