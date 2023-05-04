@@ -43,7 +43,6 @@ const sealImageVideoModule = uni.requireNativePlugin('Seal-ImageVideo');
 ```
 
 * **openFile**方法（推荐）：支持Android和IOS，预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx、epub等近50种类型文件，同时支持常见的音视频格式。
-* **openFileImage**方法：仅支持IOS，预览图片，支持如下格式：jpg、jpeg、png、bmp、jpg、gif等，参数同openFile方法
 
 **<span style="color:red">接口使用方法，参考如下章节《三、使用方法》</span>**
 
@@ -71,7 +70,7 @@ const sealImageVideoModule = uni.requireNativePlugin('Seal-ImageVideo');
 openImage(fileUrl, imageCurrentIndex) {
     if (this.platform === 'android') {
         // Android
-        sealOfficeOnlineModule.openFile({
+        sealImageVideoModule.openFile({
             imageUrls: this.imageList,
             imageCurrentIndex, // 当前点击图片在imageUrls中的下标，从0开始，默认为0
             imageIndexType: 'number', // 图片底部指示器类型，默认为'dot'，可选：'number':数字；'dot':点
@@ -79,7 +78,7 @@ openImage(fileUrl, imageCurrentIndex) {
         });
     } else if (this.platform === 'ios') {
         // IOS
-        sealOfficeOnlineModule.openFileImage(
+        sealImageVideoModule.openFile(
             {
                 url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
                 title: 'IOS图片预览', // 顶栏标题，默认为：APP名称
@@ -111,7 +110,7 @@ openImage(fileUrl, imageCurrentIndex) {
 * @param {String} fileUrl 音视频url
 */
 openVideo(fileUrl) {
-  sealOfficeOnlineModule.openFile(
+  sealImageVideoModule.openFile(
     {
       videoUrl: fileUrl,
       isLive: true,
