@@ -14,7 +14,9 @@
 
 [Seal-OfficeOnline插件下载使用地址](https://ext.dcloud.net.cn/plugin?id=3226)
 
-<span style="color:red">各位同学，对于插件使用还有疑问的，可以加QQ群（170683293）咨询。</span>
+<span style="color:red">各位同学，对于插件使用还有疑问的，可以加QQ群（170683293）咨询，也可以扫下面二维码进微信群。</span>
+
+<img src="http://silianpan.cn/upload/2022/01/01/Seal-UniPlugin-WeiXin.jpeg" width="240" style="width:240px;" />
 
 <div class="half">
 
@@ -54,7 +56,9 @@
 
 
 
-<span style="color:red">各位同学，对于插件使用还有疑问的，可以加QQ群（170683293）咨询。</span>
+<span style="color:red">各位同学，对于插件使用还有疑问的，可以加QQ群（170683293）咨询，也可以扫下面二维码进微信群。</span>
+
+<img src="http://silianpan.cn/upload/2022/01/01/Seal-UniPlugin-WeiXin.jpeg" width="240" style="width:240px;" />
 
 
 
