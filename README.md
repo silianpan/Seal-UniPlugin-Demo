@@ -84,7 +84,7 @@
 const sealOfficeOnlineModule = uni.requireNativePlugin("Seal-OfficeOnline")
 ```
 
-* **openFile**方法（推荐）：支持Android和IOS，预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx、epub等近50种类型文件。
+* **openFile**方法（推荐）：支持Android和IOS，预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx、epub等近50种类型文件，同时支持常见的音视频格式。
 * **openFileWPS**方法（推荐）：采用本机WPS客户端预览或编辑文档，支持pdf、txt、doc、xls、ppt等多种文件格式。
 * **checkWps**方法：检查本机WPS客户端是否已经安装。
 * **openFileImage**方法：仅支持IOS，预览图片，支持如下格式：jpg、jpeg、png、bmp、jpg、gif等，参数同openFile方法
@@ -346,7 +346,7 @@ openImage(fileUrl, imageCurrentIndex) {
 
 
 
-### 6、视频播放
+### 6、音视频播放
 
 使用接口：openFile
 
@@ -354,24 +354,27 @@ openImage(fileUrl, imageCurrentIndex) {
 
 ```javascript
 /**
-* 视频播放，支持市面上几乎所有的视频格式，包括mp4, flv, avi, 3gp, webm, ts, ogv, m3u8, asf, wmv, rm, rmvb, mov, mkv等18种视频格式
-* 功能包括：全屏播放、锁屏、分享、画面比例调节、左边上下滑动调节亮度，右边上下滑动调节音量等
+* 视频播放，支持市面上几乎所有的音视频格式，包括mp4, flv, avi, 3gp, webm, ts, ogv, m3u8, asf, wmv, rm, rmvb, mov, mkv等18种视频格式，以及mp3，wav，wma，flac等音频格式
+* 功能包括：播放、暂停、重播、全屏播放、直播等
 * 支持Android和IOS
-* @param {Object} fileUrl 视频url
+* @param {String} fileUrl 音视频url
 */
 openVideo(fileUrl) {
-    sealOfficeOnlineModule.openFile(
-        {
-            videoUrl: fileUrl, // 视频在线url，此参数优先于图片预览和文档预览
-            installOfflineCore: true, // 是否离线安装内核
-            coreLocalPath: this.coreLocalPath // 离线安装内核本地路径
-        },
-        res => {
-            uni.showModal({
-                content: '播放视频事件结果：' + JSON.stringify(res)
-            });
-        }
-    );
+  sealOfficeOnlineModule.openFile(
+    {
+      videoUrl: fileUrl,
+      isLive: true,
+      title: '音视频播放标题',
+      isTopBar: true,
+      isBackArrow: false,
+      topBarBgColor: '#F77234',
+      topBarTextColor: '#FCF26B',
+      topBarTextLength: 12
+    },
+    res => {
+      this.printInfo('播放音视频事件结果：', res);
+    }
+  );
 }
 ```
 
@@ -390,8 +393,6 @@ openVideo(fileUrl) {
 | fileType           | 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型 | string        | 否       |                   |                         |
 | fileName           | 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType | string        | 否       |                   |                         |
 | isDeleteFile       | 退出是否删除缓存的文件，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true              | false                   |
-| initTitle          | 初始化插件动画标题，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 插件初始化        |                         |
-| initBody           | 初始化插件动画内容，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 加载中...         |                         |
 | docDownloadTitle   | 文档下载进度框标题，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 加载文档          |                         |
 | docDownloadBody    | 文档下载进度框内容，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 请稍后...         |                         |
 | waterMarkText      | 水印文本，默认以**\n**作为分隔符换行                         | string        | 否       | null              |                         |
@@ -407,12 +408,13 @@ openVideo(fileUrl) {
 | topBarTextColor    | 顶栏文本颜色（isTopBar为true时有效）                         | string        | 否       | #FFFFFF（白色）   |                         |
 | topBarTextLength   | 顶栏标题文字长度（isTopBar为true时有效），<span style="color:red">**IOS端无此配置**</span> | int           | 否       | 12                |                         |
 | isBackArrow        | 是否显示返回按钮（isTopBar为true时有效），<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true              | false                   |
-| videoUrl           | 视频在线url，此参数优先于图片预览和文档预览                  | string        | 是       |                   |                         |
+| videoUrl           | 音视频在线url，此参数优先于图片预览和文档预览                | string        | 是       |                   |                         |
+| isLive             | 是否是视频直播，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | false             | true                    |
 | imageUrls          | 图片url数组，此参数优先于文档预览；长按图片底部弹出保存图片菜单，保存图片至相册，<span style="color:red">**IOS端无此配置**</span> | array<string> | 是       |                   |                         |
 | imageCurrentIndex  | 当前点击图片在imageUrls中的下标，从0开始，<span style="color:red">**IOS端无此配置**</span> | int           | 否       | 0                 |                         |
 | imageIndexType     | 图片底部指示器类型，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 'dot'             | 'number':数字；'dot':点 |
 | isSaveImg          | 是否长按保存图片，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | null              | true/false              |
-| canScreenshot      | 是否可以截屏，<span style="color:blue">**3.0.1版本以上支持**</span>，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true（可以截屏）  | false（禁止截屏）       |
+| canScreenshot      | 是否可以截屏，<span style="color:blue">**3.0.2版本以上支持**</span>，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true（可以截屏）  | false（禁止截屏）       |
 
 
 
@@ -448,7 +450,7 @@ openVideo(fileUrl) {
 ### 1、回调结果格式：
 
 ```json
-// openFile、OpenFileBS接口
+// openFile接口
 {
     "code": 200,
     "msg": "文档预览成功",

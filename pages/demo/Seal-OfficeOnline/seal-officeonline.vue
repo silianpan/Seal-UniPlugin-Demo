@@ -16,7 +16,7 @@
 				<u-grid-item v-for="(item, index) in imageList" :key="index"><u-image @tap="openImage(item, index)" width="100%" height="280rpx" :src="item" /></u-grid-item>
 			</u-grid>
 		</u-cell-group>
-		<u-cell-group title="视频播放" :title-style="{ 'font-size': '32rpx', 'font-weight': 'bold', color: '#1890ff' }">
+		<u-cell-group title="音视频播放" :title-style="{ 'font-size': '32rpx', 'font-weight': 'bold', color: '#1890ff' }">
 			<u-grid :col="3">
 				<u-grid :col="3">
 					<u-grid-item v-for="(item, index) in videoList" :key="index">
@@ -53,7 +53,10 @@ export default {
 			videoList: [
 				'http://silianpan.cn/upload/2022/01/01/1.mp4',
 				'http://silianpan.cn/upload/2022/01/01/1.mkv',
-				'http://silianpan.cn/upload/2022/01/01/1.avi'
+				'http://silianpan.cn/upload/2022/01/01/1.avi',
+				'http://silianpan.cn/upload/2022/01/01/1.mp3',
+				'http://silianpan.cn/upload/2022/01/01/1.wav',
+				'http://silianpan.cn/upload/2022/01/01/1.flac'
 			]
 		};
 	},
@@ -269,16 +272,23 @@ export default {
 			}
 		},
 		/**
-		 * 视频播放
-		 * @param {Object} fileUrl 视频url
+		 * 音视频播放
+		 * @param {String} fileUrl 音视频url
 		 */
 		openVideo(fileUrl) {
 			sealOfficeOnlineModule.openFile(
 				{
-					videoUrl: fileUrl
+					videoUrl: fileUrl,
+					isLive: true,
+					title: '音视频播放标题',
+					isTopBar: true,
+					isBackArrow: false,
+					topBarBgColor: '#F77234',
+					topBarTextColor: '#FCF26B',
+					topBarTextLength: 12
 				},
 				res => {
-					this.printInfo('播放视频事件结果：', res);
+					this.printInfo('播放音视频事件结果：', res);
 				}
 			);
 		}
