@@ -78,7 +78,7 @@ export default {
 				});
 			} else if (this.platform === 'ios') {
 				// IOS
-				sealImageVideoModule.openFileImage(
+				sealImageVideoModule.openFile(
 					{
 						url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
 						title: 'IOS图片预览', // 顶栏标题，默认为：APP名称
