@@ -14,10 +14,6 @@
 
 [Seal-OfficeOnline插件下载使用地址](https://ext.dcloud.net.cn/plugin?id=3226)
 
-<span style="color:red">各位同学，对于插件使用还有疑问的，可以加QQ群（170683293）咨询，也可以扫下面二维码进微信群。</span>
-
-<img src="http://silianpan.cn/upload/2022/01/01/Seal-UniPlugin-WeiXin.jpeg" width="240" style="width:240px;" />
-
 <div class="half">
 
 <img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/2c7eada0-15dc-11eb-b680-7980c8a877b8.gif" height="600" style="height:600px" />
@@ -25,6 +21,14 @@
 <img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/38c046f0-102d-11eb-b244-a9f5e5565f30.gif" height="600" style="height:600px" />
 
 </div>
+
+## 〇、前言
+
+2023年3月13日，腾讯发布了调整公告：[关于腾讯浏览服务内核SDK-内核文档能力调整公告](https://mp.weixin.qq.com/s/rmSa4Fs77MDdjFioRKwXPA)，公告里面明确说明了：**2023年4月13日零时起，内核文档能力正式下线**。插件2.x版本使用了腾讯X5云服务能力，**已经上线的项目需要及时升级插件到3.x版本哟**，3.x版本不再依赖腾讯X5以及任何第三方插件，完全可以在内网环境中使用，同时支持在线文档和设备本地文档。
+
+<span style="color:red">各位同学，对于插件使用还有疑问的，可以加QQ群（170683293）咨询，也可以扫下面二维码进微信群。</span>
+
+<img src="http://silianpan.cn/upload/2022/01/01/Seal-UniPlugin-WeiXin.jpeg" width="240" style="width:240px;" />
 
 ## 一、注意事项
 
@@ -56,19 +60,23 @@
 
 
 
-<span style="color:red">各位同学，对于插件使用还有疑问的，可以加QQ群（170683293）咨询，也可以扫下面二维码进微信群。</span>
-
-<img src="http://silianpan.cn/upload/2022/01/01/Seal-UniPlugin-WeiXin.jpeg" width="240" style="width:240px;" />
-
-
-
 ## 三、快速上手
 
-[demo工程地址](https://github.com/silianpan/Seal-UniPlugin-Demo) 或在右上角直接下载示例工程
+Github克隆（[demo工程地址](https://github.com/silianpan/Seal-UniPlugin-Demo) ）或在右上角直接下载示例工程
 
-开发工具：[HBuilderX](https://www.dcloud.io/hbuilderx.html)
+安装开发工具：[HBuilderX](https://www.dcloud.io/hbuilderx.html)
+
+安装依赖包环境：[NodeJS](https://nodejs.org/en)
 
 ### Step1. 下载demo工程，使用HBuilderX打开
+
+* 代码根目录下执行
+
+  ```bash
+  npm install --registry https://registry.npm.taobao.org
+  ```
+
+<span style="color:red">注意：Vue版本要选择2，不要用3</span>
 
 ### Step2. 添加本文插件
 
