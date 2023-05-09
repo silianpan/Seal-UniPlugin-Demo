@@ -26,6 +26,8 @@
 
 2023年3月13日，腾讯发布了调整公告：[关于腾讯浏览服务内核SDK-内核文档能力调整公告](https://mp.weixin.qq.com/s/rmSa4Fs77MDdjFioRKwXPA)，公告里面明确说明了：**2023年4月13日零时起，内核文档能力正式下线**。插件2.x版本使用了腾讯X5云服务能力，**已经上线的项目需要及时升级插件到3.x版本哟**，3.x版本不再依赖腾讯X5以及任何第三方插件，完全可以在内网环境中使用，同时支持在线文档和设备本地文档。
 
+### 原生Android项目离线集成，查看Demo工程及README文档： [Seal-Office-Android-Demo](https://github.com/silianpan/Seal-Office-Android-Demo)
+
 <span style="color:red">各位同学，对于插件使用还有疑问的，可以加QQ群（170683293）咨询，也可以扫下面二维码进微信群。</span>
 
 <img src="http://silianpan.cn/upload/2022/01/01/Seal-UniPlugin-WeiXin.jpeg" width="240" style="width:240px;" />
