@@ -41,7 +41,8 @@ export default {
 				'http://silianpan.cn/upload/2022/01/01/1.txt',
 				'http://silianpan.cn/upload/2022/01/01/1.docx',
 				'http://silianpan.cn/upload/2022/01/01/1.xlsx',
-				'http://silianpan.cn/upload/2022/01/01/1.pptx'
+				'http://silianpan.cn/upload/2022/01/01/1.pptx',
+				'http://silianpan.cn/upload/2022/01/01/1.csv'
 			],
 			imageList: [
 				'http://silianpan.cn/upload/2022/01/01/1.jpg',
