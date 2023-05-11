@@ -171,3 +171,21 @@ openVideo(fileUrl) {
 | isSaveImg         | 是否长按保存图片，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | null              | true/false              |
 | canScreenshot     | 是否可以截屏，<span style="color:blue">**3.0.2版本以上支持**</span>，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true（可以截屏）  | false（禁止截屏）       |
 
+## 五、回调结果
+
+### 1、回调结果格式
+
+```json
+// openFile接口
+{
+    "code": 1010,
+    "msg": "页面返回"
+}
+```
+
+### 2、回调结果状态码说明
+
+| 状态码 | 说明     |
+| ------ | -------- |
+| 1010   | 页面返回 |
+
