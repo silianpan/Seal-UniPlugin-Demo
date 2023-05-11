@@ -7,12 +7,20 @@
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "Seal原生插件"
+				// "navigationStyle": "custom",
+				// "app-plus": {
+				// 	"titleNView": false
+				// }
 			}
 		},
 		{
 			"path": "pages/demo/Seal-OfficeOnline/seal-officeonline",
 			"style": {
 				"navigationBarTitleText": "Seal-OfficeOnline"
+				// "navigationStyle": "custom",
+				// "app-plus": {
+				// 	"titleNView": false
+				// }
 			}
 		},
 		{
