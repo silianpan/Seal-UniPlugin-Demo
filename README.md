@@ -444,14 +444,15 @@ openVideo(fileUrl) {
 
 > 支持平台：Android、IOS（分享功能，第三方APP打开）
 
-| 参数名           | 说明                                                         | 类型   | 是否必填 | 默认值    | 可选值 |
-| ---------------- | ------------------------------------------------------------ | ------ | -------- | --------- | ------ |
-| url              | 支持如下三种地址方式：<br />（1）文件网络地址，如：http://113.62.127.199:8090/fileUpload/1.xlsx <br />（2）手机本地文件地址，如：/data/user/0/APP包名/files/1.xlsx 文件名，如：1.xlsx，<br />（3）访问默认目录文件，默认目录为：/data/user/0/APP包名，如：com.HBuilder.UniPlugin<br />**注意**：手机本地地址目录需要有权限访问<br/><span style="color:red">**IOS端只支持在线地址**</span> | string | 是       |           |        |
-| fileType         | 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型，<span style="color:red">**IOS端无此配置**</span> | string | 否       |           |        |
-| fileName         | 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType，<span style="color:red">**IOS端无此配置**</span> | string | 否       |           |        |
-| docDownloadTitle | 文档下载进度框标题，<span style="color:red">**IOS端无此配置**</span> | string | 否       | 加载文档  |        |
-| docDownloadBody  | 文档下载进度框内容，<span style="color:red">**IOS端无此配置**</span> | string | 否       | 请稍后... |        |
-| openMode         | 打开模式：<br>* Normal：正常模式，正常打开，WPS默认打开方式<br>* ReadOnly：只读模式，以只读的方式打开，WPS会隐藏编辑按钮<br>* EditMode：编辑模式，可对文档进行编辑<br>* ReadMode：阅读器模式，支持左右翻页，仅Word、TXT文档支持<br>* SaveOnly：另存模式(打开文件,另存,关闭)，仅Word、TXT文档支持 | string | 否       | Normal    | 见说明 |
+| 参数名            | 说明                                                         | 类型   | 是否必填 | 默认值    | 可选值 |
+| ----------------- | ------------------------------------------------------------ | ------ | -------- | --------- | ------ |
+| url               | 支持如下三种地址方式：<br />（1）文件网络地址，如：http://113.62.127.199:8090/fileUpload/1.xlsx <br />（2）手机本地文件地址，如：/data/user/0/APP包名/files/1.xlsx 文件名，如：1.xlsx，<br />（3）访问默认目录文件，默认目录为：/data/user/0/APP包名，如：com.HBuilder.UniPlugin<br />**注意**：手机本地地址目录需要有权限访问<br/><span style="color:red">**IOS端只支持在线地址**</span> | string | 是       |           |        |
+| fileType          | 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型，<span style="color:red">**IOS端无此配置**</span> | string | 否       |           |        |
+| fileName          | 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType，<span style="color:red">**IOS端无此配置**</span> | string | 否       |           |        |
+| docDownloadTitle  | 文档下载进度框标题，<span style="color:red">**IOS端无此配置**</span> | string | 否       | 加载文档  |        |
+| docDownloadBody   | 文档下载进度框内容，<span style="color:red">**IOS端无此配置**</span> | string | 否       | 请稍后... |        |
+| docRequestHeaders | 文档下载请求头，如：<br />{ 'Authorization': 'Token xxxxxxxx', 'Other': 'other' }<br />，<span style="color:red">**IOS端无此配置**</span> | object | 否       |           |        |
+| openMode          | 打开模式：<br>* Normal：正常模式，正常打开，WPS默认打开方式<br>* ReadOnly：只读模式，以只读的方式打开，WPS会隐藏编辑按钮<br>* EditMode：编辑模式，可对文档进行编辑<br>* ReadMode：阅读器模式，支持左右翻页，仅Word、TXT文档支持<br>* SaveOnly：另存模式(打开文件,另存,关闭)，仅Word、TXT文档支持 | string | 否       | Normal    | 见说明 |
 
 另，openMode打开模式说明：
 
