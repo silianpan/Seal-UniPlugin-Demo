@@ -15,10 +15,9 @@
 [Seal-OfficeOnline插件下载使用地址](https://ext.dcloud.net.cn/plugin?id=3226)
 
 <div class="half">
+<img src="https://mp-1b95a362-fce7-4e72-896b-3e6e3254dbf1.cdn.bspapp.com/cloudstorage/1fd34e57-37cc-4cc1-9078-1ca179904fff.gif" style="width:200px;height:auto" width="200px" />
 
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/2c7eada0-15dc-11eb-b680-7980c8a877b8.gif" height="600" style="height:600px" />
-
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/38c046f0-102d-11eb-b244-a9f5e5565f30.gif" height="600" style="height:600px" />
+<img src="https://mp-1b95a362-fce7-4e72-896b-3e6e3254dbf1.cdn.bspapp.com/cloudstorage/0e9a3252-7dba-4e87-b32e-582f8ac30385.gif" style="width:200px;height:auto" width="200px" />
 
 </div>
 
@@ -542,55 +541,78 @@ openVideo(fileUrl) {
 
 
 
-## 八、后续计划
+## 八、预览效果
 
-- [x] 添加水印
-- [x] 支持小窗口模式
-- [ ] 支持右上角自定义菜单
-- [x] 支持当前页面回调
+### 1、Android
 
-## 九、Android预览效果
+* 嵌入预览
 
-### 预览docx
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/android/emed.jpg" style="width:200px;height:auto" width="200px" />
 
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/9dec53b0-1024-11eb-b244-a9f5e5565f30.jpg" height="600" style="height:600px" />
+* 预览docx
 
-### 预览pptx
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/android/docx.jpg" style="width:200px;height:auto" width="200px" />
 
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/a8316a90-1024-11eb-8bd0-2998ac5bbf7e.jpg" height="600" style="height:600px" />
+* 预览pptx
 
-### 预览xlsx
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/android/pptx.jpg" style="width:200px;height:auto" width="200px" />
 
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/b302bbe0-1024-11eb-8ff1-d5dcf8779628.jpg" height="600" style="height:600px" />
+* 预览xlsx
 
-### 预览pdf
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/android/xlsx.jpg" style="width:200px;height:auto" width="200px" />
 
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/baaae0c0-1024-11eb-9dfb-6da8e309e0d8.jpg" height="600" style="height:600px" />
+* 预览pdf
 
-### 预览txt
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/android/pdf.jpg" style="width:200px;height:auto" width="200px" />
 
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/c0676240-1024-11eb-81ea-f115fe74321c.jpg" height="600" style="height:600px" />
+* 预览txt
 
-## iOS预览效果
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/android/txt.jpg" style="width:200px;height:auto" width="200px" />
 
-### 预览docx
+* 预览mp4
 
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/c590cb80-1024-11eb-8ff1-d5dcf8779628.jpg" height="600" style="height:600px" />
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/android/mp41.jpg" style="width:200px;height:auto" width="200px" />
 
-### 预览pptx
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/android/mp42.jpg" style="width:600px;height:auto" width="200px" />
 
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/cab1d050-1024-11eb-8a36-ebb87efcf8c0.jpg" height="600" style="height:600px" />
+* 预览jpg
 
-### 预览xlsx
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/android/jpg.jpg" style="width:200px;height:auto" width="200px" />
 
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/cff6d7e0-1024-11eb-b680-7980c8a877b8.jpg" height="600" style="height:600px" />
 
-### 预览pdf
 
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/dd023ab0-1024-11eb-b997-9918a5dda011.jpg" height="600" style="height:600px" />
+###  2、IOS
 
-### 预览txt
+* 嵌入预览
 
-<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-lau3cirf3bhq53ac04/e28eab80-1024-11eb-8a36-ebb87efcf8c0.jpg" height="600" style="height:600px" />
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/ios/emed.png" style="width:200px;height:auto" width="200px" />
 
-转载请注明：[我的技术分享](http://silianpan.cn) » [跨平台文件在线预览解决方案（四）-Android和IOS原生插件](http://silianpan.cn/archives/filepreviewuninative)
+* 预览docx
+
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/ios/docx.png" style="width:200px;height:auto" width="200px" />
+
+* 预览pptx
+
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/ios/pptx.png" style="width:200px;height:auto" width="200px" />
+
+* 预览xlsx
+
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/ios/xlsx.png" style="width:200px;height:auto" width="200px" />
+
+* 预览pdf
+
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/ios/pdf.png" style="width:200px;height:auto" width="200px" />
+
+* 预览txt
+
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/ios/txt.png" style="width:200px;height:auto" width="200px" />
+
+* 预览mp4
+
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/ios/mp4.png" style="width:200px;height:auto" width="200px" />
+
+* 预览jpg
+
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/ios/jpg1.png" style="width:200px;height:auto" width="200px" />
+
+转载请注明：[我的技术分享](http://silianpan.cn) » [跨平台Office文档预览原生插件，非腾讯X5，支持离线，稳定高可用](http://silianpan.cn/archives/filepreviewuninative)
