@@ -35,6 +35,7 @@ const modal = uni.requireNativePlugin('modal');
 export default {
 	data() {
 		return {
+			initPluginFirstSuccess: false,
 			platform: '',
 			docList: [
 				'http://silianpan.cn/upload/2022/01/01/2.pdf',
@@ -66,11 +67,34 @@ export default {
 		const { platform } = uni.getSystemInfoSync();
 		this.platform = platform;
 
-		if (this.platform === 'android') {}
+		if (this.platform === 'android') {
+			// 注意：如果第一次进入空白，请使用以下代码手动初始化
+			// uni.showLoading({
+			// 	title: '插件首次初始化中'
+			// });
+			// this.initPluginFirst(res => {
+			// 	this.printInfo('插件首次初始化结果：', res);
+			// 	if (res.code === 1) {
+			// 		this.initPluginFirstSuccess = true;
+			// 		uni.showToast({
+			// 			title: '插件首次初始化成功',
+			// 			duration: 2000
+			// 		});
+			// 	} else {
+			// 		this.initPluginFirstSuccess = false;
+			// 	}
+			// 	uni.hideLoading();
+			// })
+		}
 		// 检查WPS客户端是否已经安装
 		this.checkWps();
 	},
 	methods: {
+		// 插件首次初始化
+		// 注意：如果第一次进入空白，请使用以下代码手动初始化
+		initPluginFirst(callback) {
+			sealOfficeOnlineModule.initEngine(callback);
+		},
 		// 判断第三方程序(WPS) 是否安装
 		handlePlusCheckWPS() {
 			const isExistApp = plus.runtime.isApplicationExist({pname:'cn.wps.moffice_eng', action:'KingsoftOfficeApp://'});

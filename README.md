@@ -15,10 +15,8 @@
 [Seal-OfficeOnline插件下载使用地址](https://ext.dcloud.net.cn/plugin?id=3226)
 
 <div class="half">
-<img src="https://mp-1b95a362-fce7-4e72-896b-3e6e3254dbf1.cdn.bspapp.com/cloudstorage/1fd34e57-37cc-4cc1-9078-1ca179904fff.gif" style="width:200px;height:auto" width="200px" />
-
-<img src="https://mp-1b95a362-fce7-4e72-896b-3e6e3254dbf1.cdn.bspapp.com/cloudstorage/0e9a3252-7dba-4e87-b32e-582f8ac30385.gif" style="width:200px;height:auto" width="200px" />
-
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/android/demo-android.gif" style="width:200px;height:auto" width="200px" />
+  <img src="http://silianpan.cn/upload/2022/01/01/demo/ios/demo-ios.gif" style="width:200px;height:auto" width="200px" />
 </div>
 
 ## 〇、前言
@@ -103,6 +101,7 @@ Github克隆（[demo工程地址](https://github.com/silianpan/Seal-UniPlugin-De
 const sealOfficeOnlineModule = uni.requireNativePlugin("Seal-OfficeOnline")
 ```
 
+* **initEngine**方法：插件首次初始化（在应用启动时进行调用），注意：如果第一次进入空白，才进行手动初始化，否则不用调用此接口。
 * **openFile**方法（推荐）：支持Android和IOS，预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx、epub等近50种类型文件，同时支持常见的音视频格式。
 * **openFileWPS**方法（推荐）：采用本机WPS客户端预览或编辑文档，支持pdf、txt、doc、xls、ppt等多种文件格式。
 * **checkWps**方法：检查本机WPS客户端是否已经安装。
@@ -117,6 +116,32 @@ const sealOfficeOnlineModule = uni.requireNativePlugin("Seal-OfficeOnline")
 * 连接真机，运行到手机或模拟器-》运行到Android App基座，进行运行调试
 
 ## 四、使用方法
+
+### 0、插件首次初始化（在应用启动时进行调用）
+
+注意：如果第一次进入空白，才进行手动初始化，否则不用调用此接口。
+
+```javascript
+// 注意：如果第一次进入空白，请使用以下代码手动初始化
+uni.showLoading({
+  title: '插件首次初始化中'
+});
+sealOfficeOnlineModule.initEngine(res => {
+  this.printInfo('插件首次初始化结果：', res);
+  if (res.code === 1) {
+    this.initPluginFirstSuccess = true;
+    uni.showToast({
+      title: '插件首次初始化成功',
+      duration: 2000
+    });
+  } else {
+    this.initPluginFirstSuccess = false;
+  }
+  uni.hideLoading();
+})
+```
+
+
 
 ### 1、离线文档预览，非腾讯TBS，摆脱内核加载困扰，支持在线文档URL
 

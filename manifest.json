@@ -2,8 +2,8 @@
     "name" : "Seal-UniPlugin-Demo",
     "appid" : "__UNI__0B3F0D8",
     "description" : "",
-    "versionName" : "3.1.3",
-    "versionCode" : 313,
+    "versionName" : "3.1.5",
+    "versionCode" : 315,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
