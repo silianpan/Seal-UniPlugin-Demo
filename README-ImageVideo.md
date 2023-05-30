@@ -195,13 +195,13 @@ openVideo(fileUrl) {
 
 * 预览mp4
 
-  <img src="http://silianpan.cn/upload/2022/01/01/demo/android/mp41.jpg" style="width:200px;height:auto" width="200px" />
+  <img src="https://i.imgtg.com/2023/05/30/Ool44l.jpg" style="width:200px;height:auto" width="200px" />
 
-  <img src="http://silianpan.cn/upload/2022/01/01/demo/android/mp42.jpg" style="width:600px;height:auto" width="200px" />
+  <img src="https://i.imgtg.com/2023/05/30/OolD6g.jpg" style="width:600px;height:auto" width="200px" />
 
 * 预览jpg
 
-  <img src="http://silianpan.cn/upload/2022/01/01/demo/android/jpg.jpg" style="width:200px;height:auto" width="200px" />
+  <img src="https://i.imgtg.com/2023/05/30/OolJQ6.jpg" style="width:200px;height:auto" width="200px" />
 
 
 
@@ -209,10 +209,10 @@ openVideo(fileUrl) {
 
 * 预览mp4
 
-  <img src="http://silianpan.cn/upload/2022/01/01/demo/ios/mp4.png" style="width:200px;height:auto" width="200px" />
+  <img src="https://i.imgtg.com/2023/05/30/Oolf6X.png" style="width:200px;height:auto" width="200px" />
 
 * 预览jpg
 
-  <img src="http://silianpan.cn/upload/2022/01/01/demo/ios/jpg1.png" style="width:200px;height:auto" width="200px" />
+  <img src="https://i.imgtg.com/2023/05/30/OolYDi.png" style="width:200px;height:auto" width="200px" />
 
 转载请注明：[我的技术分享](http://silianpan.cn) » [跨平台Office文档预览原生插件，非腾讯X5，支持离线，稳定高可用](http://silianpan.cn/archives/filepreviewuninative)
