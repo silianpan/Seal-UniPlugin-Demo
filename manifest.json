@@ -63,8 +63,8 @@
         "nativePlugins" : {
             "Seal-OfficeOnline" : {
                 "__plugin_info__" : {
-                    "name" : "跨平台Office文档、图片在线预览，视频播放原生插件 - [试用版，仅用于自定义调试基座]",
-                    "description" : "支持Android和IOS，支持Office文档，常用图片和视频格式",
+                    "name" : "跨平台Office文档预览原生插件【非X5离线、组件嵌入、水印、WPS预览编辑】 - [试用版，仅用于自定义调试基座]",
+                    "description" : "非腾讯X5，无内核加载，稳定高可用，在线文档URL和离线均可使用，支持Android和IOS，支持Office文档，常用图片和音视频格式",
                     "platforms" : "Android,iOS",
                     "url" : "https://ext.dcloud.net.cn/plugin?id=3226",
                     "android_package_name" : "",
