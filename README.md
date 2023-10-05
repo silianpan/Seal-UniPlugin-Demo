@@ -437,7 +437,7 @@ openVideo(fileUrl) {
 | docRequestHeaders  | 文档下载请求头，如：<br />{ 'Authorization': 'Token xxxxxxxx', 'Other': 'other' }<br />，<span style="color:red">**IOS端无此配置**</span> | object        | 否       |                   |                         |
 | fileType           | 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型 | string        | 否       |                   |                         |
 | fileName           | 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType | string        | 否       |                   |                         |
-| isDeleteFile       | 退出是否删除缓存的文件，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true              | false                   |
+| isDeleteFile       | 退出是否删除缓存的文件                                       | bool          | 否       | true              | false                   |
 | docDownloadTitle   | 文档下载进度框标题，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 加载文档          |                         |
 | docDownloadBody    | 文档下载进度框内容，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 请稍后...         |                         |
 | waterMarkText      | 水印文本，默认以**\n**作为分隔符换行                         | string        | 否       | null              |                         |
