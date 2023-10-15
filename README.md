@@ -453,6 +453,7 @@ openVideo(fileUrl) {
 | topBarTextColor    | 顶栏文本颜色（isTopBar为true时有效）                         | string        | 否       | #FFFFFF（白色）   |                         |
 | topBarTextLength   | 顶栏标题文字长度（isTopBar为true时有效），<span style="color:red">**IOS端无此配置**</span> | int           | 否       | 12                |                         |
 | isBackArrow        | 是否显示返回按钮（isTopBar为true时有效），<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true              | false                   |
+| countDownSecond    | 文档浏览倒计时，单位为秒，默认无，<span style="color:red">**IOS端和原生集成无此配置，3.2.1版本以上支持**</span> | long          | 否       | null              |                         |
 | videoUrl           | 音视频在线url，此参数优先于图片预览和文档预览                | string        | 是       |                   |                         |
 | isLive             | 是否是视频直播，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | false             | true                    |
 | imageUrls          | 图片url数组，此参数优先于文档预览；长按图片底部弹出保存图片菜单，保存图片至相册，<span style="color:red">**IOS端无此配置**</span> | array<string> | 是       |                   |                         |

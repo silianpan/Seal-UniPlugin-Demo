@@ -171,6 +171,7 @@ export default {
 					'离线文档预览（非腾讯TBS，无内核加载，真正离线，自定义水印、顶栏）',
 					'组件嵌入预览（非腾讯TBS，无内核加载，真正离线，自定义水印）',
 					'禁止截屏预览（离线文档、组件嵌入均支持）',
+					'倒计时预览（离线文档支持）',
 					'WPS打开文档（正常模式，需安装WPS客户端）',
 					'WPS打开文档（只读模式，需安装WPS客户端）',
 					'WPS打开文档（编辑模式，需安装WPS客户端）',
@@ -194,18 +195,24 @@ export default {
 							});
 							break;
 						case 3:
-							this.openOnlineFileWPS(fileUrl, 'Normal');
+							this.openFile(fileUrl, {
+								// 倒计时秒
+								countDownSecond: 10,
+							});
 							break;
 						case 4:
-							this.openOnlineFileWPS(fileUrl, 'ReadOnly');
+							this.openOnlineFileWPS(fileUrl, 'Normal');
 							break;
 						case 5:
-							this.openOnlineFileWPS(fileUrl, 'EditMode');
+							this.openOnlineFileWPS(fileUrl, 'ReadOnly');
 							break;
 						case 6:
-							this.openOnlineFileWPS(fileUrl, 'ReadMode');
+							this.openOnlineFileWPS(fileUrl, 'EditMode');
 							break;
 						case 7:
+							this.openOnlineFileWPS(fileUrl, 'ReadMode');
+							break;
+						case 8:
 							this.openOnlineFileWPS(fileUrl, 'SaveOnly');
 							break;
 					}
