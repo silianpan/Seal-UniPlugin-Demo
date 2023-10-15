@@ -1,7 +1,15 @@
 <template>
 	<view>
 		<h2 class="title">openFile接口（Android非腾讯TBS，无内核加载，真正离线和IOS）</h2>
+		<!-- 检查WPS是否安装 -->
 		<u-button style="margin: 6px 10px 0 10px" type="primary" @click="handlePlusCheckWPS">plus检查WPS是否安装</u-button>
+		<!-- 打开输入框文档 -->
+		<view class="uni-input-wrapper" style="margin: 10px">
+			<input class="uni-input" placeholder="请输入有效的在线文档地址或本地文档绝对路径" :value="inputFileUrl" @input="clearInput" />
+			<text class="uni-icon" v-if="showClearIcon" @click="clearIcon">&#xe434;</text>
+		</view>
+		<u-button style="margin: 6px 10px 0 10px" type="primary" @click="handleInputOpenFile">打开输入框文档</u-button>
+		<!-- 在线预览 -->
 		<u-cell-group title="Office文档预览" :title-style="{ 'font-size': '32rpx', 'font-weight': 'bold', color: '#1890ff' }">
 			<u-grid :col="3">
 				<u-grid :col="3">
@@ -35,6 +43,8 @@ const modal = uni.requireNativePlugin('modal');
 export default {
 	data() {
 		return {
+			inputFileUrl: '',
+			showClearIcon: false,
 			initPluginFirstSuccess: false,
 			platform: '',
 			docList: [
@@ -90,6 +100,29 @@ export default {
 		this.checkWps();
 	},
 	methods: {
+		// 打开输入框文档地址
+		handleInputOpenFile() {
+			if (this.inputFileUrl) {
+				this.openFile(this.inputFileUrl)
+			} else {
+				uni.showToast({
+					title: '请输入有效的在线文档地址或本地文档绝对路径'
+				});
+			}
+		},
+		// 清除输入框文档地址
+		clearInput(event) {
+			this.inputFileUrl = event.detail.value;
+			if (event.detail.value.length > 0) {
+				this.showClearIcon = true;
+			} else {
+				this.showClearIcon = false;
+			}
+		},
+		clearIcon() {
+			this.inputFileUrl = '';
+			this.showClearIcon = false;
+		},
 		// 插件首次初始化
 		// 注意：如果第一次进入空白，请使用以下代码手动初始化
 		initPluginFirst(callback) {
