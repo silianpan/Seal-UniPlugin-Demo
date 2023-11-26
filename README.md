@@ -431,36 +431,37 @@ openVideo(fileUrl) {
 
 > 支持平台：Android、IOS
 
-| 参数名             | 说明                                                         | 类型          | 是否必填 | 默认值            | 可选值                  |
-| ------------------ | ------------------------------------------------------------ | ------------- | -------- | ----------------- | ----------------------- |
-| url                | 支持如下三种地址方式：<br />（1）文件网络地址，如：http://113.62.127.199:8090/fileUpload/1.xlsx <br />（2）手机本地文件地址，如：/data/user/0/APP包名/files/1.xlsx 文件名，如：1.xlsx，<br />（3）访问默认目录文件，默认目录为：/data/user/0/APP包名，如：com.HBuilder.UniPlugin<br />**注意**：手机本地地址目录需要有权限访问<br/><span style="color:red">**IOS端只支持在线地址**</span> | string        | 是       |                   |                         |
-| docRequestHeaders  | 文档下载请求头，如：<br />{ 'Authorization': 'Token xxxxxxxx', 'Other': 'other' }<br />，<span style="color:red">**IOS端无此配置**</span> | object        | 否       |                   |                         |
-| fileType           | 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型 | string        | 否       |                   |                         |
-| fileName           | 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType | string        | 否       |                   |                         |
-| isDeleteFile       | 退出是否删除缓存的文件                                       | bool          | 否       | true              | false                   |
-| docDownloadTitle   | 文档下载进度框标题，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 加载文档          |                         |
-| docDownloadBody    | 文档下载进度框内容，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 请稍后...         |                         |
-| waterMarkText      | 水印文本，默认以**\n**作为分隔符换行                         | string        | 否       | null              |                         |
-| waterMarkTextSep   | 水印文本分隔符，<span style="color:red">**注意：IOS端只支持\n换行**</span> | string        | 否       | \n                |                         |
-| waterMarkFontSize  | 水印字体大小，单位为sp<br>使用sp作为字体大小单位,会随着系统的字体大小改变 | int           | 否       | 13                |                         |
-| waterMarkFontColor | 水印字体颜色                                                 | string        | 否       | #40F3F5F9         |                         |
-| waterMarkDegree    | 水印旋转角度，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | -30（逆时针30度） |                         |
-| isTopBar           | 是否显示顶栏，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true              | false                   |
-| title              | 顶栏标题，isTopBar为true时有效                               | string        | 否       | APP名称           |                         |
-| topBarAutoHide     | 顶栏是否自动隐藏，isTopBar=true时生效，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | false             | true                    |
-| topBarHeight       | 顶栏自定义高度，isTopBar为true时有效，类型为正整数，<span style="color:red">**IOS端无此配置**</span> | int           | 否       | actionBarSize     |                         |
-| topBarBgColor      | 顶栏背景颜色，isTopBar为true时有效                           | string        | 否       | #3394EC（科技蓝） |                         |
-| topBarTextColor    | 顶栏文本颜色（isTopBar为true时有效）                         | string        | 否       | #FFFFFF（白色）   |                         |
-| topBarTextLength   | 顶栏标题文字长度（isTopBar为true时有效），<span style="color:red">**IOS端无此配置**</span> | int           | 否       | 12                |                         |
-| isBackArrow        | 是否显示返回按钮（isTopBar为true时有效），<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true              | false                   |
-| countDownSecond    | 文档浏览倒计时，单位为秒，默认无，<span style="color:red">**IOS端和原生集成无此配置，3.2.1版本以上支持**</span> | long          | 否       | null              |                         |
-| videoUrl           | 音视频在线url，此参数优先于图片预览和文档预览                | string        | 是       |                   |                         |
-| isLive             | 是否是视频直播，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | false             | true                    |
-| imageUrls          | 图片url数组，此参数优先于文档预览；长按图片底部弹出保存图片菜单，保存图片至相册，<span style="color:red">**IOS端无此配置**</span> | array<string> | 是       |                   |                         |
-| imageCurrentIndex  | 当前点击图片在imageUrls中的下标，从0开始，<span style="color:red">**IOS端无此配置**</span> | int           | 否       | 0                 |                         |
-| imageIndexType     | 图片底部指示器类型，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 'dot'             | 'number':数字；'dot':点 |
-| isSaveImg          | 是否长按保存图片，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | null              | true/false              |
-| canScreenshot      | 是否可以截屏，<span style="color:blue">**3.0.2版本以上支持**</span> | bool          | 否       | true（可以截屏）  | false（禁止截屏）       |
+| 参数名             | 说明                                                         | 类型          | 是否必填 | 默认值            | 可选值                                                       |
+| ------------------ | ------------------------------------------------------------ | ------------- | -------- | ----------------- | ------------------------------------------------------------ |
+| url                | 支持如下三种地址方式：<br />（1）文件网络地址，如：http://113.62.127.199:8090/fileUpload/1.xlsx <br />（2）手机本地文件地址，如：/data/user/0/APP包名/files/1.xlsx 文件名，如：1.xlsx，<br />（3）访问默认目录文件，默认目录为：/data/user/0/APP包名，如：com.HBuilder.UniPlugin<br />**注意**：手机本地地址目录需要有权限访问<br/><span style="color:red">**IOS端只支持在线地址**</span> | string        | 是       |                   |                                                              |
+| docRequestHeaders  | 文档下载请求头，如：<br />{ 'Authorization': 'Token xxxxxxxx', 'Other': 'other' }<br />，<span style="color:red">**IOS端无此配置**</span> | object        | 否       |                   |                                                              |
+| fileType           | 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型 | string        | 否       |                   |                                                              |
+| fileName           | 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType | string        | 否       |                   |                                                              |
+| isDeleteFile       | 退出是否删除缓存的文件                                       | bool          | 否       | true              | false                                                        |
+| docDownloadTitle   | 文档下载进度框标题，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 加载文档          |                                                              |
+| docDownloadBody    | 文档下载进度框内容，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 请稍后...         |                                                              |
+| waterMarkText      | 水印文本，默认以**\n**作为分隔符换行                         | string        | 否       | null              |                                                              |
+| waterMarkTextSep   | 水印文本分隔符，<span style="color:red">**注意：IOS端只支持\n换行**</span> | string        | 否       | \n                |                                                              |
+| waterMarkFontSize  | 水印字体大小，单位为sp<br>使用sp作为字体大小单位,会随着系统的字体大小改变 | int           | 否       | 13                |                                                              |
+| waterMarkFontColor | 水印字体颜色                                                 | string        | 否       | #40F3F5F9         |                                                              |
+| waterMarkDegree    | 水印旋转角度，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | -30（逆时针30度） |                                                              |
+| isTopBar           | 是否显示顶栏，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true              | false                                                        |
+| title              | 顶栏标题，isTopBar为true时有效                               | string        | 否       | APP名称           |                                                              |
+| topBarAutoHide     | 顶栏是否自动隐藏，isTopBar=true时生效，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | false             | true                                                         |
+| topBarHeight       | 顶栏自定义高度，isTopBar为true时有效，类型为正整数，<span style="color:red">**IOS端无此配置**</span> | int           | 否       | actionBarSize     |                                                              |
+| topBarBgColor      | 顶栏背景颜色，isTopBar为true时有效                           | string        | 否       | #3394EC（科技蓝） |                                                              |
+| topBarTextColor    | 顶栏文本颜色（isTopBar为true时有效）                         | string        | 否       | #FFFFFF（白色）   |                                                              |
+| topBarTextLength   | 顶栏标题文字长度（isTopBar为true时有效），<span style="color:red">**IOS端无此配置**</span> | int           | 否       | 12                |                                                              |
+| isBackArrow        | 是否显示返回按钮（isTopBar为true时有效），<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true              | false                                                        |
+| countDownSecond    | 文档浏览倒计时，单位为秒，默认无，<span style="color:red">**IOS端和原生集成无此配置，3.2.1版本以上支持**</span> | long          | 否       | null              |                                                              |
+| videoUrl           | 音视频在线url，此参数优先于图片预览和文档预览                | string        | 是       |                   |                                                              |
+| isLive             | 是否是视频直播，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | false             | true                                                         |
+| imageUrls          | 图片url数组，此参数优先于文档预览；长按图片底部弹出保存图片菜单，保存图片至相册，<span style="color:red">**IOS端无此配置**</span> | array<string> | 是       |                   |                                                              |
+| imageCurrentIndex  | 当前点击图片在imageUrls中的下标，从0开始，<span style="color:red">**IOS端无此配置**</span> | int           | 否       | 0                 |                                                              |
+| imageIndexType     | 图片底部指示器类型，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 'dot'             | 'number':数字；'dot':点                                      |
+| isSaveImg          | 是否长按保存图片，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | null              | true/false                                                   |
+| canScreenshot      | 是否可以截屏，<span style="color:blue">**3.0.2版本以上支持**</span> | bool          | 否       | true（可以截屏）  | false（禁止截屏）                                            |
+| txtEncoding        | 指定txt文档编码，<span style="color:red">**仅IOS端支持**</span> | string        | 否       | null              | UTF-8,GBK 632,GBK 631,GB 2312,HZ GB 2312,Mac Chinese Simp,DOS Chinese Simplif,GB 18030,UTF-16,UTF-16-LE,UTF-16-BE,UTF-32,UTF-32-LE,UTF-32-BE |
 
 
 
