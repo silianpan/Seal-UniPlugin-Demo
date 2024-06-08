@@ -240,6 +240,7 @@ export default {
 					isDeleteFile: false,
 					topBarAutoHide: true,
 					isTopBar: true,
+					// 顶部状态栏自定义菜单功能按钮
 					menuItems: ['下载', '分享'],
 					...otherOptions,
 				},

@@ -180,6 +180,8 @@ openFile(fileUrl) {
       isDeleteFile: false,
       topBarAutoHide: true,
       isTopBar: true,
+      // 顶部状态栏自定义菜单功能按钮
+      menuItems: ['下载', '分享'],
     },
     res => {
       this.printInfo('打开在线文档事件结果：', res);
@@ -463,6 +465,7 @@ openVideo(fileUrl) {
 | isSaveImg          | 是否长按保存图片，<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | null              | true/false                                                   |
 | canScreenshot      | 是否可以截屏，<span style="color:blue">**3.0.2版本以上支持**</span> | bool          | 否       | true（可以截屏）  | false（禁止截屏）                                            |
 | txtEncoding        | 指定txt文档编码，<span style="color:red">**仅IOS端支持**</span> | string        | 否       | null              | UTF-8,GBK 632,GBK 631,GB 2312,HZ GB 2312,Mac Chinese Simp,DOS Chinese Simplif,GB 18030,UTF-16,UTF-16-LE,UTF-16-BE,UTF-32,UTF-32-LE,UTF-32-BE |
+| menuItems          | 导航栏自定义菜单，例如：['下载', '分享']，<span style="color:red">**IOS端无此配置**</span> | array<string> | 否       | null              |                                                              |
 
 
 
@@ -554,6 +557,7 @@ openVideo(fileUrl) {
 | 1008   | 缓存文档删除成功            |
 | 1009   | 程序员正在快马加鞭开发中... |
 | 1010   | 页面返回                    |
+| 1011   | 导航栏菜单点击事件          |
 |        |                             |
 | 1021   | WPS动作事件                 |
 
