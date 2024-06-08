@@ -240,6 +240,7 @@ export default {
 					isDeleteFile: false,
 					topBarAutoHide: true,
 					isTopBar: true,
+					menuItems: ['下载', '分享'],
 					...otherOptions,
 				},
 				res => {
