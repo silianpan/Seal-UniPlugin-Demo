@@ -1,3 +1,7 @@
+[Github访问](https://github.com/silianpan/Seal-UniPlugin-Demo)
+
+[国内Gitee访问](https://gitee.com/twofloor/Seal-UniPlugin-Demo)
+
 ## 引言
 
 前面写了多篇关于<跨平台文件在线预览解决方案>，不管使用pdf.js、LibreOffice，还是永中DCS，各自都有自己的优缺点，比如：pdf.js不支持双指放大缩小，LibreOffice加载缓慢，永中DCS收费等等。
