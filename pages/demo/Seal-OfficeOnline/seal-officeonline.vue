@@ -63,6 +63,7 @@ export default {
 				'http://silianpan.cn/upload/2022/01/01/1.gif'
 			],
 			videoList: [
+				'file:///data/data/com.seal.SealUniPlugin/files/80_1720785324.mp4',
 				'http://silianpan.cn/upload/2022/01/01/1.mp4',
 				'http://silianpan.cn/upload/2022/01/01/1.mkv',
 				'http://silianpan.cn/upload/2022/01/01/1.avi',
