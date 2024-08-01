@@ -171,6 +171,7 @@ export default {
 				itemList: [
 					'离线文档预览（非腾讯TBS，无内核加载，真正离线，自定义水印、顶栏）',
 					'组件嵌入预览（非腾讯TBS，无内核加载，真正离线，自定义水印）',
+					'下载本地预览（非腾讯TBS，无内核加载，真正离线，自定义水印）',
 					'禁止截屏预览（离线文档、组件嵌入均支持）',
 					'倒计时预览（离线文档支持）',
 					'WPS打开文档（正常模式，需安装WPS客户端）',
@@ -190,30 +191,33 @@ export default {
 							});
 							break;
 						case 2:
+							this.openFile(fileUrl, {}, true);
+							break;
+						case 3:
 							this.openFile(fileUrl, {
 								// 禁止截屏
 								canScreenshot: false,
 							});
 							break;
-						case 3:
+						case 4:
 							this.openFile(fileUrl, {
 								// 倒计时秒
 								countDownSecond: 10,
 							});
 							break;
-						case 4:
+						case 5:
 							this.openOnlineFileWPS(fileUrl, 'Normal');
 							break;
-						case 5:
+						case 6:
 							this.openOnlineFileWPS(fileUrl, 'ReadOnly');
 							break;
-						case 6:
+						case 7:
 							this.openOnlineFileWPS(fileUrl, 'EditMode');
 							break;
-						case 7:
+						case 8:
 							this.openOnlineFileWPS(fileUrl, 'ReadMode');
 							break;
-						case 8:
+						case 9:
 							this.openOnlineFileWPS(fileUrl, 'SaveOnly');
 							break;
 					}
@@ -223,71 +227,78 @@ export default {
 		/**
 		 * 打开文档，非腾讯TBS，无内核加载，真正离线
 		 * @param {Object} fileUrl 文档url
+		 * @param {Object} otherOptions 其他选项
+		 * @param {boolean} [downloadPreview=false] 是否下载预览
 		 */
-		openFile(fileUrl, otherOptions) {
-			// 方式一：直接传递文件在线url
-			sealOfficeOnlineModule.openFile(
-				{
-					url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
-					// fileType: 'pdf',
-					// fileName: 'example',
-					title: 'Office文档在线预览', // 顶栏标题，默认为：APP名称
-					topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#3394EC（科技蓝）
-					waterMarkText: '你好，世界\n准备好了吗？时刻准备着', // 水印文本
-					docRequestHeaders: {
-						'Authorization': 'Token xxxxxxxx',
-						'Other': 'other'
-					}, // 文档下载请求头
-					isDeleteFile: false,
-					topBarAutoHide: true,
-					isTopBar: true,
-					// 顶部状态栏自定义菜单功能按钮
-					menuItems: ['下载', '分享'],
-					...otherOptions,
-				},
-				res => {
-					this.printInfo('打开在线文档事件结果：', res);
-				}
-			);
-			
-			// 方式二：先下载文件保存到手机目录，再获取文件绝对路径
-			// uni.showLoading({
-			// 	title: '正在下载文件，请稍后~'
-			// });
-			// uni.downloadFile({
-			// 	url: fileUrl,
-			// 	success: res => {
-			// 		if (res.statusCode === 200) {
-			// 			// 直接传递本地文件地址
-			// 			// 传递本地文件绝对路径，res.tempFilePath的前缀是_doc，而实际目录为doc，没有下划线_，所以要substr取子串
-			// 			// const url = '/storage/sdcard0/Android/data/APP包名/apps/APPID/' + res.tempFilePath.substr(1)
-			// 			// 可以通过以下方式获取文件绝对路径
-			// 			uni.saveFile({
-			// 				// 需要保存文件的临时路径
-			// 				tempFilePath: res.tempFilePath,
-			// 				success: resSave => {
-			// 					uni.hideLoading();
-			// 					const savedFilePath = resSave.savedFilePath;
-			// 					// 转换为绝对路径
-			// 					const url = plus.io.convertLocalFileSystemURL(savedFilePath);
-			// 					console.log('tempFilePath', res.tempFilePath);
-			// 					console.log('savedFilePath', savedFilePath);
-			// 					console.log('url', url);
-			// 					// 预览本地文件
-			// 					sealOfficeOnlineModule.openFile(
-			// 						{
-			// 							url: url,
-			// 							isDeleteFile: false
-			// 						},
-			// 						res => {
-			// 							this.printInfo('打开本地文档事件结果：', res);
-			// 						}
-			// 					);
-			// 				}
-			// 			});
-			// 		}
-			// 	}
-			// });
+		openFile(fileUrl, otherOptions, downloadPreview = false) {
+			if (downloadPreview) {
+				// 方式二：先下载文件保存到手机目录，再获取文件绝对路径
+				uni.showLoading({
+					title: '正在下载文件，请稍后~'
+				});
+				uni.downloadFile({
+					url: fileUrl,
+					success: res => {
+						if (res.statusCode === 200) {
+							// 直接传递本地文件地址
+							// 传递本地文件绝对路径，res.tempFilePath的前缀是_doc，而实际目录为doc，没有下划线_，所以要substr取子串
+							// const url = '/storage/sdcard0/Android/data/APP包名/apps/APPID/' + res.tempFilePath.substr(1)
+							// 可以通过以下方式获取文件绝对路径
+							uni.saveFile({
+								// 需要保存文件的临时路径
+								tempFilePath: res.tempFilePath,
+								success: resSave => {
+									uni.hideLoading();
+									const savedFilePath = resSave.savedFilePath;
+									// 转换为绝对路径
+									const fileLocalPath = plus.io.convertLocalFileSystemURL(savedFilePath);
+									console.log('tempFilePath', res.tempFilePath);
+									console.log('savedFilePath', savedFilePath);
+									console.log('fileLocalPath', fileLocalPath);
+									// 预览本地文件
+									sealOfficeOnlineModule.openFile(
+										{
+											url: fileLocalPath,
+											isDeleteFile: true
+										},
+										res => {
+											this.printInfo('打开本地文档事件结果：', res);
+										}
+									);
+								}
+							});
+						}
+					}
+				});
+			} else {
+				// 方式一：直接传递文件在线url
+				sealOfficeOnlineModule.openFile(
+					{
+						url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
+						// fileType: 'pdf',
+						// fileName: 'example',
+						title: 'Office文档在线预览', // 顶栏标题，默认为：APP名称
+						topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#3394EC（科技蓝）
+						// topBarBgColor: '#FFFFFF',
+						// topBarTextColor: '#000000',
+						isDark: false,
+						waterMarkText: '你好，世界\n准备好了吗？时刻准备着', // 水印文本
+						docRequestHeaders: {
+							'Authorization': 'Token xxxxxxxx',
+							'Other': 'other'
+						}, // 文档下载请求头
+						isDeleteFile: true,
+						topBarAutoHide: true,
+						isTopBar: true,
+						// 顶部状态栏自定义菜单功能按钮
+						menuItems: ['下载', '分享'],
+						...otherOptions,
+					},
+					res => {
+						this.printInfo('打开在线文档事件结果：', res);
+					}
+				);
+			}
 		},
 		/**
 		 * WPS预览或编辑文档
