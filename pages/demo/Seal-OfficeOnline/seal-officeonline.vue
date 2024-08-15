@@ -291,11 +291,22 @@ export default {
 						topBarAutoHide: true,
 						isTopBar: true,
 						// 顶部状态栏自定义菜单功能按钮
-						menuItems: ['下载', '分享'],
+						menuItems: ['下载', '分享', '跳转第5页'],
+						// 跳转页码
+						targetPage: 5,
 						...otherOptions,
 					},
 					res => {
 						this.printInfo('打开在线文档事件结果：', res);
+						if (res.code === 1012) {
+							// 1012,导航栏菜单点击事件
+							this.printInfo(res.result)
+							if (res.result.menuItemId === 3) {
+								this.printInfo('跳转第5页');
+								sealOfficeOnlineModule.gotoPage(5);
+							}
+							
+						}
 					}
 				);
 			}
