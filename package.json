@@ -8,7 +8,6 @@
 		"uview-ui": "^1.8.4"
 	},
 	"devDependencies": {
-		"node-sass": "^6.0.1",
-		"sass-loader": "^12.1.0"
+		"sass": "^1.77.8"
 	}
 }
