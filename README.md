@@ -108,6 +108,7 @@ const sealOfficeOnlineModule = uni.requireNativePlugin("Seal-OfficeOnline")
 
 * **initEngine**方法：插件首次初始化（在应用启动时进行调用），注意：如果第一次进入空白，才进行手动初始化，否则不用调用此接口。
 * **openFile**方法（推荐）：支持Android和IOS，预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx、epub等近50种类型文件，同时支持常见的音视频格式。
+* **gotoPage**方法：跳转文档指定页码
 * **openFileWPS**方法（推荐）：采用本机WPS客户端预览或编辑文档，支持pdf、txt、doc、xls、ppt等多种文件格式。
 * **checkWps**方法：检查本机WPS客户端是否已经安装。
 * **openFileImage**方法：仅支持IOS，预览图片，支持如下格式：jpg、jpeg、png、bmp、jpg、gif等，参数同openFile方法
@@ -186,6 +187,8 @@ openFile(fileUrl) {
       isTopBar: true,
       // 顶部状态栏自定义菜单功能按钮
       menuItems: ['下载', '分享'],
+      // 跳转页码
+      targetPage: 5,
     },
     res => {
       this.printInfo('打开在线文档事件结果：', res);
@@ -265,6 +268,8 @@ export default {
 			// 文档预览，传递url
 			url: params.url,
 			waterMarkText: '你好，世界\n准备好了吗？时刻准备着',
+      // 跳转页码
+      targetPage: 5,
 		}
 	}
 };
@@ -470,6 +475,7 @@ openVideo(fileUrl) {
 | canScreenshot      | 是否可以截屏，<span style="color:blue">**3.0.2版本以上支持**</span> | bool          | 否       | true（可以截屏）  | false（禁止截屏）                                            |
 | txtEncoding        | 指定txt文档编码，<span style="color:red">**仅IOS端支持**</span> | string        | 否       | null              | UTF-8,GBK 632,GBK 631,GB 2312,HZ GB 2312,Mac Chinese Simp,DOS Chinese Simplif,GB 18030,UTF-16,UTF-16-LE,UTF-16-BE,UTF-32,UTF-32-LE,UTF-32-BE |
 | menuItems          | 导航栏自定义菜单，例如：['下载', '分享']，<span style="color:red">**IOS端无此配置**</span> | array<string> | 否       | null              |                                                              |
+| targetPage         | 跳转指定页码，<span style="color:red">**IOS端无此配置**</span> | int           | 否       | null              |                                                              |
 
 
 
@@ -561,7 +567,8 @@ openVideo(fileUrl) {
 | 1008   | 缓存文档删除成功            |
 | 1009   | 程序员正在快马加鞭开发中... |
 | 1010   | 页面返回                    |
-| 1011   | 导航栏菜单点击事件          |
+| 1011   | 返回当前页码和总页码        |
+| 1012   | 导航栏菜单点击事件          |
 |        |                             |
 | 1021   | WPS动作事件                 |
 
