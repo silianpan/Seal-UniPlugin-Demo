@@ -86,8 +86,6 @@ Github克隆（[demo工程地址](https://github.com/silianpan/Seal-UniPlugin-De
   npm install --registry https://registry.npm.taobao.org
   ```
 
-<span style="color:red">注意：Vue版本要选择2，不要用3</span>
-
 ### Step2. 添加本文插件
 
 插件名称：[Seal-OfficeOnline](https://ext.dcloud.net.cn/plugin?id=3226)
@@ -235,6 +233,18 @@ openFile(fileUrl) {
   // });
 },
 ```
+
+（1）跳转文档指定页码，<span style="color:red">**注意：需要等文档加载完成之后，才能调用此接口，如果需要直接跳转，在openFile接口中传递`targetPage`参数**</span>
+
+使用接口：gotoPage(int targetPage)
+
+参数：targetPage，指定页码
+
+```js
+sealOfficeOnlineModule.gotoPage(5)
+```
+
+
 
 ### 2、组件嵌入预览
 
@@ -476,6 +486,9 @@ openVideo(fileUrl) {
 | txtEncoding        | 指定txt文档编码，<span style="color:red">**仅IOS端支持**</span> | string        | 否       | null              | UTF-8,GBK 632,GBK 631,GB 2312,HZ GB 2312,Mac Chinese Simp,DOS Chinese Simplif,GB 18030,UTF-16,UTF-16-LE,UTF-16-BE,UTF-32,UTF-32-LE,UTF-32-BE |
 | menuItems          | 导航栏自定义菜单，例如：['下载', '分享']，<span style="color:red">**IOS端无此配置**</span> | array<string> | 否       | null              |                                                              |
 | targetPage         | 跳转指定页码，<span style="color:red">**IOS端无此配置**</span> | int           | 否       | null              |                                                              |
+| readViewWidth      | 阅读视图宽度，可以根据屏幕大小计算传入，<span style="color:red">**IOS端无此配置**</span> | int           | 否       | null              |                                                              |
+| readViewHeight     | 阅读视图高度，可以根据屏幕大小计算传入，建议不传，<span style="color:red">**IOS端无此配置**</span> | int           | 否       | null              |                                                              |
+| readBgColor        | 阅读器背景颜色，如：#8c8c8c，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | null              |                                                              |
 
 
 
