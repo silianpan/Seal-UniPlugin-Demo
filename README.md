@@ -106,10 +106,11 @@ const sealOfficeOnlineModule = uni.requireNativePlugin("Seal-OfficeOnline")
 
 * **initEngine**方法：插件首次初始化（在应用启动时进行调用），注意：如果第一次进入空白，才进行手动初始化，否则不用调用此接口。
 * **openFile**方法（推荐）：支持Android和IOS，预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx、epub等近50种类型文件，同时支持常见的音视频格式。
-* **gotoPage**方法：跳转文档指定页码
+* **gotoPage**方法：跳转文档指定页码。
 * **openFileWPS**方法（推荐）：采用本机WPS客户端预览或编辑文档，支持pdf、txt、doc、xls、ppt等多种文件格式。
 * **checkWps**方法：检查本机WPS客户端是否已经安装。
-* **openFileImage**方法：仅支持IOS，预览图片，支持如下格式：jpg、jpeg、png、bmp、jpg、gif等，参数同openFile方法
+* **openFileImage**方法：仅支持IOS，预览图片，支持如下格式：jpg、jpeg、png、bmp、jpg、gif等，参数同openFile方法。
+* **removeCacheFile**方法：仅支持Android，删除缓存文件。
 
 **<span style="color:red">接口使用方法，参考如下章节《四、使用方法》</span>**
 
@@ -444,6 +445,24 @@ openVideo(fileUrl) {
 }
 ```
 
+### 7、删除缓存文件
+
+使用接口：removeCacheFile
+
+> 支持平台：仅支持Android
+
+```javascript
+sealOfficeOnlineModule.removeCacheFile({
+  filePath: 'xxx'
+}, res => {});
+或
+sealOfficeOnlineModule.removeCacheFile({
+  url: 'xxx',
+  fileName: 'xxx', // 可选
+  fileType: 'xxx', // 可选
+}, res => {});
+```
+
 
 
 ## 五、openFile接口参数说明
@@ -569,6 +588,7 @@ openVideo(fileUrl) {
 | -7     | 不支持文件类型              |
 | -8     | 文件不存在                  |
 | -9     | 文件预览失败                |
+| -10    | 加载内核失败                |
 |        |                             |
 | 1001   | 文档下载成功                |
 | 1002   | 开始初始化内核              |
