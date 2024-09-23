@@ -111,6 +111,7 @@ const sealOfficeOnlineModule = uni.requireNativePlugin("Seal-OfficeOnline")
 * **checkWps**方法：检查本机WPS客户端是否已经安装。
 * **openFileImage**方法：仅支持IOS，预览图片，支持如下格式：jpg、jpeg、png、bmp、jpg、gif等，参数同openFile方法。
 * **removeCacheFile**方法：仅支持Android，删除缓存文件。
+* **closeFile**方法：关闭文档预览。
 
 **<span style="color:red">接口使用方法，参考如下章节《四、使用方法》</span>**
 
@@ -461,6 +462,16 @@ sealOfficeOnlineModule.removeCacheFile({
   fileName: 'xxx', // 可选
   fileType: 'xxx', // 可选
 }, res => {});
+```
+
+### 8、关闭文档预览
+
+使用接口：closeFile
+
+> 支持平台：目前仅支持Android
+
+```javascript
+sealOfficeOnlineModule.closeFile();
 ```
 
 

@@ -154,6 +154,14 @@ export default {
 			// uni.showModal({
 			// 	content: title + JSON.stringify(result)
 			// });
+			// uni.showToast({
+			// 	icon: null,
+			// 	title: title + JSON.stringify(result),
+			// })
+			modal.toast({
+				message: title + JSON.stringify(result),
+				duration: 2,
+			});
 		},
 		/**
 		 * 检查WPS客户端是否已经安装
