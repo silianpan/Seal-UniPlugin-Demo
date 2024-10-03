@@ -30,7 +30,7 @@
 
 
 
-支持wps、doc、docx、xls、xlsx、csv、ppt、pptx、txt、properties、log、Log、ini、lua、conf、m、cpp、java、h、xml、html、htm等常见文档格式。
+支持国产ofd，支持wps、doc、docx、xls、xlsx、csv、ppt、pptx、txt、properties、log、Log、ini、lua、conf、m、cpp、java、h、xml、html、htm等常见文档格式。
 
 
 
@@ -105,7 +105,7 @@ const sealOfficeOnlineModule = uni.requireNativePlugin("Seal-OfficeOnline")
 ```
 
 * **initEngine**方法：插件首次初始化（在应用启动时进行调用），注意：如果第一次进入空白，才进行手动初始化，否则不用调用此接口。
-* **openFile**方法（推荐）：支持Android和IOS，预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx、epub等近50种类型文件，同时支持常见的音视频格式。
+* **openFile**方法（推荐）：支持Android和IOS，预览Office文件，支持如下格式：国产ofd、pdf、txt、doc、docx、xls、xlsx、ppt、pptx、epub等近50种类型文件，同时支持常见的音视频格式。
 * **gotoPage**方法：跳转文档指定页码。
 * **openFileWPS**方法（推荐）：采用本机WPS客户端预览或编辑文档，支持pdf、txt、doc、xls、ppt等多种文件格式。
 * **checkWps**方法：检查本机WPS客户端是否已经安装。
@@ -489,6 +489,7 @@ sealOfficeOnlineModule.closeFile();
 | fileType           | 可以指定文件类型，如：xlsx，在url参数无法判断文件类型时，可以指定文件类型 | string        | 否       |                   |                                                              |
 | fileName           | 指定文件名，如：file1，注意此处不带文件扩展名，如果同时指定fileName和fileType，那么最后的文件名通过这两个参数组合起来，即：fileName.fileType | string        | 否       |                   |                                                              |
 | isDeleteFile       | 退出是否删除缓存的文件                                       | bool          | 否       | true              | false                                                        |
+| showProgressDialog | 是否显示进度对话框（回调函数中也有进度日志），<span style="color:red">**IOS端无此配置**</span> | bool          | 否       | true              | false                                                        |
 | docDownloadTitle   | 文档下载进度框标题，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 加载文档          |                                                              |
 | docDownloadBody    | 文档下载进度框内容，<span style="color:red">**IOS端无此配置**</span> | string        | 否       | 请稍后...         |                                                              |
 | waterMarkText      | 水印文本，默认以**\n**作为分隔符换行                         | string        | 否       | null              |                                                              |
@@ -613,6 +614,9 @@ sealOfficeOnlineModule.closeFile();
 | 1010   | 页面返回                    |
 | 1011   | 返回当前页码和总页码        |
 | 1012   | 导航栏菜单点击事件          |
+| 1013   | 正在加载ofd                 |
+| 1014   | 加载ofd完成                 |
+| 1015   | 文档下载进度                |
 |        |                             |
 | 1021   | WPS动作事件                 |
 
