@@ -30,9 +30,11 @@
 
 
 
-支持国产ofd，支持wps、doc、docx、xls、xlsx、csv、ppt、pptx、txt、properties、log、Log、ini、lua、conf、m、cpp、java、h、xml、html、htm等常见文档格式。
+支持wps、doc、docx、xls、xlsx、csv、ppt、pptx、txt、properties、log、Log、ini、lua、conf、m、cpp、java、h、xml、html、htm等常见文档格式。
 
 
+
+### 国产OFD文档预览Android&IOS原生插件，请查看：[Seal-OfdReader]()
 
 ### 原生Android项目离线集成，查看Demo工程及README文档： [Seal-Office-Android-Demo](https://github.com/silianpan/Seal-Office-Android-Demo)
 
@@ -105,13 +107,13 @@ const sealOfficeOnlineModule = uni.requireNativePlugin("Seal-OfficeOnline")
 ```
 
 * **initEngine**方法：插件首次初始化（在应用启动时进行调用），注意：如果第一次进入空白，才进行手动初始化，否则不用调用此接口。
-* **openFile**方法（推荐）：支持Android和IOS，预览Office文件，支持如下格式：国产ofd、pdf、txt、doc、docx、xls、xlsx、ppt、pptx、epub等近50种类型文件，同时支持常见的音视频格式。
+* **openFile**方法（推荐）：支持Android和IOS，预览Office文件，支持如下格式：pdf、txt、doc、docx、xls、xlsx、ppt、pptx、epub等近50种类型文件，同时支持常见的音视频格式。
 * **gotoPage**方法：跳转文档指定页码。
 * **openFileWPS**方法（推荐）：采用本机WPS客户端预览或编辑文档，支持pdf、txt、doc、xls、ppt等多种文件格式。
 * **checkWps**方法：检查本机WPS客户端是否已经安装。
 * **openFileImage**方法：仅支持IOS，预览图片，支持如下格式：jpg、jpeg、png、bmp、jpg、gif等，参数同openFile方法。
-* **removeCacheFile**方法：仅支持Android，删除缓存文件。
-* **closeFile**方法：关闭文档预览。
+* **removeCacheFile**方法：删除缓存文件，支持Android和IOS。
+* **closeFile**方法：关闭文档预览，支持Android和IOS。
 
 **<span style="color:red">接口使用方法，参考如下章节《四、使用方法》</span>**
 
@@ -450,7 +452,7 @@ openVideo(fileUrl) {
 
 使用接口：removeCacheFile
 
-> 支持平台：仅支持Android
+> 支持平台：支持Android和IOS
 
 ```javascript
 sealOfficeOnlineModule.removeCacheFile({
@@ -468,7 +470,7 @@ sealOfficeOnlineModule.removeCacheFile({
 
 使用接口：closeFile
 
-> 支持平台：目前仅支持Android
+> 支持平台：支持Android和IOS
 
 ```javascript
 sealOfficeOnlineModule.closeFile();
