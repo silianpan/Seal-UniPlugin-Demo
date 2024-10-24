@@ -23,6 +23,12 @@
 					url: '/pages/demo/Seal-OfficeOnline/seal-officeonline'
 				},
 				{
+					id: 'seal-ofdReader',
+					name: 'Seal-OfdReader',
+					open: false,
+					url: '/pages/demo/Seal-OfdReader/seal-ofdreader'
+				},
+				{
 					id: 'seal-imagevideo',
 					name: 'Seal-ImageVideo',
 					open: false,

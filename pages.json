@@ -30,6 +30,18 @@
 			}
 		},
 		{
+			"path": "pages/demo/Seal-OfdReader/seal-ofdreader",
+			"style": {
+				"navigationBarTitleText": "Seal-OfdReader"
+			}
+		},
+		{
+			"path": "pages/demo/Seal-OfdReader/seal-ofdreader-component",
+			"style": {
+				"navigationBarTitleText": "Seal-OfdReader组件嵌入"
+			}
+		},
+		{
 			"path": "pages/demo/Seal-ImageVideo/seal-imagevideo",
 			"style": {
 				"navigationBarTitleText": "Seal-ImageVideo"

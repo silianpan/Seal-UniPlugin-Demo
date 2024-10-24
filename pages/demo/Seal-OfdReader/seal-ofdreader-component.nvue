@@ -1,0 +1,23 @@
+<template>
+	<div><Seal-OfdReader :options="options" style="width:600rpx;height:800rpx;border: 1px solid red;"></Seal-OfdReader></div>
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			options: {}
+		}
+	},
+	onLoad(params) {
+		console.log('params', params)
+		this.options = {
+			// 文档预览，传递url
+			url: params.url,
+			waterMarkText: '你好，世界\n准备好了吗？时刻准备着',
+			// 禁止截屏
+			// canScreenshot: false,
+		}
+	}
+};
+</script>

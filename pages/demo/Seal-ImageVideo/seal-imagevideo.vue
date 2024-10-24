@@ -10,7 +10,7 @@
 			<u-grid :col="3">
 				<u-grid :col="3">
 					<u-grid-item v-for="(item, index) in videoList" :key="index">
-						<u-image @tap="openVideo(item)" width="80%" height="180rpx" :src="'/static/' + item.substring(item.lastIndexOf('.') + 1) + '.svg'" />
+						<u-image @tap="openVideo(item)" width="80%" height="180rpx" :src="'http://silianpan.cn/upload/2022/01/01/' + item.substring(item.lastIndexOf('.') + 1) + '.svg'" />
 					</u-grid-item>
 				</u-grid>
 			</u-grid>
