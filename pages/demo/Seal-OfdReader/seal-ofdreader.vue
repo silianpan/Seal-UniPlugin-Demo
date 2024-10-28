@@ -40,10 +40,12 @@ export default {
 		const { platform } = uni.getSystemInfoSync();
 		this.platform = platform;
 		
-		// 初始化ofd阅读器引擎
-		sealOfdReaderModule.initEngine((res) => {
-			this.printInfo('初始化ofd阅读器引擎：', res);
-		})
+		if (platform === 'android') {
+			// 初始化ofd阅读器引擎
+			sealOfdReaderModule.initEngine((res) => {
+				this.printInfo('初始化ofd阅读器引擎：', res);
+			})
+		}
 	},
 	methods: {
 		// 打开输入框文档地址
@@ -176,7 +178,7 @@ export default {
 						url: fileUrl, // 同时支持在线和本地文档，三种参数传递方式，具体查看文档说明
 						// fileType: 'pdf',
 						// fileName: 'example',
-						title: 'Office文档在线预览', // 顶栏标题，默认为：APP名称
+						title: 'OFD/PDF文档在线预览', // 顶栏标题，默认为：APP名称
 						topBarBgColor: '#3394EC', // 顶栏背景颜色，默认为：#3394EC（科技蓝）
 						// topBarBgColor: '#FFFFFF',
 						// topBarTextColor: '#000000',
