@@ -302,7 +302,7 @@ export default {
 						// 顶部状态栏自定义菜单功能按钮
 						menuItems: ['下载', '分享', '跳转第5页'],
 						// 跳转页码
-						targetPage: 5,
+						// targetPage: 5,
 						...otherOptions,
 					},
 					res => {

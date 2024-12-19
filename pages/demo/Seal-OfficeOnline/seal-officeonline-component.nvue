@@ -1,25 +1,36 @@
 <template>
-	<div><Seal-OfficeOnline :options="options" style="width:600rpx;height:800rpx;border: 1px solid red;"></Seal-OfficeOnline></div>
+	<div><Seal-OfficeOnline :options="options" @callback="handleCallback"
+			style="width:600rpx;height:800rpx;border: 1px solid red;"></Seal-OfficeOnline></div>
 </template>
 
 <script>
-export default {
-	data() {
-		return {
-			options: {}
+	const modal = uni.requireNativePlugin('modal');
+	export default {
+		data() {
+			return {
+				options: {}
+			}
+		},
+		onLoad(params) {
+			console.log('params', params)
+			this.options = {
+				// 文档预览，传递url
+				url: params.url,
+				waterMarkText: '你好，世界\n准备好了吗？时刻准备着',
+				// 跳转页码
+				// targetPage: 5,
+				// 禁止截屏
+				canScreenshot: false,
+			}
+		},
+		methods: {
+			handleCallback(e) {
+				console.log('callback: ', e.detail)
+				modal.toast({
+					message: JSON.stringify(e.detail),
+					duration: 2,
+				});
+			}
 		}
-	},
-	onLoad(params) {
-		console.log('params', params)
-		this.options = {
-			// 文档预览，传递url
-			url: params.url,
-			waterMarkText: '你好，世界\n准备好了吗？时刻准备着',
-			// 跳转页码
-			targetPage: 5,
-			// 禁止截屏
-			canScreenshot: false,
-		}
-	}
-};
+	};
 </script>
